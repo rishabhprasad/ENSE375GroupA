@@ -1,6 +1,7 @@
 Kaden Goski - 200392031 - February 22 2021
 
 * Outline
+
 Intro to Git and Version Control  
 Use Case Diagram
 Version Control Design
