@@ -1,12 +1,12 @@
 Kaden Goski - 200392031 - February 22 2021
 
-** Outline
+**Outline
 Intro to Git and Version Control  
 Use Case Diagram
 Version Control Design
 Storage Systems - Kaden Goski
 Data Structures - Kaden Goski
-Repositories  
+Repositories
 Operations  
 Sequence Diagram  
 Branching  
@@ -17,6 +17,21 @@ Code Review Plugin
 Quality Plugin  
 Conclusion - All   
 Git Cheatsheet appendix?  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
