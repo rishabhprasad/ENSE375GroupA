@@ -1,17 +1,8 @@
-Intro to Git and Version Control   
-Use Case Diagram
-Version Control Design 
-Storage Systems  
-Data Flow Diagram - Possible?  
-Data Structures  
-Repositories  
-Operations
-Sequence Diagram  
-**Branching  - Bryden**
-**Merging - Bryden**
-Solving Conflicts  
-Additional Functionality
-Code Review Plugin  
-Quality Plugin  
-Conclusion - All   
-Git Cheatsheet appendix?  
+Bryden Trakalo, 200393397
+
+Merge
+When two branches are ready to be unified, “git merge” can be used to combine the two branches together. When a merge occurs, Git compares the base commit that both branches share to the latest commit on each branch. If a branch resides along the base commit of the second branch, Git considers the two branches to be directly connected, and a Fast Forward Merge is performed. In a Fast Forward Merge the base branch is moved up the direct connection to the second branch, while the second branch does not have any changes made to itself. The Fast Forward Merge is an implicit merge strategy, meaning a merge commit is not created when performing the merge (BitBucket, 2021). If there is not a direct connection between the two branches to be merged, a 3 Way Merge is performed. In a 3 Way Merge, the base commit is compared against the latest commit on each branch. From this comparison Git can identify the changes separating both branches. The 3 Way Merge is an explicit merge strategy, therefore a new merge commit must be made every time this merge occurs. Once the conflicts between both branches are resolved, the two branches are merged. By adding the resolved files and committing the merge is finalized. Using the command “git branch --merged” can confirm the merge by listing the two branches that have been merged within the current branch. 
+
+Solving Conflits
+When two merging branches contain conflicting information a merge conflict occurs and must be resolved. Github will not call an unchanged line and a changed line from the base commit as a conflict. It will prioritize the changed version and automatically apply the changes. However, if the same line is changed on both branches user input is needed to resolve the conflict. 
+	To begin resolving conflicts “git status” will identify to the user which files are conflicting. For each conflicting file Git generates sectioned off areas containing the conflicting lines. These sectioned off areas are made up of three parts. First is the lines from the head branch. This section begins with a line of arrows pointing left ending with the name “HEAD”, and is followed by the conflicting lines from head. Second is a line of equals signs which separates the head branch’s lines from the second branch’s lines. The third section starts with the conflicting lines from the second branch and ends in a line of arrows pointing right with the name of the branch at the end of the arrows. The current changes from the head branch and the incoming changes from the second branch must be analyzed by the user and one of the changes must be discarded. Once the Git generated lines are removed and only lines of code remain in each file, the conflict is considered resolved and the merge can be finished.
