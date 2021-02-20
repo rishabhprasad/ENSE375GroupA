@@ -4,8 +4,11 @@ Kaden Goski - 200392031 - February 22 2021
 Intro to Git and Version Control  
 Use Case Diagram
 Version Control Design
+
 Storage Systems - Kaden Goski
+
 Data Structures - Kaden Goski
+
 Repositories
 Operations  
 Sequence Diagram  
