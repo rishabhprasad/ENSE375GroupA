@@ -1,19 +1,16 @@
-Project Report Outline TEAM DEADLINE FRIDAY FEB 19
+#1. INTRODUCTION
+Software development frequently involves a variety of teams working independently on code before merging to form the final product. In the past this complexity has led to trouble tracking changes in the existing codebase while keeping developers up to date on the newest version. To solve this problem, Version Control Systems (VCS) were created to help developers work on software simultaneously without passing full copies or keeping track of file changes themselves (Brown & Wilson, 2012).  Large projects with many contributors benefit greatly from this functionality by tracing who made changes and when the changes were made. This enables code and other digital works to have many collaborators in a network of repositories, with projects converging or temporarily diverging as necessary. 
+Git and Mercurial are modern distributed version control systems created with the following cycle of events: (1) get the latest tree of files from the repository, (2) work on a set of changes to this version of the tree, (3) publish the changes for others to retrieve.  Being able to track changes over time using VCS allows developers to work on multiple versions in parallel, or restore work from a previous version. The use case diagram in Figure 1.1 shows just a handful of ways that developers can use version control systems to interact between their working tree on an independent machine and a repository containing project files. These interactions will be discussed in further detail throughout the entirety of this report. 
 
-**Intro to Git and Version Control - Roxanne**    
-**Use Case Diagram - Roxanne**  
-**Version Control Design - Roxanne**  
-Storage Systems  
-Data Flow Diagram - Possible?  
-Data Structures  
-Repositories  
-**Operations - Roxanne**  
-Sequence Diagram  
-Branching  
-Merging  
-Solving Conflicts  
-**Additional Functionality - Roxanne**  
-Code Review Plugin  
-Quality Plugin  
-Conclusion - All   
-Git Cheatsheet appendix?  
+#2. VERSION CONTROL DESIGN
+Version control systems have two core functional requirements: (1) storing content, and (2) tracking changes to the content (Brown & Wilson, 2012). Git and Mercurial are distributed version control systems that store repository content and changes in source control servers and fully mirror the files and history in working directory repository clones. Often the design choice for representing content is with the use of directed acyclic graphs (DAGs). Using this data structure allows for representation among parent and child revisions with project divergence and convergence. The relationships between these storage systems, data structures, and the relevance of repositories are discussed in detail herein.
+
+#3. VERSION CONTROL OPERATIONS
+	Often software projects have many collaborators working in a network of repositories and on multiple states of code simultaneously. Version control allows for this separation of work by letting users create alternate branches, leaving the source files or master version untouched so that external changes can be made.  When necessary alterations are complete, branches can then merge back together while combining changes made by several committers. Conflict resolution may also be necessary when multiple developers have altered the same piece of code in different ways (Chacon & Straub, 2014). Branching, merging, and conflict resolution are three crucial operations performed using version control systems.
+
+#4. ADDITIONAL FUNCTIONALITY
+The growth of the technology industry has led to more tools being created every day to aid developers in the process of designing and building software. Automated tools such as these act as another set of eyes to see possible changes or errors that may have otherwise been overlooked. Improving code quality and utilizing code review plugins for version control systems such as Github allow users to present the best code possible.  Two plugins of interest are DeepSource for code review, and Code Inspector for improving code quality. 
+
+
+
+
