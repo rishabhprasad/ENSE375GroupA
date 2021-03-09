@@ -11,27 +11,26 @@ public class Patient
 	
 	public Patient(String name, String ID, int age, PostalCode postalCode) throws InvalidNameException, InvalidAgeException ,InvalidIDException, InvalidPostalCodeException
 	{
-		//ToDo: add you code here
+		this.name=name;
+		this.ID=ID;
+		this.age=age;
+		this.postalCode=postalCode;
 	}
 	public String getName()
 	{
-		//ToDo: add your code here (you can update the return statement)
-		return "";
+		return name;
 	}
 	public String getID()
 	{
-		//ToDo: add your code here (you can update the return statement) 
-		return "";
+		return ID;
 	}
 	public int getAge()
 	{
-		//ToDo: add your code here (you can update the return statement) 
-		return 0;
+		return age;
 	}
 	public PostalCode getPostalCode()
 	{	
-		//ToDo: add your code here (you can update the return statement)
-		return null;
+		return postalCode;
 	}
 	/**
 	*
@@ -39,8 +38,11 @@ public class Patient
 	*/
 	public boolean setAge(int age)
 	{	
-		//ToDo: add your code here
+		if(this.age==age)//compare set age with input age
+		{
 		return true;
+		}
+		return false;
 	}
 	/**
 	*
@@ -48,7 +50,10 @@ public class Patient
 	*/
 	public boolean setPostalCode(PostalCode postalCode)
 	{
-		//ToDo: add your code here
+		if(this.postalCode.getPostalCode().equals(postalCode.getPostalCode()))//compare parameter with set postCode
+		{
 		return true;
+		}
+		return false;
 	}
 }
