@@ -1,6 +1,7 @@
 package com.uregina.app;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
 
@@ -9,6 +10,26 @@ import org.junit.Test;
  */
 public class RiskCodeMapTest 
 {
+    @Before
+    public void setUpRiskCodeMapTests() {
+        
+    }
+
+    @Test
+    public void getRisk_4_5_true()
+    {
+        char riskCode = riskCodeMap.getRiskInARegion(4, 5);
+        bool correctChar = (riskCode == 'N');
+        assertTrue(correctChar);
+    }
+    @Test
+    public void getRisk_4_5_false()
+    {
+        char riskCode = riskCodeMap.getRiskInARegion(4, 5);
+        bool worngChar = (riskCode == 'K');
+        assertFalse(wrongChar);
+    }
+
     /**
      * Rigorous Test :-)
      */
