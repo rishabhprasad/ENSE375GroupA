@@ -20,8 +20,16 @@ public class PatientListTest
     public void patientList_FailToAdd()
     {
         PatientList patientList = new PatientList();
-        Patient object = new Patient();
-        assertFalse( patientList.addPatient(object));
+        try{
+        PostalCode postal = new PostalCode("K1A-0B9");
+        //error in name.
+        Patient object = new Patient("Kaden","12345678",12345,postal);
+        assertFalse( patientList.addPatient(object));   
+        }
+        catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
+        {
+        assertFalse( False);
+        }
     }
     @Test
     public void patientList_SuccesfulAdd() 
@@ -34,7 +42,7 @@ public class PatientListTest
         Patient object = new Patient("Kaden","12345678",12,postal);
         assertTrue( patientList.addPatient(object));
         }
-        catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException | InvalidPostalCodeException  e)
+        catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
         {
             error = true;
             assertTrue(false);
