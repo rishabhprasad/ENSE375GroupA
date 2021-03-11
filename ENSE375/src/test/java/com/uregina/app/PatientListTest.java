@@ -28,7 +28,7 @@ public class PatientListTest
         }
         catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
         {
-        assertFalse( False);
+        assertFalse(false);
         }
     }
     @Test
