@@ -7,6 +7,7 @@ public class PostalCode
     	public static boolean isValidPostalCode(String postalCode)
     	{
 		  int postalCodeLength = 7;
+
 		
 		  if (postalCode.length() != postalCodeLength) {
 			  return false;
@@ -46,9 +47,12 @@ public class PostalCode
        	return true;
     	}
     	public PostalCode(String postalCode) throws InvalidPostalCodeException
-    	{
-    		this.postalCode = postalCode;
-			
+    	{	
+			if(isValidPostalCode(postalCode))
+			{
+    		this.postalCode = postalCode;	
+			}
+					
     	}
     	public int getRegionVerticalIndex()
     	{

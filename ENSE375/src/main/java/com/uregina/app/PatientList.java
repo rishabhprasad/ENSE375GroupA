@@ -22,38 +22,7 @@ public class PatientList
      * @return boolean: true if the patient can be added to the list
      */
     public boolean addPatient(Patient patient) {
-        Integer Age = patient.getAge();
-
-        //The patient ID is a 9-digit string with a non-zero digit. 
-        String ID = patient.getID();
-        String IDCheck = "/([0-9]{9})/";
-        Boolean IDFormat = Pattern.matches(IDCheck,ID);
-
-        //Patient name can only contain alphabetic letters as well as spaces and dots. 
-        String Name = patient.getName();
-        //Check if name is correct in format
-        String nameCheck = "/^[a-z\\d\\-_\\s]+$/i";
-        boolean isCorrectName = Pattern.matches(nameCheck, Name);
-
-        //The Postal code is given in the following format "K1a-bxy" as: 
-        //"K1" is a fixed prefix, 
-        //"a" is any letter from 'A' to 'T' to indicate the vertical index of the region, 
-        //"b" is a digit from '0' to '9' to indicate the horizontal index of the region, 
-        //"x" is any uppercase letter and 
-        //"y" is any digit. 
-        String PostalCode = patient.getPostalCode().getPostalCode();
-        //check if postal code is correct in format.
-        String postalCheck = "/(K1)([A-T])(-)([0-9])([A-Z])([0-9])/";
-        boolean isValidPostal = Pattern.matches(postalCheck, PostalCode);
-
-        //ToDo: add you code here
-        if (isCorrectName && isValidPostal) {
-            if (IDFormat && (!(ID.equals("000000000")))) {
-                patientList.add(patient);
-                return true;
-            }
-        }
-        return false;
+                return true;  
     }
     /**
      *
