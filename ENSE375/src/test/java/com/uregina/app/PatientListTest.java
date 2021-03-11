@@ -1,4 +1,4 @@
-//package com.uregina.app;
+package com.uregina.app;
 
 
 import static org.junit.Assert.assertTrue;
