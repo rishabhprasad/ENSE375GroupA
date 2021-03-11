@@ -23,7 +23,7 @@ public class Patient
         String nameCheck = "/^[a-z\\d\\-_\\s]+$/i";
         boolean isCorrectName = Pattern.matches(nameCheck, name);
 
-		if(!(age < 0 || age > 110))
+		if((age > 0 && age < 110))
 		{
 		if(IDFormat && isCorrectName && (postalCode != null))
 		{
