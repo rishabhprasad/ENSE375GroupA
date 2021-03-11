@@ -2,6 +2,7 @@ package com.uregina.app;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThrows;
 import org.junit.Test;
 
 import jdk.jfr.Timestamp;
@@ -47,6 +48,12 @@ public class PatientHistogramTest
         PatientHistogram patientHistogram = new PatientHistogram();
         assertFalse(patientHistogram.deleteAPatientFromRegion(1,10));
     }
-
+    @Test
+    public void getPatientsCountInRegion_invalidHIndex_throws(){
+        PatientHistogram patientHistogram = new PatientHistogram();
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            patientHistogram.getPatientsCountInRegion(20,10);
+        )};
+    }
 
 }
