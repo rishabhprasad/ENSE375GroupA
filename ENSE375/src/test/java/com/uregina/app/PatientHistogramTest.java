@@ -49,18 +49,24 @@ public class PatientHistogramTest
         assertFalse(patientHistogram.deleteAPatientFromRegion(1,10));
     }
     @Test
-    public void getPatientsCountInRegion_invalidVIndex_throws(){
+    public void getPatientsCountInRegion_invalidVIndex_throwsIndexOutOfBoundsException(){
         PatientHistogram patientHistogram = new PatientHistogram();
         assertThrows(IndexOutOfBoundsException.class, () -> {
             patientHistogram.getPatientsCountInRegion(20,1);
         });
     }
     @Test
-    public void getPatientsCountInRegion_invalidHIndex_throws(){
+    public void getPatientsCountInRegion_invalidHIndex_throwsIndexOutOfBoundsException(){
         PatientHistogram patientHistogram = new PatientHistogram();
         assertThrows(IndexOutOfBoundsException.class, () -> {
             patientHistogram.getPatientsCountInRegion(1,10);
         });
+    }
+    @Test
+    public void getPatientsCountInRegion_validCount_true(){
+        PatientHistogram patientHistogram = new PatientHistogram();
+        patientHistogram.addAPatientToRegion(15,5); // 1 patient in region
+        assertTrue(patientHistogram.getPatientsCountInRegion(15,5), 1);
     }
 
 }
