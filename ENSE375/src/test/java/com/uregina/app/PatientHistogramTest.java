@@ -17,9 +17,14 @@ public class PatientHistogramTest
         assertTrue(patientHistogram.addAPatientToRegion(15,5));
     }
     @Test
-    public void patientHistogram_invalidIndex_false(){
+    public void patientHistogram_invalidVIndex_false(){
         PatientHistogram patientHistogram = new PatientHistogram();
-        assertTrue(patientHistogram.addAPatientToRegion(20,10));
+        assertFalse(patientHistogram.addAPatientToRegion(20,1));
+    }
+    @Test
+    public void patientHistogram_invalidHIndex_false(){
+        PatientHistogram patientHistogram = new PatientHistogram();
+        assertFalse(patientHistogram.addAPatientToRegion(1,10));
     }
 
 
