@@ -13,15 +13,18 @@ import org.junit.Test;
  */
 public class PatientTest 
 {
-    /**
-     * Rigorous Test :-)
-     */
     @Test
     public void Correct_age_True()
     {
+        try{
             PostalCode postalCode = new PostalCode("K1A-0B9");
             Patient patient = new Patient("Landry", "000000000",12,postalCode);
             assertTrue(patient.setAge(12));
+        }
+        catch (InvalidPostalCodeException && InvalidNameException && InvalidAgeException && InvalidIDException e)
+        {
+            assertTrue(true);
+        }
     }
     @Test
     public void Correct_age_False_unequal()
@@ -61,6 +64,4 @@ public class PatientTest
             Patient patient = new Patient("Landry", "000000000",12,postalCode);
             assertFalse(patient.setPostalCode(postalc));
     }
-
-    
 }
