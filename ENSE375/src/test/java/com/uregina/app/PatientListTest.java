@@ -22,10 +22,8 @@ public class PatientListTest
         PatientList patientList = new PatientList();
         try{
         PostalCode postal = new PostalCode("K1A-0B9");
-        //error in name.
-        Patient object = new Patient("Kaden","12345678",12343245,postal);
-        boolean yes = patientList.addPatient(object);
-        assertTrue( yes );   
+        //error in name.     
+        assertFalse(patientList.addPatient(null));   
         }
         catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
         {
