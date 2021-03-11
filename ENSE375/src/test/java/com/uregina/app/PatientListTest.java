@@ -23,7 +23,7 @@ public class PatientListTest
         try{
         PostalCode postal = new PostalCode("K1A-0B9");
         //error in name.
-        Patient object = new Patient("Kaden","12345678",12345,postal);
+        Patient object = new Patient("Kaden","12345678",12343245,postal);
         boolean yes = patientList.addPatient(object);
         assertTrue( yes );   
         }
