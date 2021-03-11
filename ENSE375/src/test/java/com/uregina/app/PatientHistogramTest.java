@@ -66,7 +66,8 @@ public class PatientHistogramTest
     public void getPatientsCountInRegion_validCount_true(){
         PatientHistogram patientHistogram = new PatientHistogram();
         patientHistogram.addAPatientToRegion(15,5); // 1 patient in region
-        assertTrue(patientHistogram.getPatientsCountInRegion(15,5), 1);
+        int patientCount = patientHistogram.getPatientsCountInRegion(15,5);
+        assertTrue(patientCount, 1);
     }
 
 }
