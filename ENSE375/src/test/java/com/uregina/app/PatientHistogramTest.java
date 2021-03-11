@@ -12,19 +12,40 @@ import jdk.jfr.Timestamp;
 public class PatientHistogramTest
 {
     @Test
-    public void patientHistogram_validIndex_true(){
+    public void addPatientToRegion_validIndex_true(){
         PatientHistogram patientHistogram = new PatientHistogram();
         assertTrue(patientHistogram.addAPatientToRegion(15,5));
     }
     @Test
-    public void patientHistogram_invalidVIndex_false(){
+    public void addPatientToRegioninvalidVIndex_false(){
         PatientHistogram patientHistogram = new PatientHistogram();
         assertFalse(patientHistogram.addAPatientToRegion(20,1));
     }
     @Test
-    public void patientHistogram_invalidHIndex_false(){
+    public void addPatientToRegion_invalidHIndex_false(){
         PatientHistogram patientHistogram = new PatientHistogram();
         assertFalse(patientHistogram.addAPatientToRegion(1,10));
+    }
+    @Test
+    public void deleteAPatientFromRegion_invalidDecrement_false(){
+        PatientHistogram patientHistogram = new PatientHistogram();
+        assertFalse(patientHistogram.deleteAPatientFromRegion(15,5));
+    }
+    @Test
+    public void deleteAPatientFromRegion_validDecrement_true(){
+        PatientHistogram patientHistogram = new PatientHistogram();
+        patientHistogram.addAPatientToRegion(15,5); // 1 patient in region
+        assertTrue(patientHistogram.deleteAPatientFromRegion(15,5));
+    }
+    @Test
+    public void deleteAPatientFromRegion_false(){
+        PatientHistogram patientHistogram = new PatientHistogram();
+        assertFalse(patientHistogram.deleteAPatientFromRegion(20,1));
+    }
+    @Test
+    public void deleteAPatientFromRegion_false(){
+        PatientHistogram patientHistogram = new PatientHistogram();
+        assertFalse(patientHistogram.deleteAPatientFromRegion(1,10));
     }
 
 

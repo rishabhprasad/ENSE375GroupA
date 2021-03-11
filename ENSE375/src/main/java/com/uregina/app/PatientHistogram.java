@@ -23,13 +23,13 @@ public class PatientHistogram
     	public boolean addAPatientToRegion(int VIndex,int HIndex)
     	{
 			// CHECK BOUNDS ON INDEX
-			if(VIndex <0 || VIndex>= 20) return false;
+			if(VIndex <0 || VIndex>= 20)return false;
 			if(HIndex <0 || HIndex>= 10)return false;
-			
 			// INCREMENT THE COUNT IN THAT REGION
 			int count = patientCount[VIndex][HIndex];
 			count++;
 			patientCount[VIndex][HIndex] = count;
+			// NO MAX TO CONSIDER THEREFORE RETURN TRUE
     		return true;
     	}
 	/**
@@ -38,11 +38,15 @@ public class PatientHistogram
 	*/
     	public boolean deleteAPatientFromRegion(int VIndex,int HIndex)
     	{
-    		// DECREMENT THE COUNT IN THAT REGION
+			// CHECK BOUNDS ON INDEX
+			if(VIndex <0 || VIndex>= 20)return false;
+			if(HIndex <0 || HIndex>= 10)return false;
+			// CHECK MINIMUM VALUE BEFORE DECREMENTING
 			int count = patientCount[VIndex][HIndex];
+			if(count == 0) return false;
+    		// DECREMENT THE COUNT IN THAT REGION
 			count--;
 			patientCount[VIndex][HIndex] = count;
-    		
     		return true;
     	}
     	public int getPatientsCountInRegion(int VIndex,int HIndex) throws IndexOutOfBoundsException
