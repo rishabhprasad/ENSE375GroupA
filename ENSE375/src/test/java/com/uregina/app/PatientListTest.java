@@ -32,7 +32,7 @@ public class PatientListTest
 
         try{
         PostalCode postal = new PostalCode("K1A-0B9");
-        Patient object = new Patient("Kaden","12345678",12,postal);
+        Patient object = new Patient("Kaden","123456789",12,postal);
         assertTrue( patientList.addPatient(object));
         }
         catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
@@ -49,7 +49,7 @@ public class PatientListTest
 
         try{
         PostalCode postal = new PostalCode("K1A-0B9");
-        Patient object = new Patient("Kaden","12345678",12,postal);
+        Patient object = new Patient("Kaden","123456789",12,postal);
         patientList.addPatient(object);
         assertTrue(patientList.deletePatient(0));
         }
@@ -66,7 +66,7 @@ public class PatientListTest
 
         try{
         PostalCode postal = new PostalCode("K1A-0B9");
-        Patient object = new Patient("Kaden","12345678",12,postal);
+        Patient object = new Patient("Kaden","123456789",12,postal);
         patientList.addPatient(object);
         assertFalse(patientList.deletePatient(2));
         }
@@ -84,7 +84,7 @@ public class PatientListTest
 
     try{
     PostalCode postal = new PostalCode("K1A-0B9");
-    Patient object = new Patient("Kaden","12345678",12,postal);
+    Patient object = new Patient("Kaden","123456789",12,postal);
     patientList.addPatient(object);
 
     if (patientList.getPatient("000000000") == null)
@@ -111,7 +111,7 @@ public class PatientListTest
 
     try{
     PostalCode postal = new PostalCode("K1A-0B9");
-    Patient object = new Patient("Kaden","12345678",12,postal);
+    Patient object = new Patient("Kaden","123456789",12,postal);
     patientList.addPatient(object);
 
     if (patientList.getPatient("000000022") == null)
@@ -137,10 +137,10 @@ public class PatientListTest
 
     try{
     PostalCode postal = new PostalCode("K1A-0B9");
-    Patient object = new Patient("Kaden","12345678",12,postal);
+    Patient object = new Patient("Kaden","123456789",12,postal);
     patientList.addPatient(object);
     
-    Patient patientX = patientList.getPatient("12345678");
+    Patient patientX = patientList.getPatient("123456789");
     if (patientX == null)
     {
         result = false;
@@ -174,7 +174,10 @@ public class PatientListTest
         {
             assertTrue(true);
         }
+        else
+        {
         assertTrue(false);
+        }
     }
     catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
     {
@@ -193,7 +196,9 @@ public class PatientListTest
         {
             assertTrue(true);
         }
+        else{
         assertTrue(false);
+        }
     }
 
 
