@@ -22,6 +22,10 @@ public class PatientHistogram
 	*/
     	public boolean addAPatientToRegion(int VIndex,int HIndex)
     	{
+			// CHECK BOUNDS ON INDEX
+			if(VIndex <0 || VIndex>= 20) return false;
+			if(HIndex <0 || HIndex>= 10)return false;
+			
 			// INCREMENT THE COUNT IN THAT REGION
 			int count = patientCount[VIndex][HIndex];
 			count++;
