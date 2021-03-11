@@ -159,7 +159,7 @@ public class PatientListTest
     public void getNumOfPatients_Success()
     {
         PatientList patientList = new PatientList();
-        
+        try{
         PostalCode postal = new PostalCode("K1A-0B9");
         Patient object = new Patient("Kaden","12345678",12,postal);
         patientList.addPatient(object);
@@ -175,6 +175,11 @@ public class PatientListTest
             assertTrue(true);
         }
         assertTrue(false);
+    }
+    catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
+    {
+        assertTrue(false);
+    }
     }
 
     @Test
