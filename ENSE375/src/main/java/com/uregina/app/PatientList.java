@@ -26,6 +26,7 @@ public class PatientList
         {
             return false;
         }
+        patientList.add(patient);
                 return true;  
     }
     /**
