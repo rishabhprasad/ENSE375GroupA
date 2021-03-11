@@ -31,41 +31,15 @@ public class PatientListTest
 
         try{
         PostalCode postal = new PostalCode("K1A-0B9");
-       
-    }
-        catch (InvalidPostalCodeException e)
+        Patient object = new Patient("Kaden","12345678",12,postal);
+        assertTrue( patientList.addPatient(object));
+        }
+        catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException | InvalidPostalCodeException  e)
         {
             error = true;
+            assertTrue(false);
         }
-
-
-        try{
-    		Patient object = new Patient("Kaden","12345678",12,postal);
-    	}
-    	catch(InvalidNameException e){
-    		error = true;
-    		
-    	}
-    	catch(InvalidAgeException e){
-    		error = true;
-    	
-    	}
-    	catch(InvalidIDException e){
-    		error = true;
-    		
-    	}
-    	catch(InvalidPostalCodeException e){
-    		error = true;
-    		
-    	}
-        if (error = false)
-        {
-        assertTrue(true);
-        }
-        else
-        {
-         assertTrue( patientList.addPatient(object));
-        }
+     
     }
     @Test
     public void patientList_FailToAdd_InvalidPostal()
