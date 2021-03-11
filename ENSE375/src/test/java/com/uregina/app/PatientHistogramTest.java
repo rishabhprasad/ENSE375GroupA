@@ -17,7 +17,7 @@ public class PatientHistogramTest
         assertTrue(patientHistogram.addAPatientToRegion(15,5));
     }
     @Test
-    public void addPatientToRegioninvalidVIndex_false(){
+    public void addPatientToRegion_invalidVIndex_false(){
         PatientHistogram patientHistogram = new PatientHistogram();
         assertFalse(patientHistogram.addAPatientToRegion(20,1));
     }
@@ -38,12 +38,12 @@ public class PatientHistogramTest
         assertTrue(patientHistogram.deleteAPatientFromRegion(15,5));
     }
     @Test
-    public void deleteAPatientFromRegion_false(){
+    public void deleteAPatientFromRegion_invalidVIndex_false(){
         PatientHistogram patientHistogram = new PatientHistogram();
         assertFalse(patientHistogram.deleteAPatientFromRegion(20,1));
     }
     @Test
-    public void deleteAPatientFromRegion_false(){
+    public void deleteAPatientFromRegion_invalidHIndex_false(){
         PatientHistogram patientHistogram = new PatientHistogram();
         assertFalse(patientHistogram.deleteAPatientFromRegion(1,10));
     }
