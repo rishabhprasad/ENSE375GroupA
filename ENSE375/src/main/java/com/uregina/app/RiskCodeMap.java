@@ -1,5 +1,5 @@
 package com.uregina.app;
-import com.uregina.exception.*;
+//import com.uregina.exception.*;
 import java.util.ArrayList;
 
 public class RiskCodeMap 
@@ -7,6 +7,7 @@ public class RiskCodeMap
 	private char[][] riskCode;
 	public RiskCodeMap() 
 	{
+		riskCode = new char[20][10];
 		for (int i=0;i<20;i++){
 			for(int j=0;j<10;j++){
 				this.riskCode[i][j]='N';		//N for not set, could intialize to G
@@ -20,10 +21,6 @@ public class RiskCodeMap
 	*/
 	public boolean updateRiskInARegion(int VIndex,int HIndex,int caseCount,ArrayList<Integer> neighboursCaseCount)
 	{
-		//ToDo: add your code here 
-		/*	->	check if currentRisk is greater than or equal average cases from neighbours
-			->	check if currentRisk is greater than or equal to the region's own cases
-		*/
 		boolean updateRisk= false;
 		char currentRisk = this.riskCode[VIndex][HIndex];
 		int avgNeighbourCount;
@@ -92,10 +89,9 @@ public class RiskCodeMap
 		}
 		return updateRisk;
 	}
-	
+
 	public char getRiskInARegion(int VIndex,int HIndex) throws IndexOutOfBoundsException
 	{
-			//ToDo: add your code here (you can update the return statement)
 		return riskCode[VIndex][HIndex];
 	}
 }
