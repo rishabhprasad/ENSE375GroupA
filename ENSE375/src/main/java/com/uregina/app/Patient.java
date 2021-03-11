@@ -18,19 +18,19 @@ public class Patient
 	}
 	public String getName()
 	{
-		return name;
+		return this.name;
 	}
 	public String getID()
 	{
-		return ID;
+		return this.ID;
 	}
 	public int getAge()
 	{
-		return age;
+		return this.age;
 	}
 	public PostalCode getPostalCode()
 	{	
-		return postalCode;
+		return this.postalCode;
 	}
 	/**
 	*
@@ -38,9 +38,10 @@ public class Patient
 	*/
 	public boolean setAge(int age)
 	{	
-		if(this.age==age)//compare set age with input age
+		if(!(age < 0 || age > 110))//compare set age with input age
 		{
-		return true;
+			this.age = age;
+			return true;
 		}
 		return false;
 	}
@@ -50,9 +51,12 @@ public class Patient
 	*/
 	public boolean setPostalCode(PostalCode postalCode)
 	{
-		if(this.postalCode.getPostalCode().equals(postalCode.getPostalCode()))//compare parameter with set postCode
+		if(!this.postalCode.getPostalCode().contains(postalCode.getPostalCode()))//compare parameter with set postCode
 		{
-		return true;
+			if(postalCode.isValidPostalCode(postalCode.getPostalCode())) {
+				this.postalCode = postalCode;
+				return true;
+			}
 		}
 		return false;
 	}
