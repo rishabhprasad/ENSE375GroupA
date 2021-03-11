@@ -83,7 +83,7 @@ public class PatientTest
             PostalCode postalCode = new PostalCode("K1A-0B9");
             PostalCode postalc=new PostalCode("K1A-0B6");
             Patient patient = new Patient("Landry", "000000000",12,postalCode);
-            assertFalse(patient.setPostalCode(postalc));
+            assertTrue(patient.setPostalCode(postalc));
           }catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
         {
             assertTrue(false);
