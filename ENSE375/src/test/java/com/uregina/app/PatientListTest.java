@@ -97,7 +97,7 @@ public class PatientListTest
 
     catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
     {
-        error = true;
+       
         assertTrue(false);
     }
     }
