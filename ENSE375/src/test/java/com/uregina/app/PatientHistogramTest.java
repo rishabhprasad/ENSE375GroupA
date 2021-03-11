@@ -53,7 +53,7 @@ public class PatientHistogramTest
         PatientHistogram patientHistogram = new PatientHistogram();
         assertThrows(IndexOutOfBoundsException.class, () -> {
             patientHistogram.getPatientsCountInRegion(20,10);
-        )};
+        });
     }
 
 }
