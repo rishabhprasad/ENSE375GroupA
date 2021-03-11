@@ -20,15 +20,43 @@ public class PatientListTest
     public void patientList_FailToAdd()
     {
         PatientList patientList = new PatientList();
-        Patient object;
+        Patient object = 1;
         assertFalse( patientList.addPatient(object));
     }
     @Test
-    public void patientList_SuccesfulAdd()
+    public void patientList_SuccesfulAdd() 
     {
         PatientList patientList = new PatientList();
+        boolean error = false;
+
+        try{
         PostalCode postal = new PostalCode("K1A-0B9");
-        Patient object = new Patient("Kaden","12345678",12,postal);
+        }
+        catch (InvalidPostalCodeException e)
+        {
+            error = true;
+        }
+
+
+        try{
+    		Patient object = new Patient("Kaden","12345678",12,postal);
+    	}
+    	catch(InvalidNameException e){
+    		error = true;
+    		
+    	}
+    	catch(InvalidAgeException e){
+    		error = true;
+    	
+    	}
+    	catch(InvalidIDException e){
+    		error = true;
+    		
+    	}
+    	catch(InvalidPostalCodeException e){
+    		error = true;
+    		
+    	}
         assertTrue( patientList.addPatient(object));
     }
     @Test
