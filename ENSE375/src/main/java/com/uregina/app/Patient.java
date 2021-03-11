@@ -11,9 +11,7 @@ public class Patient
 	
 	public Patient(String name, String ID, int age, PostalCode postalCode) throws InvalidNameException, InvalidAgeException ,InvalidIDException, InvalidPostalCodeException
 	{		    
-		
-	
-            
+
         //The patient ID is a 9-digit string with a non-zero digit. 
         String IDCheck = "/([0-9]{9})/";
         Boolean IDFormat = Pattern.matches(IDCheck,ID);
