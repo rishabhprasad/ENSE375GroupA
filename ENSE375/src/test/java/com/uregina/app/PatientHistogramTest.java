@@ -22,6 +22,6 @@ public class PatientHistogramTest
     @Test
     public void patientHistogram_validIndex_true(){
         PatientHistogram patientHistogram = new PatientHistogram();
-        assertTrue(patientHistogram.addAPatientToRegion(20,10));
+        assertTrue(patientHistogram.addAPatientToRegion(15,5));
     }
 }
