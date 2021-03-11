@@ -21,7 +21,7 @@ public class PatientTest
             Patient patient = new Patient("Landry", "000000000",12,postalCode);
             assertTrue(patient.setAge(12));
         }
-        catch (InvalidPostalCodeException && InvalidNameException && InvalidAgeException && InvalidIDException e)
+        catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
         {
             assertTrue(true);
         }
