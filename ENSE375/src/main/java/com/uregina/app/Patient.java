@@ -14,7 +14,7 @@ public class Patient
 		this.name=name;
 		this.ID=ID;
 		this.age=age;
-		this.pstalCode= new postCode(postalCode.getPostalCode());
+		this.pstalCode= new PostalCode(postalCode.getPostalCode());
 		this.postalCode=postalCode;
 	}
 	public String getName()
