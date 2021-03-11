@@ -52,6 +52,7 @@ public class PatientHistogram
 	
     	public int getPatientsCountInRegion(int VIndex,int HIndex) throws IndexOutOfBoundsException
     	{
-    		return patientCount[VIndex][HIndex];
+			int count = patientCount[VIndex][HIndex];
+    		return count;
     	}
 }

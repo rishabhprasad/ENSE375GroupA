@@ -67,7 +67,8 @@ public class PatientHistogramTest
         PatientHistogram patientHistogram = new PatientHistogram();
         patientHistogram.addAPatientToRegion(15,5); // 1 patient in region
         int patientCount = patientHistogram.getPatientsCountInRegion(15,5);
-        assertTrue(patientCount, 1);
+        boolean validCount = patientCount == 1;
+        assertTrue(validCount);
     }
 
 }
