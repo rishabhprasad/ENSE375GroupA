@@ -7,8 +7,6 @@ public class PostalCode
     	public static boolean isValidPostalCode(String postalCode)
     	{
 		  int postalCodeLength = 7;
-
-		  System.out.println("aaaaaaaaaaaaa" + postalCode.length());
 		
 		  if (postalCode.length() != postalCodeLength) {
 			  return false;
