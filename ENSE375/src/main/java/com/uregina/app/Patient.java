@@ -53,8 +53,9 @@ public class Patient
 	*/
 	public boolean setAge(int age)
 	{	
-		if((age > 0 && age < 110)&&(this.age==age))//compare set age with input age
+		if((age > 0 && age < 110))//compare set age with input age
 		{
+			this.age = age;
 			return true;
 		}
 		return false;
@@ -65,8 +66,9 @@ public class Patient
 	*/
 	public boolean setPostalCode(PostalCode postalCode)
 	{
-		if(this.postalCode.getPostalCode().equals(postalCode.getPostalCode())&&postalCode.isValidPostalCode(this.postalCode.getPostalCode()))//compare parameter with set postCode
+		if(postalCode != null)//compare parameter with set postCode
 		{
+			this.postalCode = postalCode;
 				return true;
 		}
 	return false;

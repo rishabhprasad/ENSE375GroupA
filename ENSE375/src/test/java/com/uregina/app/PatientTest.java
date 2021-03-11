@@ -86,7 +86,7 @@ public class PatientTest
             assertFalse(patient.setPostalCode(postalc));
         } catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
         {
-            assertTrue(false);
+            assertFalse(false);
         }
     }
     @Test
