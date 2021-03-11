@@ -40,11 +40,23 @@ public class PatientTest
         }
     }
     @Test
-    public void Correct_age_False_outOf_Range()
+    public void Correct_age_False_outOf_above_Range()
     {        try{
             PostalCode postalCode = new PostalCode("K1A-0B9");
             Patient patient = new Patient("Landry", "000000000",120,postalCode);
             assertFalse(patient.setAge(120));
+                }
+            catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
+        {
+            assertTrue(false);
+        }
+    }
+    @Test
+    public void Correct_age_False_outOf_bellow_Range()
+    {        try{
+            PostalCode postalCode = new PostalCode("K1A-0B9");
+            Patient patient = new Patient("Landry", "000000000",12,postalCode);
+            assertFalse(patient.setAge(-12));
                 }
             catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
         {
