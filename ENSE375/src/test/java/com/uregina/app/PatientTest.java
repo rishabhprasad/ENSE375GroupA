@@ -14,7 +14,7 @@ import org.junit.Test;
 public class PatientTest 
 {
     @Test
-    public void Correct_age_True()
+    public void Correct_True()
     {
         try{
             PostalCode postalCode = new PostalCode("K1A-0B9");
@@ -26,19 +26,7 @@ public class PatientTest
             assertTrue(true);
         }
     }
-    @Test
-    public void Correct_age_False_unequal()
-    {
-                try{
-            PostalCode postalCode = new PostalCode("K1A-0B9");
-            Patient patient = new Patient("Landry", "123456789",12,postalCode);
-            assertFalse(patient.setAge(13));
-        }
-        catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
-        {
-            assertTrue(false);
-        }
-    }
+  
     @Test
     public void Correct_age_False_outOf_above_Range()
     {        try{
@@ -51,6 +39,7 @@ public class PatientTest
             assertTrue(false);
         }
     }
+
     @Test
     public void Correct_age_False_outOf_bellow_Range()
     {        try{
@@ -63,6 +52,7 @@ public class PatientTest
             assertTrue(false);
         }
     }
+
     @Test
     public void Correct_postalCode_True()
     {
@@ -77,28 +67,54 @@ public class PatientTest
             assertTrue(true);
         }
     }
+
     @Test
-    public void Correct_postalCode_False_incorecte_input()
-    {        try{
-            PostalCode postalCode = new PostalCode("K1A_0B9");
-            PostalCode postalc = new PostalCode("K1A_0B9");
-            Patient patient = new Patient("Landry", "123456789",12,postalCode);
-            assertFalse(patient.setPostalCode(postalc));
-        } catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
-        {
-            assertFalse(false);
-        }
-    }
-    @Test
-    public void Correct_postalCode_False_unequal()
-    {        try{
+    public void InvalidName_True()
+    {
+        try{
             PostalCode postalCode = new PostalCode("K1A-0B9");
-            PostalCode postalc=new PostalCode("K1A-0B6");
-            Patient patient = new Patient("Landry", "123456789",12,postalCode);
-            assertFalse(patient.setPostalCode(postalc));
-          } catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
-        {
+            PostalCode postalc = new PostalCode("K1A-0B9");
+            Patient patient = new Patient("#@#!Landry", "123456789",12,postalCode);
+            //error not caught if it doesnt throw exception.
             assertTrue(false);
         }
+        catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
+        {
+            assertTrue(true);
+        }
     }
+
+    @Test
+    public void InvalidID_True()
+    {
+        try{
+            PostalCode postalCode = new PostalCode("K1A-0B9");
+            PostalCode postalc = new PostalCode("K1A-0B9");
+            Patient patient = new Patient("Landry", "123456765789",12,postalCode);
+            //error not caught if it doesnt throw exception.
+            assertTrue(false);
+        }
+        catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
+        {
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void InvalidID0_True()
+    {
+        try{
+            PostalCode postalCode = new PostalCode("K1A-0B9");
+            PostalCode postalc = new PostalCode("K1A-0B9");
+            Patient patient = new Patient("Landry", "000000000",12,postalCode);
+            //error not caught if it doesnt throw exception.
+            assertTrue(false);
+        }
+        catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
+        {
+            assertTrue(true);
+        }
+    }
+
+
 }
