@@ -18,7 +18,7 @@ public class PatientTest
     {
         try{
             PostalCode postalCode = new PostalCode("K1A-0B9");
-            Patient patient = new Patient("Landry", "000000000",12,postalCode);
+            Patient patient = new Patient("Landry", "123456789",12,postalCode);
             assertTrue(patient.setAge(12));
         }
         catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
@@ -31,7 +31,7 @@ public class PatientTest
     {
                 try{
             PostalCode postalCode = new PostalCode("K1A-0B9");
-            Patient patient = new Patient("Landry", "000000000",12,postalCode);
+            Patient patient = new Patient("Landry", "123456789",12,postalCode);
             assertFalse(patient.setAge(13));
         }
         catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
@@ -43,7 +43,7 @@ public class PatientTest
     public void Correct_age_False_outOf_above_Range()
     {        try{
             PostalCode postalCode = new PostalCode("K1A-0B9");
-            Patient patient = new Patient("Landry", "000000000",120,postalCode);
+            Patient patient = new Patient("Landry", "123456789",120,postalCode);
             assertFalse(patient.setAge(120));
                 }
             catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
@@ -55,7 +55,7 @@ public class PatientTest
     public void Correct_age_False_outOf_bellow_Range()
     {        try{
             PostalCode postalCode = new PostalCode("K1A-0B9");
-            Patient patient = new Patient("Landry", "000000000",12,postalCode);
+            Patient patient = new Patient("Landry", "123456789",12,postalCode);
             assertFalse(patient.setAge(-12));
                 }
             catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
@@ -69,7 +69,7 @@ public class PatientTest
         try{
             PostalCode postalCode = new PostalCode("K1A-0B9");
             PostalCode postalc = new PostalCode("K1A-0B9");
-            Patient patient = new Patient("Landry", "000000000",12,postalCode);
+            Patient patient = new Patient("Landry", "123456789",12,postalCode);
             assertTrue(patient.setPostalCode(postalc));
         }
         catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
@@ -82,7 +82,7 @@ public class PatientTest
     {        try{
             PostalCode postalCode = new PostalCode("K1A_0B9");
             PostalCode postalc = new PostalCode("K1A_0B9");
-            Patient patient = new Patient("Landry", "000000000",12,postalCode);
+            Patient patient = new Patient("Landry", "123456789",12,postalCode);
             assertFalse(patient.setPostalCode(postalc));
         } catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
         {
@@ -94,7 +94,7 @@ public class PatientTest
     {        try{
             PostalCode postalCode = new PostalCode("K1A-0B9");
             PostalCode postalc=new PostalCode("K1A-0B6");
-            Patient patient = new Patient("Landry", "000000000",12,postalCode);
+            Patient patient = new Patient("Landry", "123456789",12,postalCode);
             assertFalse(patient.setPostalCode(postalc));
           } catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
         {
