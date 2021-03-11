@@ -20,7 +20,7 @@ public class PatientListTest
     public void patientList_FailToAdd()
     {
         PatientList patientList = new PatientList();
-        Patient object = 1;
+        Patient object = new Patient();
         assertFalse( patientList.addPatient(object));
     }
     @Test
@@ -31,7 +31,8 @@ public class PatientListTest
 
         try{
         PostalCode postal = new PostalCode("K1A-0B9");
-        }
+       
+    }
         catch (InvalidPostalCodeException e)
         {
             error = true;
@@ -57,7 +58,14 @@ public class PatientListTest
     		error = true;
     		
     	}
-        assertTrue( patientList.addPatient(object));
+        if (error = false)
+        {
+        assertTrue(true);
+        }
+        else
+        {
+         assertTrue( patientList.addPatient(object));
+        }
     }
     @Test
     public void patientList_FailToAdd_InvalidPostal()
