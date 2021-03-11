@@ -17,8 +17,50 @@ public class PatientTest
      * Rigorous Test :-)
      */
     @Test
-    public void shouldAnswerWithTrue()
+    public void Correct_age_True()
     {
-        assertTrue( true );
+            PostalCode postalCode = new PostalCode("K1A-0B9");
+            Patient patient = new Patient("Landry", "000000000",12,postalCode);
+            assertTrue(patient.setAge(12));
     }
+    @Test
+    public void Correct_age_False_unequal()
+    {
+            PostalCode postalCode = new PostalCode("K1A-0B9");
+            Patient patient = new Patient("Landry", "000000000",12,postalCode);
+            assertFalse(patient.setAge(13));
+    }
+    @Test
+    public void Correct_age_False_outOf_Range()
+    {
+            PostalCode postalCode = new PostalCode("K1A-0B9");
+            Patient patient = new Patient("Landry", "000000000",120,postalCode);
+            assertFalse(patient.setAge(120));
+    }
+    @Test
+    public void Correct_postalCode_True()
+    {
+            PostalCode postalCode = new PostalCode("K1A-0B9");
+            PostalCode postalc = new PostalCode("K1A-0B9");
+            Patient patient = new Patient("Landry", "000000000",12,postalCode);
+            assertTrue(patient.setPostalCode(postalc));
+    }
+    @Test
+    public void Correct_postalCode_False_incorecte_input()
+    {
+            PostalCode postalCode = new PostalCode("K1A_0B9");
+            PostalCode postalc = new PostalCode("K1A_0B9");
+            Patient patient = new Patient("Landry", "000000000",12,postalCode);
+            assertFalse(patient.setPostalCode(postalc));
+    }
+    @Test
+    public void Correct_postalCode_False_unequal()
+    {
+            PostalCode postalCode = new PostalCode("K1A-0B9");
+            PostalCode postalc=new PostalCode("K1A-0B6");
+            Patient patient = new Patient("Landry", "000000000",12,postalCode);
+            assertFalse(patient.setPostalCode(postalc));
+    }
+
+    
 }
