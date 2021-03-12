@@ -31,28 +31,31 @@ public class PatientListTest
         PatientList patientList = new PatientList();
 
         try{
+            int age = 12;
+            String id = "123456789";
+            String name = "Kaden";
         PostalCode postal = new PostalCode("K1A-0B9");
-        Patient object = new Patient("Kaden","123456789",12,postal);
+        Patient object = new Patient(name,id,age,postal);
         assertTrue( patientList.addPatient(object));
         }
         catch (InvalidPostalCodeException e)
         {
-            throw new InvalidPostalCodeException("Postal Code Exception","Invalid Postal Code");
+            throw new InvalidPostalCodeException();
             assertTrue(false);
         }
         catch (InvalidNameException e1)
         {
-            throw new InvalidNameException("Name Exception","Invalid Name");
+            throw new InvalidNameException(name);
             assertTrue(false);
         }
         catch (InvalidAgeException e2)
         {
-            throw new InvalidAgeException("Age Exception","Invalid Age");
+            throw new InvalidAgeException(age);
             assertTrue(false);
         }
         catch (InvalidIDException e3)
         {
-            throw new InvalidIDException("ID Exception","Invalid ID");
+            throw new InvalidIDException(id);
             assertTrue(false);
         }
      
@@ -64,29 +67,32 @@ public class PatientListTest
         PatientList patientList = new PatientList();
 
         try{
+            int age = 12;
+            String id = "123456789";
+            String name = "Kaden";
         PostalCode postal = new PostalCode("K1A-0B9");
-        Patient object = new Patient("Kaden","123456789",12,postal);
+        Patient object = new Patient(name,id,age,postal);
         patientList.addPatient(object);
         assertTrue(patientList.deletePatient(0));
         }
         catch (InvalidPostalCodeException e)
         {
-            throw new InvalidPostalCodeException("Postal Code Exception","Invalid Postal Code");
+            throw new InvalidPostalCodeException();
             assertTrue(false);
         }
         catch (InvalidNameException e1)
         {
-            throw new InvalidNameException("Name Exception","Invalid Name");
+            throw new InvalidNameException(name);
             assertTrue(false);
         }
         catch (InvalidAgeException e2)
         {
-            throw new InvalidAgeException("Age Exception","Invalid Age");
+            throw new InvalidAgeException(age);
             assertTrue(false);
         }
         catch (InvalidIDException e3)
         {
-            throw new InvalidIDException("ID Exception","Invalid ID");
+            throw new InvalidIDException(id);
             assertTrue(false);
         }
     }
@@ -96,29 +102,32 @@ public class PatientListTest
         PatientList patientList = new PatientList();
 
         try{
+            int age = 12;
+            String id = "123456789";
+            String name = "Kaden";
         PostalCode postal = new PostalCode("K1A-0B9");
-        Patient object = new Patient("Kaden","123456789",12,postal);
+        Patient object = new Patient(name,id,age,postal);
         patientList.addPatient(object);
         assertFalse(patientList.deletePatient(2));
         }
         catch (InvalidPostalCodeException e)
         {
-            throw new InvalidPostalCodeException("Postal Code Exception","Invalid Postal Code");
+            throw new InvalidPostalCodeException();
             assertTrue(false);
         }
         catch (InvalidNameException e1)
         {
-            throw new InvalidNameException("Name Exception","Invalid Name");
+            throw new InvalidNameException(name);
             assertTrue(false);
         }
         catch (InvalidAgeException e2)
         {
-            throw new InvalidAgeException("Age Exception","Invalid Age");
+            throw new InvalidAgeException(age);
             assertTrue(false);
         }
         catch (InvalidIDException e3)
         {
-            throw new InvalidIDException("ID Exception","Invalid ID");
+            throw new InvalidIDException(id);
             assertTrue(false);
         }
     }
@@ -130,8 +139,11 @@ public class PatientListTest
     boolean result = false;
 
     try{
+        int age = 12;
+        String id = "123456789";
+        String name = "Kaden";
     PostalCode postal = new PostalCode("K1A-0B9");
-    Patient object = new Patient("Kaden","123456789",12,postal);
+    Patient object = new Patient(name,id,age,postal);
     patientList.addPatient(object);
 
     if (patientList.getPatient("000000000") == null)
@@ -142,25 +154,25 @@ public class PatientListTest
     assertTrue(result);
     }
     catch (InvalidPostalCodeException e)
-    {
-        throw new InvalidPostalCodeException("Postal Code Exception","Invalid Postal Code");
-        assertTrue(false);
-    }
-    catch (InvalidNameException e1)
-    {
-        throw new InvalidNameException("Name Exception","Invalid Name");
-        assertTrue(false);
-    }
-    catch (InvalidAgeException e2)
-    {
-        throw new InvalidAgeException("Age Exception","Invalid Age");
-        assertTrue(false);
-    }
-    catch (InvalidIDException e3)
-    {
-        throw new InvalidIDException("ID Exception","Invalid ID");
-        assertTrue(false);
-    }
+        {
+            throw new InvalidPostalCodeException();
+            assertTrue(false);
+        }
+        catch (InvalidNameException e1)
+        {
+            throw new InvalidNameException(name);
+            assertTrue(false);
+        }
+        catch (InvalidAgeException e2)
+        {
+            throw new InvalidAgeException(age);
+            assertTrue(false);
+        }
+        catch (InvalidIDException e3)
+        {
+            throw new InvalidIDException(id);
+            assertTrue(false);
+        }
     }
 
     @Test
@@ -171,9 +183,13 @@ public class PatientListTest
     boolean result = false;
 
     try{
+        int age = 12;
+        String id = "123456789";
+        String name = "Kaden";
     PostalCode postal = new PostalCode("K1A-0B9");
-    Patient object = new Patient("Kaden","123456789",12,postal);
+    Patient object = new Patient(name,id,age,postal);
     patientList.addPatient(object);
+
 
     if (patientList.getPatient("000000022") == null)
     {
@@ -184,22 +200,22 @@ public class PatientListTest
     }
     catch (InvalidPostalCodeException e)
     {
-        throw new InvalidPostalCodeException("Postal Code Exception","Invalid Postal Code");
+        throw new InvalidPostalCodeException();
         assertTrue(false);
     }
     catch (InvalidNameException e1)
     {
-        throw new InvalidNameException("Name Exception","Invalid Name");
+        throw new InvalidNameException(name);
         assertTrue(false);
     }
     catch (InvalidAgeException e2)
     {
-        throw new InvalidAgeException("Age Exception","Invalid Age");
+        throw new InvalidAgeException(age);
         assertTrue(false);
     }
     catch (InvalidIDException e3)
     {
-        throw new InvalidIDException("ID Exception","Invalid ID");
+        throw new InvalidIDException(id);
         assertTrue(false);
     }
     }
@@ -213,8 +229,11 @@ public class PatientListTest
     boolean result = true;
 
     try{
+    int age = 12;
+    String id = "123456789";
+    String name = "Kaden";
     PostalCode postal = new PostalCode("K1A-0B9");
-    Patient object = new Patient("Kaden","123456789",12,postal);
+    Patient object = new Patient(name,id,age,postal);
     patientList.addPatient(object);
     
     Patient patientX = patientList.getPatient("123456789");
@@ -227,22 +246,22 @@ public class PatientListTest
     }
     catch (InvalidPostalCodeException e)
     {
-        throw new InvalidPostalCodeException("Postal Code Exception","Invalid Postal Code");
+        throw new InvalidPostalCodeException();
         assertTrue(false);
     }
     catch (InvalidNameException e1)
     {
-        throw new InvalidNameException("Name Exception","Invalid Name");
+        throw new InvalidNameException(name);
         assertTrue(false);
     }
     catch (InvalidAgeException e2)
     {
-        throw new InvalidAgeException("Age Exception","Invalid Age");
+        throw new InvalidAgeException(age);
         assertTrue(false);
     }
     catch (InvalidIDException e3)
     {
-        throw new InvalidIDException("ID Exception","Invalid ID");
+        throw new InvalidIDException(id);
         assertTrue(false);
     }
     }
@@ -253,11 +272,17 @@ public class PatientListTest
     {
         PatientList patientList = new PatientList();
         try{
-        PostalCode postal = new PostalCode("K1A-0B9");
-        Patient object = new Patient("Kaden","12345678",12,postal);
+            int age = 12;
+            String id = "123456789";
+            String name = "Kaden";
+            PostalCode postal = new PostalCode("K1A-0B9");
+            Patient object = new Patient(name,id,age,postal);
         patientList.addPatient(object);
         PostalCode postal2 = new PostalCode("K1A-0C9");
-        Patient object2 = new Patient("KadenG","12345679",14,postal2);
+        age = 14;
+        id = "123456791";
+        name = "KadenG";
+        Patient object2 = new Patient(name,id,age,postal2);
         patientList.addPatient(object2);
 
 
@@ -274,22 +299,22 @@ public class PatientListTest
     }
     catch (InvalidPostalCodeException e)
     {
-        throw new InvalidPostalCodeException("Postal Code Exception","Invalid Postal Code");
+        throw new InvalidPostalCodeException();
         assertTrue(false);
     }
     catch (InvalidNameException e1)
     {
-        throw new InvalidNameException("Name Exception","Invalid Name");
+        throw new InvalidNameException(name);
         assertTrue(false);
     }
     catch (InvalidAgeException e2)
     {
-        throw new InvalidAgeException("Age Exception","Invalid Age");
+        throw new InvalidAgeException(age);
         assertTrue(false);
     }
     catch (InvalidIDException e3)
     {
-        throw new InvalidIDException("ID Exception","Invalid ID");
+        throw new InvalidIDException(id);
         assertTrue(false);
     }
     }
