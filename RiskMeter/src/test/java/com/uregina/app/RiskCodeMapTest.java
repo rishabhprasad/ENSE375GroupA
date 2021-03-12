@@ -2,6 +2,7 @@ package com.uregina.app;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThrows;
 
 import org.junit.Test;
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 // import org.junit.jupiter.api.Test;
 // import static org.junit.jupiter.api.Assertions.assertTrue;
 // import static org.junit.jupiter.api.Assertions.assertFalse;
+// import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * Unit test for RiskCodeMap.
@@ -16,7 +18,15 @@ import java.util.ArrayList;
 public class RiskCodeMapTest 
 {
     @Test
-    public void getRisk_4_5_true()
+    public void getRiskInARegion_invalidVIndex_throwsIndexOutOfBoundsException()
+    {
+        RiskCodeMap riskCodeMap = new RiskCodeMap();
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            riskCodeMap.getRiskInARegion(21, 5);
+        });
+    }
+    @Test
+    public void getRiskInARegion_4_5_true()
     {
         RiskCodeMap riskCodeMap = new RiskCodeMap();
         char riskCode = riskCodeMap.getRiskInARegion(4, 5);
@@ -24,7 +34,7 @@ public class RiskCodeMapTest
         assertTrue(correctChar);
     }
     @Test
-    public void getRisk_4_5_false()
+    public void getRiskInARegion_4_5_false()
     {
         RiskCodeMap riskCodeMap = new RiskCodeMap();
         char riskCode = riskCodeMap.getRiskInARegion(4, 5);
@@ -32,7 +42,7 @@ public class RiskCodeMapTest
         assertFalse(wrongChar);
     }
     @Test
-    public void updateRisk_2_0_true()
+    public void updateRiskInARegion_2_0_true()
     {
         RiskCodeMap riskCodeMap = new RiskCodeMap();
         ArrayList<Integer> neighboursCaseCount = new ArrayList<Integer>();
@@ -44,7 +54,7 @@ public class RiskCodeMapTest
         assertTrue(update);
     }
     @Test
-    public void updateRisk_2_0_false()
+    public void updateRiskInARegion_2_0_false()
     {
         RiskCodeMap riskCodeMap = new RiskCodeMap();
         ArrayList<Integer> neighboursCaseCount = new ArrayList<Integer>();
@@ -57,7 +67,7 @@ public class RiskCodeMapTest
         assertFalse(update);
     }
     @Test
-    public void getRisk_G_true()
+    public void getRiskInARegion_G_true()
     {
         RiskCodeMap riskCodeMap = new RiskCodeMap();
         ArrayList<Integer> neighboursCaseCount = new ArrayList<Integer>();
@@ -71,7 +81,7 @@ public class RiskCodeMapTest
         assertTrue(correctChar);
     }
     @Test
-    public void getRisk_O_true()
+    public void getRiskInARegion_O_true()
     {
         RiskCodeMap riskCodeMap = new RiskCodeMap();
         ArrayList<Integer> neighboursCaseCount = new ArrayList<Integer>();
@@ -84,7 +94,8 @@ public class RiskCodeMapTest
         boolean correctChar = (riskCode == 'O');
         assertTrue(correctChar);
     }
-    public void getRisk_O_neightbours_true()
+    @Test
+    public void getRiskInARegion_O_neightbours_true()
     {
         RiskCodeMap riskCodeMap = new RiskCodeMap();
         ArrayList<Integer> neighboursCaseCount = new ArrayList<Integer>();
@@ -97,6 +108,23 @@ public class RiskCodeMapTest
         boolean correctChar = (riskCode == 'O');
         assertTrue(correctChar);
     }
+    @Test
+    public void getRiskInARegion_R_6_neightbours_true()
+    {
+        RiskCodeMap riskCodeMap = new RiskCodeMap();
+        ArrayList<Integer> neighboursCaseCount = new ArrayList<Integer>();
+        neighboursCaseCount.add(14);
+        neighboursCaseCount.add(15);
+        neighboursCaseCount.add(12);
+        neighboursCaseCount.add(9);
+        neighboursCaseCount.add(10);
+        neighboursCaseCount.add(15);
+        riskCodeMap.updateRiskInARegion(5, 4, 0, neighboursCaseCount);
+        char riskCode = riskCodeMap.getRiskInARegion(5, 4);
+        boolean correctChar = (riskCode == 'R');
+        assertTrue(correctChar);
+    }
+    
 
 
 

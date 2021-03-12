@@ -70,9 +70,14 @@ public class Patient
 	*/
 	public boolean setPostalCode(PostalCode postalCode)
 	{
+<<<<<<< HEAD
 		
 			if (postalCode != null)
 			{
+=======
+		if((postalCode.getPostalCode().equals(this.postalCode.getPostalCode())==false)&&postalCode!=null)//compare parameter with set postCode
+		{
+>>>>>>> bfe42548df6cbe0056243ddff74360f2115227f5
 			this.postalCode = postalCode;
 				return true;
 		}
