@@ -26,7 +26,7 @@ public class PatientHistogram
 			if(VIndex <0)return false;
 			if(HIndex <0 || HIndex>= 10)return false;
 			// CHANGE ASCII CHAR VALUES FROM POSTAL CODE
-			if(VIndex >= 65 || VIndex <= 84) VIndex = VIndex - 65;
+			if(VIndex >= 65 && VIndex <= 84) VIndex = VIndex - 65;
 			// INCREMENT THE COUNT IN THAT REGION
 			int count = patientCount[VIndex][HIndex];
 			count++;
