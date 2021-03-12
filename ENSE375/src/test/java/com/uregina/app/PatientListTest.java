@@ -45,17 +45,17 @@ public class PatientListTest
         }
         catch (InvalidNameException e1)
         {
-            throw new InvalidNameException(name);
+            throw new InvalidNameException("Invalid Name");
             assertTrue(false);
         }
         catch (InvalidAgeException e2)
         {
-            throw new InvalidAgeException(age);
+            throw new InvalidAgeException(-1);
             assertTrue(false);
         }
         catch (InvalidIDException e3)
         {
-            throw new InvalidIDException(id);
+            throw new InvalidIDException("Invalid ID");
             assertTrue(false);
         }
      
@@ -82,17 +82,17 @@ public class PatientListTest
         }
         catch (InvalidNameException e1)
         {
-            throw new InvalidNameException(name);
+            throw new InvalidNameException("Invalid Name");
             assertTrue(false);
         }
         catch (InvalidAgeException e2)
         {
-            throw new InvalidAgeException(age);
+            throw new InvalidAgeException(-1);
             assertTrue(false);
         }
         catch (InvalidIDException e3)
         {
-            throw new InvalidIDException(id);
+            throw new InvalidIDException("Invalid ID");
             assertTrue(false);
         }
     }
@@ -117,17 +117,17 @@ public class PatientListTest
         }
         catch (InvalidNameException e1)
         {
-            throw new InvalidNameException(name);
+            throw new InvalidNameException("Invalid Name");
             assertTrue(false);
         }
         catch (InvalidAgeException e2)
         {
-            throw new InvalidAgeException(age);
+            throw new InvalidAgeException(-1);
             assertTrue(false);
         }
         catch (InvalidIDException e3)
         {
-            throw new InvalidIDException(id);
+            throw new InvalidIDException("Invalid ID");
             assertTrue(false);
         }
     }
@@ -160,17 +160,17 @@ public class PatientListTest
         }
         catch (InvalidNameException e1)
         {
-            throw new InvalidNameException(name);
+            throw new InvalidNameException("Invalid Name");
             assertTrue(false);
         }
         catch (InvalidAgeException e2)
         {
-            throw new InvalidAgeException(age);
+            throw new InvalidAgeException(-1);
             assertTrue(false);
         }
         catch (InvalidIDException e3)
         {
-            throw new InvalidIDException(id);
+            throw new InvalidIDException("Invalid ID");
             assertTrue(false);
         }
     }
@@ -205,17 +205,17 @@ public class PatientListTest
     }
     catch (InvalidNameException e1)
     {
-        throw new InvalidNameException(name);
+        throw new InvalidNameException("Invalid Name");
         assertTrue(false);
     }
     catch (InvalidAgeException e2)
     {
-        throw new InvalidAgeException(age);
+        throw new InvalidAgeException(-1);
         assertTrue(false);
     }
     catch (InvalidIDException e3)
     {
-        throw new InvalidIDException(id);
+        throw new InvalidIDException("Invalid ID");
         assertTrue(false);
     }
     }
@@ -251,17 +251,17 @@ public class PatientListTest
     }
     catch (InvalidNameException e1)
     {
-        throw new InvalidNameException(name);
+        throw new InvalidNameException("Invalid Name");
         assertTrue(false);
     }
     catch (InvalidAgeException e2)
     {
-        throw new InvalidAgeException(age);
+        throw new InvalidAgeException(-1);
         assertTrue(false);
     }
     catch (InvalidIDException e3)
     {
-        throw new InvalidIDException(id);
+        throw new InvalidIDException("Invalid ID");
         assertTrue(false);
     }
     }
@@ -304,17 +304,17 @@ public class PatientListTest
     }
     catch (InvalidNameException e1)
     {
-        throw new InvalidNameException(name);
+        throw new InvalidNameException("Invalid Name");
         assertTrue(false);
     }
     catch (InvalidAgeException e2)
     {
-        throw new InvalidAgeException(age);
+        throw new InvalidAgeException(-1);
         assertTrue(false);
     }
     catch (InvalidIDException e3)
     {
-        throw new InvalidIDException(id);
+        throw new InvalidIDException("Invalid ID");
         assertTrue(false);
     }
     }
