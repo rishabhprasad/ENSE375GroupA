@@ -2,7 +2,7 @@
 Kaden Goski - 200392031 - March 15, 2021
 
 By far the most stressful and difficult part of this project step was getting Jenkins setup with a Maven Pipeline. **We had major issues with the pipeline script syntax and code. This will be covered in our team summary.**
-
+ 
 Implementation and Test Cases
 --------------------------------------------------------
 My class file for this project was **PatientList.** 
