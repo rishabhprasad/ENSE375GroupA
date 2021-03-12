@@ -7,19 +7,23 @@ import static org.junit.Assert.assertEquals;
 import com.uregina.exception.*;
 
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeClass;
 import jdk.jfr.Timestamp;
 
 /**
  * Unit test for PatientList.
  */
-public class PatientListTest 
+
+
+
+
+public class PatientListTest extends setup
 {
     /**
      * Rigorous Test :-)
      */
 
-    @BeforeAll
+    @BeforeClass
     public static void setup()
     {
         try{
@@ -32,7 +36,7 @@ public class PatientListTest
         age = 14;
         id = "123456781";
         name = "KadenG";
-        Postal postal1 = new PostalCode("K1A-1B9");
+        PostalCode postal1 = new PostalCode("K1A-1B9");
         Patient object2 = new Patient(name,id,age,postal1);
 
     }
@@ -116,7 +120,7 @@ public class PatientListTest
 
     @Test
     //No patient with ID fail..
-    public void getPatient_ID_Fail()
+    public void getPatient_ID_Fail() 
     {
     PatientList patientList = new PatientList();
     boolean result = false;
@@ -139,7 +143,7 @@ public class PatientListTest
     public void getPatient_ID_Success()
     {
     PatientList patientList = new PatientList();
-
+    boolean result = true;
     patientList.addPatient(object);
     
     Patient patientX = patientList.getPatient("123456789");
