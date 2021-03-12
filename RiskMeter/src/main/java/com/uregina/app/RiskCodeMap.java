@@ -22,6 +22,15 @@ public class RiskCodeMap
 	public boolean updateRiskInARegion(int VIndex,int HIndex,int caseCount,ArrayList<Integer> neighboursCaseCount)
 	{
 		boolean updateRisk= false;
+		
+		// CHECK BOUNDS ON INDEX
+		if(VIndex <0)return false;
+		if(HIndex <0 || HIndex>= 10)return false;
+		// CHANGE ASCII CHAR VALUES FROM POSTAL CODE
+		if(VIndex >= 65 && VIndex <= 84) VIndex = VIndex - 65;
+		// CHECK MINIMUM VALUE BEFORE DECREMENTING
+		
+		
 		char currentRisk = this.riskCode[VIndex][HIndex];
 		int avgNeighbourCount;
 		int totalNeighboursCaseCount = 0;
@@ -92,6 +101,12 @@ public class RiskCodeMap
 
 	public char getRiskInARegion(int VIndex,int HIndex) throws IndexOutOfBoundsException
 	{
+			// CHECK BOUNDS ON INDEX
+			if(VIndex <0)return '\0';
+			if(HIndex <0 || HIndex>= 10)return '\0';
+			// CHANGE ASCII CHAR VALUES FROM POSTAL CODE
+			if(VIndex >= 65 && VIndex <= 84) VIndex = VIndex - 65;
+			// CHECK MINIMUM VALUE BEFORE DECREMENTING
 		return riskCode[VIndex][HIndex];
 	}
 }

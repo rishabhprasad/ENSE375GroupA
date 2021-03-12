@@ -57,7 +57,7 @@ public class PostalCode
     	}
     	public int getRegionHorizontalIndex()
     	{
-    		return this.postalCode.charAt(4);
+    		return Integer.parseInt(this.postalCode.substring(4,5));
     	}
     	public String getPostalCode()
     	{

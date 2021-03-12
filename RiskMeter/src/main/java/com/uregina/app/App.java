@@ -71,6 +71,7 @@ public class App
 				{
 				  	System.out.println("\tPatient failed to be removed");
 				}
+			
 			case 3:
 				System.out.print("\t");
 				for(int j=0;j<10;j++){
@@ -93,6 +94,7 @@ public class App
 		}
 		System.out.println("*******************************************");
 	}
+	myInput.close();
     }
     /**
     * <p>This method shows the available options to the user</p>
@@ -120,7 +122,7 @@ public class App
 	System.out.print( "Enter a number from 1 to 4: " );
 	int choice;
 	try{
-		choice= myInput.nextInt();
+		choice= Integer.parseInt(myInput.nextLine());
 	}
 	catch(Exception e)
 	{
@@ -130,6 +132,8 @@ public class App
 		choice=0;
 	}
     	return choice;
+
+	
     }
     /**
     * <p>This method removes a patient from the patient list 
@@ -149,7 +153,8 @@ public class App
     	if(patient==null)
     	{
     		System.out.println( "\tPatient Not Found" );
-    	}
+			return false;
+		}
     	int HIndex=patient.getPostalCode().getRegionHorizontalIndex();
     	int VIndex=patient.getPostalCode().getRegionVerticalIndex();
     	if(!histogram.deleteAPatientFromRegion(VIndex,HIndex))
@@ -170,6 +175,8 @@ public class App
     		return false;
     	}
     	return true;
+		
+		
     }
     /**
     * <p>This method adds a patient to the patient list 
@@ -233,12 +240,26 @@ public class App
     	}
     	int caseCount=histogram.getPatientsCountInRegion(VIndex,HIndex);
     	ArrayList<Integer> neighboursCaseCount= new ArrayList<Integer> ();
+		
     	for (int i=-1;i<=1;i+=2){
+
+			if (VIndex == 65 && i== -1)
+			{
+			neighboursCaseCount.add(histogram.getPatientsCountInRegion(84,HIndex));
+			}
+			else
     		neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex+i,HIndex));
     	}
     	for (int i=-1;i<=1;i+=2){
-    		neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex,HIndex+i));
-    	}
+			if (HIndex == 0 && i == -1)
+			{
+    		neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex,9));
+			}
+			else
+			neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex,HIndex+i));
+		
+		}
+
     	if(!riskCodeMap.updateRiskInARegion(VIndex,HIndex,caseCount,neighboursCaseCount))
     	{
     		System.out.println( "\tFailed to update the risk code map" );

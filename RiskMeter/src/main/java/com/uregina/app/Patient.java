@@ -14,23 +14,27 @@ public class Patient
 		 //The patient ID is a 9-digit string with a non-zero digit. 
 		 String IDCheck = "^([0-9]{9})$";
 		 Boolean IDFormat = Pattern.matches(IDCheck,ID);
- 
-		 //Patient name can only contain alphabetic letters as well as spaces and dots. 
+		if (!IDFormat || ((ID.equals("000000000")))) throw new InvalidIDException(ID);
+		
+		//Patient name can only contain alphabetic letters as well as spaces and dots. 
 		 //Check if name is correct in format
 		 String nameCheck = "^([a-zA-Z_.])+$";
+
+		 if (name == null) throw new NullPointerException();		 
 		 boolean isCorrectName = Pattern.matches(nameCheck, name);
- 
-		 if((age > 0 && age < 110))
-		 {
-		 if(IDFormat && isCorrectName && (postalCode != null))
-		 {
+		 if (!isCorrectName ) throw new InvalidNameException(name);
+
+	
+		if (age < 0 || age > 110) throw new InvalidAgeException(age);
+		 
+		if(!postalCode.isValidPostalCode(postalCode.getPostalCode())) throw new InvalidPostalCodeException();
 		this.name=name;
 		this.ID=ID;
 		this.age=age;
 		this.postalCode= postalCode;
-		 }
+		 
 		}
-	}
+	
 	public String getName()
 	{
 		return this.name;
@@ -53,7 +57,7 @@ public class Patient
 	*/
 	public boolean setAge(int age)
 	{	
-		if(this.age<age&&age<110)//compare set age with input age
+		if(this.age<age && age<110)//compare set age with input age
 		{
 			this.age = age;
 			return true;
@@ -67,13 +71,8 @@ public class Patient
 	public boolean setPostalCode(PostalCode postalCode)
 	{
 		
-		System.out.println(postalCode.getPostalCode());
-		System.out.println(this.postalCode.getPostalCode());
-		System.out.println(if((postalCode.getPostalCode().equals(this.postalCode.getPostalCode()))));
-		System.out.println(if(postalCode!=null);
-	
-		if((!postalCode.getPostalCode().equals(this.postalCode.getPostalCode())) && (postalCode!=null))//compare parameter with set postCode
-		{
+			if (postalCode != null)
+			{
 			this.postalCode = postalCode;
 				return true;
 		}

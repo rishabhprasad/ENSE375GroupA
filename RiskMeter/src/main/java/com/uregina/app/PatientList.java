@@ -37,12 +37,21 @@ public class PatientList
     {
         //ToDo: add you code here
         //index starts at 0, size starts at 1. minus 1 from size.
-        if (patientList.size() >= index)
+        try
         {
-            patientList.remove(index);
-            return true;
+            if (patientList.size() > index)
+            {
+                patientList.remove(index);
+                return true;
+            }
+            return false;
         }
-        return false;
+        catch (NullPointerException e)
+        {
+            return false;
+        }
+      
+      
     }
     public Patient getPatient(String ID)
     {
