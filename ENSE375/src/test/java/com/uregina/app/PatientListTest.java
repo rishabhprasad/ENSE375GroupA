@@ -37,22 +37,22 @@ public class PatientListTest
         }
         catch (InvalidPostalCodeException e)
         {
-            throw new InvalidPostalCodeException("Invalid Postal Code");
+            throw new InvalidPostalCodeException("Postal Code Exception","Invalid Postal Code");
             assertTrue(false);
         }
         catch (InvalidNameException e1)
         {
-            throw new InvalidNameException("Invalid Name");
+            throw new InvalidNameException("Name Exception","Invalid Name");
             assertTrue(false);
         }
         catch (InvalidAgeException e2)
         {
-            throw new InvalidAgeException("Invalid Age");
+            throw new InvalidAgeException("Age Exception","Invalid Age");
             assertTrue(false);
         }
         catch (InvalidIDException e3)
         {
-            throw new InvalidIDException("Invalid ID");
+            throw new InvalidIDException("ID Exception","Invalid ID");
             assertTrue(false);
         }
      
@@ -70,26 +70,25 @@ public class PatientListTest
         assertTrue(patientList.deletePatient(0));
         }
         catch (InvalidPostalCodeException e)
-    {
-        throw new InvalidPostalCodeException("Invalid Postal Code");
-        assertTrue(false);
-    }
-    catch (InvalidNameException e1)
-    {
-        throw new InvalidNameException("Invalid Name");
-        assertTrue(false);
-    }
-    catch (InvalidAgeException e2)
-    {
-        throw new InvalidAgeException("Invalid Age");
-        assertTrue(false);
-    }
-    catch (InvalidIDException e3)
-    {
-        throw new InvalidIDException("Invalid ID");
-        assertTrue(false);
-    }
-      
+        {
+            throw new InvalidPostalCodeException("Postal Code Exception","Invalid Postal Code");
+            assertTrue(false);
+        }
+        catch (InvalidNameException e1)
+        {
+            throw new InvalidNameException("Name Exception","Invalid Name");
+            assertTrue(false);
+        }
+        catch (InvalidAgeException e2)
+        {
+            throw new InvalidAgeException("Age Exception","Invalid Age");
+            assertTrue(false);
+        }
+        catch (InvalidIDException e3)
+        {
+            throw new InvalidIDException("ID Exception","Invalid ID");
+            assertTrue(false);
+        }
     }
     @Test
     public void deletePatient_Fail()
@@ -104,22 +103,22 @@ public class PatientListTest
         }
         catch (InvalidPostalCodeException e)
         {
-            throw new InvalidPostalCodeException("Invalid Postal Code");
+            throw new InvalidPostalCodeException("Postal Code Exception","Invalid Postal Code");
             assertTrue(false);
         }
         catch (InvalidNameException e1)
         {
-            throw new InvalidNameException("Invalid Name");
+            throw new InvalidNameException("Name Exception","Invalid Name");
             assertTrue(false);
         }
         catch (InvalidAgeException e2)
         {
-            throw new InvalidAgeException("Invalid Age");
+            throw new InvalidAgeException("Age Exception","Invalid Age");
             assertTrue(false);
         }
         catch (InvalidIDException e3)
         {
-            throw new InvalidIDException("Invalid ID");
+            throw new InvalidIDException("ID Exception","Invalid ID");
             assertTrue(false);
         }
     }
@@ -142,25 +141,24 @@ public class PatientListTest
 
     assertTrue(result);
     }
-
     catch (InvalidPostalCodeException e)
     {
-        throw new InvalidPostalCodeException("Invalid Postal Code");
+        throw new InvalidPostalCodeException("Postal Code Exception","Invalid Postal Code");
         assertTrue(false);
     }
     catch (InvalidNameException e1)
     {
-        throw new InvalidNameException("Invalid Name");
+        throw new InvalidNameException("Name Exception","Invalid Name");
         assertTrue(false);
     }
     catch (InvalidAgeException e2)
     {
-        throw new InvalidAgeException("Invalid Age");
+        throw new InvalidAgeException("Age Exception","Invalid Age");
         assertTrue(false);
     }
     catch (InvalidIDException e3)
     {
-        throw new InvalidIDException("Invalid ID");
+        throw new InvalidIDException("ID Exception","Invalid ID");
         assertTrue(false);
     }
     }
@@ -186,22 +184,22 @@ public class PatientListTest
     }
     catch (InvalidPostalCodeException e)
     {
-        throw new InvalidPostalCodeException("Invalid Postal Code");
+        throw new InvalidPostalCodeException("Postal Code Exception","Invalid Postal Code");
         assertTrue(false);
     }
     catch (InvalidNameException e1)
     {
-        throw new InvalidNameException("Invalid Name");
+        throw new InvalidNameException("Name Exception","Invalid Name");
         assertTrue(false);
     }
     catch (InvalidAgeException e2)
     {
-        throw new InvalidAgeException("Invalid Age");
+        throw new InvalidAgeException("Age Exception","Invalid Age");
         assertTrue(false);
     }
     catch (InvalidIDException e3)
     {
-        throw new InvalidIDException("Invalid ID");
+        throw new InvalidIDException("ID Exception","Invalid ID");
         assertTrue(false);
     }
     }
@@ -229,22 +227,22 @@ public class PatientListTest
     }
     catch (InvalidPostalCodeException e)
     {
-        throw new InvalidPostalCodeException("Invalid Postal Code");
+        throw new InvalidPostalCodeException("Postal Code Exception","Invalid Postal Code");
         assertTrue(false);
     }
     catch (InvalidNameException e1)
     {
-        throw new InvalidNameException("Invalid Name");
+        throw new InvalidNameException("Name Exception","Invalid Name");
         assertTrue(false);
     }
     catch (InvalidAgeException e2)
     {
-        throw new InvalidAgeException("Invalid Age");
+        throw new InvalidAgeException("Age Exception","Invalid Age");
         assertTrue(false);
     }
     catch (InvalidIDException e3)
     {
-        throw new InvalidIDException("Invalid ID");
+        throw new InvalidIDException("ID Exception","Invalid ID");
         assertTrue(false);
     }
     }
@@ -276,22 +274,22 @@ public class PatientListTest
     }
     catch (InvalidPostalCodeException e)
     {
-        throw new InvalidPostalCodeException("Invalid Postal Code");
+        throw new InvalidPostalCodeException("Postal Code Exception","Invalid Postal Code");
         assertTrue(false);
     }
     catch (InvalidNameException e1)
     {
-        throw new InvalidNameException("Invalid Name");
+        throw new InvalidNameException("Name Exception","Invalid Name");
         assertTrue(false);
     }
     catch (InvalidAgeException e2)
     {
-        throw new InvalidAgeException("Invalid Age");
+        throw new InvalidAgeException("Age Exception","Invalid Age");
         assertTrue(false);
     }
     catch (InvalidIDException e3)
     {
-        throw new InvalidIDException("Invalid ID");
+        throw new InvalidIDException("ID Exception","Invalid ID");
         assertTrue(false);
     }
     }
