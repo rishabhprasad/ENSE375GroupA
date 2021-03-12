@@ -30,34 +30,15 @@ public class PatientListTest
     {
         PatientList patientList = new PatientList();
 
-        try{
+      
             int age = 12;
             String id = "123456789";
             String name = "Kaden";
         PostalCode postal = new PostalCode("K1A-0B9");
         Patient object = new Patient(name,id,age,postal);
         assertTrue( patientList.addPatient(object));
-        }
-        catch (InvalidPostalCodeException e)
-        {
-            throw new InvalidPostalCodeException();
-            assertTrue(false);
-        }
-        catch (InvalidNameException e)
-        {
-            throw new InvalidNameException("Invalid Name");
-            assertTrue(false);
-        }
-        catch (InvalidAgeException e)
-        {
-            throw new InvalidAgeException(-1);
-            assertTrue(false);
-        }
-        catch (InvalidIDException e)
-        {
-            throw new InvalidIDException("Invalid ID");
-            assertTrue(false);
-        }
+        
+        
      
     }
     
@@ -102,9 +83,9 @@ public class PatientListTest
         PatientList patientList = new PatientList();
 
         try{
-            int age = 12;
-            String id = "123456789";
-            String name = "Kaden";
+         int age = 12;
+        String id = "123456789";
+         String name = "Kaden";
         PostalCode postal = new PostalCode("K1A-0B9");
         Patient object = new Patient(name,id,age,postal);
         patientList.addPatient(object);
