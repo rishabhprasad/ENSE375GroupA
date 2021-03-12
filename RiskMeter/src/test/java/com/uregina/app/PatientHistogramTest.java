@@ -23,9 +23,11 @@ public class PatientHistogramTest
         assertTrue(patientHistogram.addAPatientToRegion(65,5));
     }
     @Test
-    public void addPatientToRegion_invalidVIndex_false(){
+    public void addPatientToRegion_invalidVIndex_throwsIndexOutOfBoundsException(){
         PatientHistogram patientHistogram = new PatientHistogram();
-        assertFalse(patientHistogram.addAPatientToRegion(20,1));
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            patientHistogram.addAPatientToRegion(20,1);
+        });
     }
     @Test
     public void addPatientToRegion_invalidHIndex_false(){
@@ -44,9 +46,11 @@ public class PatientHistogramTest
         assertTrue(patientHistogram.deleteAPatientFromRegion(15,5));
     }
     @Test
-    public void deleteAPatientFromRegion_invalidVIndex_false(){
+    public void deleteAPatientFromRegion_invalidVIndex_throwsIndexOutOfBoundsException(){
         PatientHistogram patientHistogram = new PatientHistogram();
-        assertFalse(patientHistogram.deleteAPatientFromRegion(20,1));
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            patientHistogram.deleteAPatientFromRegion(20,1);
+        });
     }
     @Test
     public void deleteAPatientFromRegion_invalidHIndex_false(){
