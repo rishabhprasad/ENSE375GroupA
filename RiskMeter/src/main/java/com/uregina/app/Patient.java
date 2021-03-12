@@ -69,7 +69,7 @@ public class Patient
 		
 		System.out.println(postalCode.getPostalCode());
 		System.out.println(this.postalCode.getPostalCode());
-		System.out.println((postalCode.getPostalCode().equals(this.postalCode.getPostalCode());
+		System.out.println((postalCode.getPostalCode().equals(this.postalCode.getPostalCode()));
 	
 		if((!postalCode.getPostalCode().equals(this.postalCode.getPostalCode())) && (postalCode!=null))//compare parameter with set postCode
 		{
