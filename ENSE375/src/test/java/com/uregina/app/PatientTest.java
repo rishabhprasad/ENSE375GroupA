@@ -210,7 +210,7 @@ public class PatientTest
     catch (InvalidNameException e)
     {
         throw new InvalidNameException("Invalid Name");
-       assertThrows()
+    
     }
     catch (InvalidAgeException e)
     {
