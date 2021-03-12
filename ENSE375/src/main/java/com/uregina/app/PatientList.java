@@ -49,7 +49,7 @@ public class PatientList
         //ToDo: add you code here
         //ID must be 9 long and have atleast 1 non zero digit, cant be all zeroes.
  
-        String IDCheck = "/(^[0-9]{9}$)/";
+        String IDCheck = "^([0-9]{9})$";
         Boolean IDFormat = Pattern.matches(IDCheck,ID);
         
         
