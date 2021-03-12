@@ -49,8 +49,6 @@ public class PostalCode
     	public PostalCode(String postalCode) throws InvalidPostalCodeException
     	{	
 			this.postalCode = postalCode;
-			System.out.println(postalCode);
-			System.out.println(this.isValidPostalCode(postalCode));
 			if(!isValidPostalCode(postalCode)) throw new InvalidPostalCodeException();
     	}
     	public int getRegionVerticalIndex()
