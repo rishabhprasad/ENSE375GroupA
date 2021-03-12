@@ -70,7 +70,7 @@ public class PatientListTest
     }
     
     @Test
-    public void deletePatient_True()
+    public void deletePatient_ValidIndex()
     {
         PatientList patientList = new PatientList();
         patientList.addPatient(patient);
@@ -79,7 +79,7 @@ public class PatientListTest
 
 
     @Test
-    public void deletePatient_Fail()
+    public void deletePatient_InvalidIndex()
     {                   
         PatientList patientList = new PatientList();
 
@@ -88,7 +88,7 @@ public class PatientListTest
     }
 
     @Test
-    public void getPatient_InvalidID_Fail()
+    public void getPatient_Invalid_ID()
     {   
         PatientList patientList = new PatientList();
         boolean result = false;
@@ -107,7 +107,7 @@ public class PatientListTest
 
     @Test
     //No patient with ID fail..
-    public void getPatient_ID_Fail() 
+    public void getPatient_Invalid_ID2() 
     {  
     boolean result = false;
     PatientList patientList = new PatientList();      
@@ -126,7 +126,7 @@ public class PatientListTest
 
     @Test
     //No patient with ID fail..
-    public void getPatient_ID_Success()
+    public void getPatient_Valid_Existing_ID()
     {      
     PatientList patientList = new PatientList();
     boolean result = true;
@@ -145,7 +145,7 @@ public class PatientListTest
 
     //2
     @Test
-    public void getNumOfPatients_Success()
+    public void getNumOfPatients_Size2()
     {
         
         PatientList patientList = new PatientList();
