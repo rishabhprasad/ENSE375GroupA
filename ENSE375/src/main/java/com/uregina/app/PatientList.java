@@ -37,7 +37,7 @@ public class PatientList
     {
         //ToDo: add you code here
         //index starts at 0, size starts at 1. minus 1 from size.
-        if (patientList.size()-1 >= index)
+        if (patientList.size() >= index)
         {
             patientList.remove(index);
             return true;
