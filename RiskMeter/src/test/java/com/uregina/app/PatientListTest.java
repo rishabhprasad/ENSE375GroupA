@@ -7,20 +7,29 @@ import static org.junit.Assert.assertEquals;
 import com.uregina.exception.*;
 
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.BeforeClass;
 import jdk.jfr.Timestamp;
 
 /**
  * Unit test for PatientList.
  */
+
+
+
+
 public class PatientListTest 
 {
     /**
      * Rigorous Test :-)
      */
 
-    @BeforeAll
-    public static void setup()
+    private static PostalCode postal;
+    private static Patient object;
+    private static PostalCode postal2;
+    private static Patient object2;
+
+    @BeforeClass
+    public static void setup() throws Exception 
     {
         try{
             int age = 12;
@@ -32,29 +41,29 @@ public class PatientListTest
         age = 14;
         id = "123456781";
         name = "KadenG";
-        Postal postal1 = new PostalCode("K1A-1B9");
+        PostalCode postal1 = new PostalCode("K1A-1B9");
         Patient object2 = new Patient(name,id,age,postal1);
 
     }
     catch (InvalidPostalCodeException e)
     {
         throw new InvalidPostalCodeException();
-        assertTrue(false);
+        
     }
     catch (InvalidNameException e)
     {
         throw new InvalidNameException("Invalid Name");
-        assertTrue(false);
+        
     }
     catch (InvalidAgeException e)
     {
         throw new InvalidAgeException(-1);
-        assertTrue(false);
+       
     }
     catch (InvalidIDException e)
     {
         throw new InvalidIDException("Invalid ID");
-        assertTrue(false);
+        
     }
     }
 
@@ -116,7 +125,7 @@ public class PatientListTest
 
     @Test
     //No patient with ID fail..
-    public void getPatient_ID_Fail()
+    public void getPatient_ID_Fail() 
     {
     PatientList patientList = new PatientList();
     boolean result = false;
@@ -139,7 +148,7 @@ public class PatientListTest
     public void getPatient_ID_Success()
     {
     PatientList patientList = new PatientList();
-
+    boolean result = true;
     patientList.addPatient(object);
     
     Patient patientX = patientList.getPatient("123456789");
