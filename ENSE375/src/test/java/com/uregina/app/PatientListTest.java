@@ -314,7 +314,7 @@ public class PatientListTest
     }
     catch (InvalidIDException e)
     {
-        throw  InvalidIDException("Invalid ID");
+        throw new InvalidIDException("Invalid ID");
         assertTrue(false);
     }
     }
