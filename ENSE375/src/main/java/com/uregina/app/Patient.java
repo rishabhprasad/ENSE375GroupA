@@ -1,6 +1,6 @@
 package com.uregina.app;
 import com.uregina.exception.*;
-
+import java.util.regex.*;
 
 public class Patient 
 {
@@ -10,27 +10,42 @@ public class Patient
 	private PostalCode postalCode;
 	
 	public Patient(String name, String ID, int age, PostalCode postalCode) throws InvalidNameException, InvalidAgeException ,InvalidIDException, InvalidPostalCodeException
-	{
+	{		
+		 //The patient ID is a 9-digit string with a non-zero digit. 
+		 String IDCheck = "/([0-9]{9})/";
+		 Boolean IDFormat = Pattern.matches(IDCheck,ID);
+ 
+		 //Patient name can only contain alphabetic letters as well as spaces and dots. 
+		 //Check if name is correct in format
+		 String nameCheck = "/^[a-z\\d\\-_\\s]+$/i";
+		 boolean isCorrectName = Pattern.matches(nameCheck, name);
+ 
+		 if((age > 0 && age < 110))
+		 {
+		 if(IDFormat && isCorrectName && (postalCode != null))
+		 {
 		this.name=name;
 		this.ID=ID;
 		this.age=age;
-		this.postalCode=postalCode;
+		this.postalCode= postalCode;
+		 }
+		}
 	}
 	public String getName()
 	{
-		return name;
+		return this.name;
 	}
 	public String getID()
 	{
-		return ID;
+		return this.ID;
 	}
 	public int getAge()
 	{
-		return age;
+		return this.age;
 	}
 	public PostalCode getPostalCode()
 	{	
-		return postalCode;
+		return this.postalCode;
 	}
 	/**
 	*
@@ -38,9 +53,10 @@ public class Patient
 	*/
 	public boolean setAge(int age)
 	{	
-		if(this.age==age)//compare set age with input age
+		if(this.age<age&&age<110)//compare set age with input age
 		{
-		return true;
+			this.age = age;
+			return true;
 		}
 		return false;
 	}
@@ -50,10 +66,11 @@ public class Patient
 	*/
 	public boolean setPostalCode(PostalCode postalCode)
 	{
-		if(this.postalCode.getPostalCode().equals(postalCode.getPostalCode()))//compare parameter with set postCode
+		if((postalCode.getPostalCode().equals(this.postalCode.getPostalCode())==false)&&postalCode!=null)//compare parameter with set postCode
 		{
-		return true;
+			this.postalCode = postalCode;
+				return true;
 		}
-		return false;
+	return false;
 	}
 }

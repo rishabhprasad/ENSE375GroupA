@@ -1,4 +1,3 @@
-
 package com.uregina.app;
 
 
@@ -20,24 +19,24 @@ public class PatientTest
         try{
             PostalCode postalCode = new PostalCode("K1A-0B9");
             Patient patient = new Patient("Landry", "123456789",12,postalCode);
-            assertTrue(patient.setAge(12));
+            assertTrue(patient.setAge(13));
         }
         catch (InvalidPostalCodeException e)
         {
-            throw new InvalidPostalCodeException();
+            throw new InvalidPostalCodeException("Invalid Postal Code");
             assertTrue(false);
         }
-        catch (InvalidNameException e)
+        catch (InvalidNameException e1)
         {
-            throw new InvalidNameException("Invalid");
+            throw new InvalidNameException("Invalid Name");
             assertTrue(false);
         }
-        catch (InvalidAgeException e)
+        catch (InvalidAgeException e2)
         {
-            throw new InvalidAgeException(-1);
+            throw new InvalidAgeException("Invalid Age");
             assertTrue(false);
         }
-        catch (InvalidIDException e)
+        catch (InvalidIDException e3)
         {
             throw new InvalidIDException("Invalid ID");
             assertTrue(false);
@@ -53,20 +52,20 @@ public class PatientTest
                 }
                 catch (InvalidPostalCodeException e)
                 {
-                    throw new InvalidPostalCodeException();
+                    throw new InvalidPostalCodeException("Invalid Postal Code");
                     assertTrue(false);
                 }
-                catch (InvalidNameException e)
+                catch (InvalidNameException e1)
                 {
                     throw new InvalidNameException("Invalid Name");
                     assertTrue(false);
                 }
-                catch (InvalidAgeException e)
+                catch (InvalidAgeException e2)
                 {
-                    throw new InvalidAgeException(-1);
+                    throw new InvalidAgeException("Invalid Age");
                     assertTrue(false);
                 }
-                catch (InvalidIDException e)
+                catch (InvalidIDException e3)
                 {
                     throw new InvalidIDException("Invalid ID");
                     assertTrue(false);
@@ -78,24 +77,24 @@ public class PatientTest
     {        try{
             PostalCode postalCode = new PostalCode("K1A-0B9");
             Patient patient = new Patient("Landry", "123456789",12,postalCode);
-            assertFalse(patient.setAge(-12));
+            assertFalse(patient.setAge(11));
                 }
                 catch (InvalidPostalCodeException e)
                 {
-                    throw new InvalidPostalCodeException();
+                    throw new InvalidPostalCodeException("Invalid Postal Code");
                     assertTrue(false);
                 }
-                catch (InvalidNameException e)
+                catch (InvalidNameException e1)
                 {
                     throw new InvalidNameException("Invalid Name");
                     assertTrue(false);
                 }
-                catch (InvalidAgeException e)
+                catch (InvalidAgeException e2)
                 {
-                    throw new InvalidAgeException(-1);
+                    throw new InvalidAgeException("Invalid Age");
                     assertTrue(false);
                 }
-                catch (InvalidIDException e)
+                catch (InvalidIDException e3)
                 {
                     throw new InvalidIDException("Invalid ID");
                     assertTrue(false);
@@ -106,6 +105,36 @@ public class PatientTest
     public void Correct_postalCode_True()
     {
         try{
+            PostalCode postalCode = new PostalCode("K1A-0B6");
+            PostalCode postalc = new PostalCode("K1A-0B9");
+            Patient patient = new Patient("Landry", "123456789",12,postalCode);
+            assertTrue(patient.setPostalCode(postalc));
+        }
+        catch (InvalidPostalCodeException e)
+        {
+            throw new InvalidPostalCodeException("Invalid Postal Code");
+            assertTrue(false);
+        }
+        catch (InvalidNameException e1)
+        {
+            throw new InvalidNameException("Invalid Name");
+            assertTrue(false);
+        }
+        catch (InvalidAgeException e2)
+        {
+            throw new InvalidAgeException("Invalid Age");
+            assertTrue(false);
+        }
+        catch (InvalidIDException e3)
+        {
+            throw new InvalidIDException("Invalid ID");
+            assertTrue(false);
+        }
+    }
+    @Test
+    public void Correct_postalCode_False_SameCode()
+    {
+        try{
             PostalCode postalCode = new PostalCode("K1A-0B9");
             PostalCode postalc = new PostalCode("K1A-0B9");
             Patient patient = new Patient("Landry", "123456789",12,postalCode);
@@ -113,20 +142,50 @@ public class PatientTest
         }
         catch (InvalidPostalCodeException e)
         {
-            throw new InvalidPostalCodeException();
+            throw new InvalidPostalCodeException("Invalid Postal Code");
             assertTrue(false);
         }
-        catch (InvalidNameException e)
+        catch (InvalidNameException e1)
         {
             throw new InvalidNameException("Invalid Name");
             assertTrue(false);
         }
-        catch (InvalidAgeException e)
+        catch (InvalidAgeException e2)
         {
-            throw new InvalidAgeException(-1);
+            throw new InvalidAgeException("Invalid Age");
             assertTrue(false);
         }
-        catch (InvalidIDException e)
+        catch (InvalidIDException e3)
+        {
+            throw new InvalidIDException("Invalid ID");
+            assertTrue(false);
+        }
+    }
+    @Test
+    public void Correct_postalCode_null()
+    {
+        try{
+            PostalCode postalCode = new PostalCode("");
+            PostalCode postalc = new PostalCode("K1A-0B9");
+            Patient patient = new Patient("Landry", "123456789",12,postalCode);
+            assertTrue(patient.setPostalCode(postalc));
+        }
+        catch (InvalidPostalCodeException e)
+        {
+            throw new InvalidPostalCodeException("Invalid Postal Code");
+            assertTrue(false);
+        }
+        catch (InvalidNameException e1)
+        {
+            throw new InvalidNameException("Invalid Name");
+            assertTrue(false);
+        }
+        catch (InvalidAgeException e2)
+        {
+            throw new InvalidAgeException("Invalid Age");
+            assertTrue(false);
+        }
+        catch (InvalidIDException e3)
         {
             throw new InvalidIDException("Invalid ID");
             assertTrue(false);
@@ -144,25 +203,25 @@ public class PatientTest
             assertTrue(false);
         }
         catch (InvalidPostalCodeException e)
-        {
-            throw new InvalidPostalCodeException();
-            assertTrue(false);
-        }
-        catch (InvalidNameException e)
-        {
-            throw new InvalidNameException("Invalid Name");
-            assertTrue(true);
-        }
-        catch (InvalidAgeException e)
-        {
-            throw new InvalidAgeException(-1);
-            assertTrue(false);
-        }
-        catch (InvalidIDException e)
-        {
-            throw new InvalidIDException("Invalid ID");
-            assertTrue(false);
-        }
+    {
+        throw new InvalidPostalCodeException("Invalid Postal Code");
+        assertTrue(false);
+    }
+    catch (InvalidNameException e1)
+    {
+        throw new InvalidNameException("Invalid Name");
+        assertTrue(true);
+    }
+    catch (InvalidAgeException e2)
+    {
+        throw new InvalidAgeException("Invalid Age");
+        assertTrue(false);
+    }
+    catch (InvalidIDException e3)
+    {
+        throw new InvalidIDException("Invalid ID");
+        assertTrue(false);
+    }
     }
 
     @Test
@@ -177,20 +236,20 @@ public class PatientTest
         }
         catch (InvalidPostalCodeException e)
         {
-            throw new InvalidPostalCodeException();
+            throw new InvalidPostalCodeException("Invalid Postal Code");
             assertTrue(false);
         }
-        catch (InvalidNameException e)
+        catch (InvalidNameException e1)
         {
             throw new InvalidNameException("Invalid Name");
             assertTrue(false);
         }
-        catch (InvalidAgeException e)
+        catch (InvalidAgeException e2)
         {
-            throw new InvalidAgeException(-1);
+            throw new InvalidAgeException("Invalid Age");
             assertTrue(false);
         }
-        catch (InvalidIDException e)
+        catch (InvalidIDException e3)
         {
             throw new InvalidIDException("Invalid ID");
             assertTrue(true);
@@ -208,25 +267,25 @@ public class PatientTest
             assertTrue(false);
         }
         catch (InvalidPostalCodeException e)
-        {
-            throw new InvalidPostalCodeException();
-            assertTrue(false);
-        }
-        catch (InvalidNameException e)
-        {
-            throw new InvalidNameException("Invalid Name");
-            assertTrue(false);
-        }
-        catch (InvalidAgeException e)
-        {
-            throw new InvalidAgeException(-1);
-            assertTrue(false);
-        }
-        catch (InvalidIDException e)
-        {
-            throw new InvalidIDException("Invalid ID");
-            assertTrue(true);
-        }
+    {
+        throw new InvalidPostalCodeException("Invalid Postal Code");
+        assertTrue(false);
+    }
+    catch (InvalidNameException e1)
+    {
+        throw new InvalidNameException("Invalid Name");
+        assertTrue(false);
+    }
+    catch (InvalidAgeException e2)
+    {
+        throw new InvalidAgeException("Invalid Age");
+        assertTrue(false);
+    }
+    catch (InvalidIDException e3)
+    {
+        throw new InvalidIDException("Invalid ID");
+        assertTrue(true);
+    }
     }
 
 
