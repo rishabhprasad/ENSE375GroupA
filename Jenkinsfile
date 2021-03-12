@@ -6,7 +6,7 @@ pipeline {
         stage('Checkout Codebase'){
             steps{
                 cleanWs()
-                checkout scm: [$class: 'GitSCM', branches: [[name: '*/master']],userRemoteConfigs:
+                checkout scm: [$class: 'GitSCM', branches: [[name: '*/master'],userRemoteConfigs:
                 [[credentialsId: 'github-ssh-key', url: 'git@github.com:rishabhprasad/ENSE375GroupA.git']]]
             }
         }

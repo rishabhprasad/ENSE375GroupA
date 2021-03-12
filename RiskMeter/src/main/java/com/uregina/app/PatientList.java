@@ -37,7 +37,7 @@ public class PatientList
     {
         //ToDo: add you code here
         //index starts at 0, size starts at 1. minus 1 from size.
-        if (patientList.size()-1 <= index)
+        if (patientList.size()-1 >= index)
         {
             patientList.remove(index);
             return true;
@@ -49,7 +49,7 @@ public class PatientList
         //ToDo: add you code here
         //ID must be 9 long and have atleast 1 non zero digit, cant be all zeroes.
  
-        String IDCheck = "/([0-9]{9})/";
+        String IDCheck = "/(^[0-9]{9}$)/";
         Boolean IDFormat = Pattern.matches(IDCheck,ID);
         
         
