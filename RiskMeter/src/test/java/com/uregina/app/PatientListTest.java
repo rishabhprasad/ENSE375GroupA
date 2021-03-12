@@ -19,46 +19,43 @@ import jdk.jfr.Timestamp;
 
 public class PatientListTest 
 {
-    /**
-     * Rigorous Test :-)
-     */
-  //  @BeforeClass
- //   public static void setup() throws Exception 
- //   {
- //       try{
-  //          int age = 12;
-//            String id = "123456789";
- //           String name = "Kaden";
- //       PostalCode postal = new PostalCode("K1A-0B9");
- //       Patient object = new Patient(name,id,age,postal);
+//Ended up scrapping because it was giving null pointer errors.
+  private static  PostalCode postal;
+  private static PostalCode postal2;
+  private static  Patient patient;
+ private static Patient patient2;
 
-  //      age = 14;
-  //      id = "123456781";
-//        name = "KadenG";
- ///       PostalCode postal1 = new PostalCode("K1A-1B9");
- //       Patient object2 = new Patient(name,id,age,postal1);
+   @BeforeClass
+   public static  void setup() throws Exception 
+    {
+     try{
+        String id = "123456789";
+        int age = 12;
+        String name = "Kaden";
+        postal = new PostalCode("K1A-0B9");
+        patient = new Patient(name,id,age,postal);
 
-//    }
- //   catch (InvalidPostalCodeException e)
-//    {
-//        throw new InvalidPostalCodeException();
-        
- //   }
- //   catch (InvalidNameException e)
- //   {
- //       throw new InvalidNameException("Invalid Name");
-        
- //   }
- //   catch (InvalidAgeException e)
- //   {
- //       throw new InvalidAgeException(-1);
-       
-  //  }
- //   catch (InvalidIDException e)
- //   {
-  //      throw new InvalidIDException("Invalid ID");
-        
-  //  }
+        age = 14;
+        id = "123456781";
+        name = "KadenG";
+        postal2 = new PostalCode("K1A-1B9");
+        patient2 = new Patient(name,id,age,postal2);
+
+    }
+    //need to catch exceptions. This wont fail unless other classes do.
+    catch(InvalidNameException e){
+        System.out.println( "\tInvalid patient name" );
+    }
+    catch(InvalidAgeException e){
+        System.out.println( "\tInvalid patient age" );
+    }
+    catch(InvalidIDException e){
+        System.out.println( "\tInvalid patient ID" );
+    }
+    catch(InvalidPostalCodeException e){
+        System.out.println( "\tInvalid patient ID" );
+    }
+    }  
  //   }
 
 
@@ -66,100 +63,55 @@ public class PatientListTest
 
     @Test
     public void patientList_Succesful_Add() 
-    {
-        try{
-            int age = 12;
-            String id = "123456789";
-            String name = "Kaden";
-        PostalCode postal = new PostalCode("K1A-0B9");
-        Patient object = new Patient(name,id,age,postal);
+    {          
         PatientList patientList = new PatientList();
-        assertTrue(patientList.addPatient(object));
-    }
-    catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
-    {}   
+        assertTrue(patientList.addPatient(patient));
+    
     }
     
     @Test
     public void deletePatient_True()
     {
-        try{
-            int age = 12;
-            String id = "123456789";
-            String name = "Kaden";
-        PostalCode postal = new PostalCode("K1A-0B9");
-        Patient object = new Patient(name,id,age,postal);
         PatientList patientList = new PatientList();
-
-        patientList.addPatient(object);
+        patientList.addPatient(patient);
         assertTrue(patientList.deletePatient(0));
     }
-    catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
-    {}
-}
 
 
     @Test
     public void deletePatient_Fail()
-    {
-        try{
-            int age = 12;
-            String id = "123456789";
-            String name = "Kaden";
-        PostalCode postal = new PostalCode("K1A-0B9");
-        Patient object = new Patient(name,id,age,postal);
+    {                   
         PatientList patientList = new PatientList();
 
-        patientList.addPatient(object);
+        patientList.addPatient(patient);
         assertFalse(patientList.deletePatient(2));
-    }
-    catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
-    {}
- 
     }
 
     @Test
     public void getPatient_InvalidID_Fail()
-    {
-        try{
-            int age = 12;
-            String id = "123456789";
-            String name = "Kaden";
-        PostalCode postal = new PostalCode("K1A-0B9");
-        Patient object = new Patient(name,id,age,postal);
+    {   
         PatientList patientList = new PatientList();
-    
         boolean result = false;
 
    
-    patientList.addPatient(object);
+        patientList.addPatient(patient);
 
-    if (patientList.getPatient("000000000") == null)
-    {
-    result = true;
-    }
-
-    assertTrue(result);
+        if (patientList.getPatient("000000000") == null)
+        {
+         result = true;
         }
-        catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
-    {}
-    }
 
+         assertTrue(result);
+    }
+    
 
     @Test
     //No patient with ID fail..
     public void getPatient_ID_Fail() 
-    {
-        try{
-            int age = 12;
-            String id = "123456789";
-            String name = "Kaden";
-        PostalCode postal = new PostalCode("K1A-0B9");
-        Patient object = new Patient(name,id,age,postal);
-        PatientList patientList = new PatientList();
-         boolean result = false;
-
-    patientList.addPatient(object);
+    {  
+    boolean result = false;
+    PatientList patientList = new PatientList();      
+    patientList.addPatient(patient);
 
 
     if (patientList.getPatient("000000022") == null)
@@ -169,25 +121,16 @@ public class PatientListTest
     
     assertTrue(result);
     }
-    catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
-    {}
-    }
    
 
 
     @Test
     //No patient with ID fail..
     public void getPatient_ID_Success()
-    {
-        try{
-            int age = 12;
-            String id = "123456789";
-            String name = "Kaden";
-        PostalCode postal = new PostalCode("K1A-0B9");
-        Patient object = new Patient(name,id,age,postal);
-        PatientList patientList = new PatientList();
-         boolean result = true;
-    patientList.addPatient(object);
+    {      
+    PatientList patientList = new PatientList();
+    boolean result = true;
+    patientList.addPatient(patient);
     
     Patient patientX = patientList.getPatient("123456789");
     if (patientX.getID() == null)
@@ -197,32 +140,19 @@ public class PatientListTest
     
     assertTrue(result);
     }
-    catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
-    {}
-    }
+    
     
 
     //2
     @Test
     public void getNumOfPatients_Success()
     {
-        try{
+        
         PatientList patientList = new PatientList();
         
-        int age = 12;
-        String id = "123456789";
-        String name = "Kaden";
-        PostalCode postal = new PostalCode("K1A-0B9");
-        Patient object = new Patient(name,id,age,postal); 
-      
-        age = 14;
-        id = "123456781";
-        name = "KadenG";
-        PostalCode postal1 = new PostalCode("K1A-1B9");
-        Patient object2 = new Patient(name,id,age,postal1);
 
-        patientList.addPatient(object);
-        patientList.addPatient(object2);
+        patientList.addPatient(patient);
+        patientList.addPatient(patient2);
 
 
         int number = patientList.getNumberofPatients();
@@ -236,9 +166,7 @@ public class PatientListTest
         assertTrue(false);
         }
     }
-    catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
-    {}
-    }
+    
 
     @Test
     public void getNumOfPatients_Empty()
