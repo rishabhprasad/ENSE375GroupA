@@ -23,8 +23,13 @@ public class PatientListTest
      * Rigorous Test :-)
      */
 
+    private static PostalCode postal;
+    private static Patient object;
+    private static PostalCode postal2;
+    private static Patient object2;
+
     @BeforeClass
-    public static void setup()
+    public static void setup() throws Exception 
     {
         try{
             int age = 12;
