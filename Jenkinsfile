@@ -14,6 +14,7 @@ pipeline {
         stage('Build'){
             steps{
                 sh 'mkdir ENSE375/lib'
+                sh 'mvn'
                 sh 'cd ENSE375/lib/ ; wget https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.7.0/junit-platform-console-standalone-1.7.0-all.jar'
                 sh 'cd ENSE375/src/ ; mkdir bin; javac -d bin -cp ../lib/junit-platform-console-standalone-1.7.0-all.jar $(find . -name "*.java")'
             } 
