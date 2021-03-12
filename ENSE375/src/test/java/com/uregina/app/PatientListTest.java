@@ -48,22 +48,22 @@ public class PatientListTest
     catch (InvalidPostalCodeException e)
     {
         throw new InvalidPostalCodeException();
-        assertTrue(false);
+        
     }
     catch (InvalidNameException e)
     {
         throw new InvalidNameException("Invalid Name");
-        assertTrue(false);
+        
     }
     catch (InvalidAgeException e)
     {
         throw new InvalidAgeException(-1);
-        assertTrue(false);
+       
     }
     catch (InvalidIDException e)
     {
         throw new InvalidIDException("Invalid ID");
-        assertTrue(false);
+        
     }
     }
 
