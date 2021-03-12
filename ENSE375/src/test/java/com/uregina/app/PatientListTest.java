@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 import com.uregina.exception.*;
 
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeClass;
+import org.junit.BeforeClass;
 import jdk.jfr.Timestamp;
 
 /**
@@ -17,7 +17,7 @@ import jdk.jfr.Timestamp;
 
 
 
-public class PatientListTest extends setup
+public class PatientListTest 
 {
     /**
      * Rigorous Test :-)
