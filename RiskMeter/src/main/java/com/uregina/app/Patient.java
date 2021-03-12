@@ -67,7 +67,7 @@ public class Patient
 	public boolean setPostalCode(PostalCode postalCode)
 	{
 		
-		System.out.println(postal.getPostalCode());
+		System.out.println(postalCode.getPostalCode());
 		System.out.println(this.postalCode.getPostalCode());
 	
 		if((postalCode.getPostalCode().equals(this.postalCode.getPostalCode())==false)&&postalCode!=null)//compare parameter with set postCode
