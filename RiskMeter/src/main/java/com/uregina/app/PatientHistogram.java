@@ -44,7 +44,7 @@ public class PatientHistogram
 			if(VIndex <0)return false;
 			if(HIndex <0 || HIndex>= 10)return false;
 			// CHANGE ASCII CHAR VALUES FROM POSTAL CODE
-			if(VIndex >= 65 || VIndex <= 84) VIndex = VIndex - 65;
+			if(VIndex >= 65 && VIndex <= 84) VIndex = VIndex - 65;
 			// CHECK MINIMUM VALUE BEFORE DECREMENTING
 			int count = patientCount[VIndex][HIndex];
 			if(count == 0) return false;
@@ -60,7 +60,7 @@ public class PatientHistogram
 			if(VIndex <0) throw new IndexOutOfBoundsException();
 			if(HIndex <0 || HIndex>= 10) throw new IndexOutOfBoundsException();
 			// CHANGE ASCII CHAR VALUES FROM POSTAL CODE
-			if(VIndex >= 65 || VIndex <= 84) VIndex = VIndex - 65;
+			if(VIndex >= 65 && VIndex <= 84) VIndex = VIndex - 65;
 			int count = patientCount[VIndex][HIndex];
     		return count;
     	}
