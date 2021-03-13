@@ -51,29 +51,32 @@ The delete patient function implements the same index checking logic as the add 
 ```javascript
 public boolean addAPatientToRegion(int VIndex,int HIndex)
 {
-
+...
+}
+```
 <details>
-<summary>...</summary>
+<summary>Click to see the entire function</summary>
+
+```javascript
+public boolean addAPatientToRegion(int VIndex,int HIndex)
 {
-// CHECK BOUNDS ON INDEX
-if(HIndex <0 || HIndex>= MAX_HINDEX)return false;
-if(VIndex <0)return false;
-if(VIndex >= MAX_VINDEX && VIndex < 65)return false;
-if(VIndex > 84)return false;
-// CHANGE ASCII CHAR VALUES FROM POSTAL CODE
-if(VIndex >= 65 && VIndex <= 84) VIndex = VIndex - 65;
-// CHECK MINIMUM VALUE BEFORE DECREMENTING
-int count = patientCount[VIndex][HIndex];
-if(count == 0) return false;
-// DECREMENT THE COUNT IN THAT REGION
-count--;
-patientCount[VIndex][HIndex] = count;
-return true;
+    // CHECK BOUNDS ON INDEX
+    if(HIndex <0 || HIndex>= MAX_HINDEX)return false;
+    if(VIndex <0)return false;
+    if(VIndex >= MAX_VINDEX && VIndex < 65)return false;
+    if(VIndex > 84)return false;
+    // CHANGE ASCII CHAR VALUES FROM POSTAL CODE
+    if(VIndex >= 65 && VIndex <= 84) VIndex = VIndex - 65;
+    // INCREMENT THE COUNT IN THAT REGION
+    int count = patientCount[VIndex][HIndex];
+    count++;
+    patientCount[VIndex][HIndex] = count;
+    // NO MAX TO CONSIDER THEREFORE RETURN TRUE
+    return true;
 }
 ```
 </details>
-}
-```
+
 The difference with the decrement function is that the count of patients cannot go below zero.  Unless there are patients to be decremented, trying to decrement 0 will return false.  
 
 The following test table was used to verify all variables:  
