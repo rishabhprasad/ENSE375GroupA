@@ -22,12 +22,17 @@ public class PatientHistogramTest
         PatientHistogram patientHistogram = new PatientHistogram();
         assertTrue(patientHistogram.addAPatientToRegion(65,5));
     }
+    // @Test
+    // public void addPatientToRegion_invalidVIndex_throwsIndexOutOfBoundsException(){
+    //     PatientHistogram patientHistogram = new PatientHistogram();
+    //     assertThrows(IndexOutOfBoundsException.class, () -> {
+    //         patientHistogram.addAPatientToRegion(20,1);
+    //     });
+    // }
     @Test
-    public void addPatientToRegion_invalidVIndex_throwsIndexOutOfBoundsException(){
+    public void addPatientToRegion_invalidVIndex_false(){
         PatientHistogram patientHistogram = new PatientHistogram();
-        assertThrows(IndexOutOfBoundsException.class, () -> {
-            patientHistogram.addAPatientToRegion(20,1);
-        });
+        assertFalse(patientHistogram.addAPatientToRegion(20,1));
     }
     @Test
     public void addPatientToRegion_invalidHIndex_false(){

@@ -6,15 +6,17 @@ import java.util.ArrayList;
 //Project Step 3 CI - Part 2
 //GROUP A
 //Roxanne Harrison - 200333074
-//
+
 public class PatientHistogram 
 {
 	private int[][] patientCount;
+	private int MAX_VINDEX = 20;
+	private int MAX_HINDEX = 10;
     	public PatientHistogram() 
     	{
 			// THE CITY SHAPE IS ASSUMED TO BE A RECTANGLE WHICH IS DIVIDED INTO
 			// 		20x10 REGIONS
-			this.patientCount = new int[20][10];
+			this.patientCount = new int[MAX_VINDEX][MAX_HINDEX];
     	}
     /**
 	*
@@ -24,7 +26,7 @@ public class PatientHistogram
     	{
 			// CHECK BOUNDS ON INDEX
 			if(VIndex <0)return false;
-			if(HIndex <0 || HIndex>= 10)return false;
+			if(HIndex <0 || HIndex>= MAX_HINDEX)return false;
 			// CHANGE ASCII CHAR VALUES FROM POSTAL CODE
 			if(VIndex >= 65 && VIndex <= 84) VIndex = VIndex - 65;
 			// INCREMENT THE COUNT IN THAT REGION
@@ -42,7 +44,7 @@ public class PatientHistogram
     	{
 			// CHECK BOUNDS ON INDEX
 			if(VIndex <0)return false;
-			if(HIndex <0 || HIndex>= 10)return false;
+			if(HIndex <0 || HIndex>= MAX_HINDEX)return false;
 			// CHANGE ASCII CHAR VALUES FROM POSTAL CODE
 			if(VIndex >= 65 && VIndex <= 84) VIndex = VIndex - 65;
 			// CHECK MINIMUM VALUE BEFORE DECREMENTING
@@ -58,7 +60,7 @@ public class PatientHistogram
     	{
 			// CHECK BOUNDS ON INDEX
 			if(VIndex <0) throw new IndexOutOfBoundsException();
-			if(HIndex <0 || HIndex>= 10) throw new IndexOutOfBoundsException();
+			if(HIndex <0 || HIndex>= MAX_HINDEX) throw new IndexOutOfBoundsException();
 			// CHANGE ASCII CHAR VALUES FROM POSTAL CODE
 			if(VIndex >= 65 && VIndex <= 84) VIndex = VIndex - 65;
 			int count = patientCount[VIndex][HIndex];
