@@ -51,11 +51,10 @@ The delete patient function implements the same index checking logic as the add 
 ```javascript
 public boolean addAPatientToRegion(int VIndex,int HIndex)
 {
-
+```
 <details>
 <summary>...</summary>
-public boolean deleteAPatientFromRegion(int VIndex,int HIndex)
-{
+```javascript
 // CHECK BOUNDS ON INDEX
 if(HIndex <0 || HIndex>= MAX_HINDEX)return false;
 if(VIndex <0)return false;
@@ -70,9 +69,9 @@ if(count == 0) return false;
 count--;
 patientCount[VIndex][HIndex] = count;
 return true;
-}
 ```
 </details>
+```javascript
 }
 ```
 The difference with the decrement function is that the count of patients cannot go below zero.  Unless there are patients to be decremented, trying to decrement 0 will return false.  
