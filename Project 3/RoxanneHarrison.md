@@ -34,20 +34,33 @@ Note that since the PostalCode.java VIndex function returns integer values of ch
 ```javascript
 public boolean addAPatientToRegion(int VIndex,int HIndex)
 {
-if(HIndex <0 || HIndex>= MAX_HINDEX)return false;
-if(VIndex <0)return false;
-if(VIndex >= MAX_VINDEX && VIndex < 65)return false;
-if(VIndex > 84)return false;
-// CHANGE ASCII CHAR VALUES FROM POSTAL CODE
-if(VIndex >= 65 && VIndex <= 84) VIndex = VIndex - 65;
-// INCREMENT THE COUNT IN THAT REGION
-int count = patientCount[VIndex][HIndex];
-count++;
-patientCount[VIndex][HIndex] = count;
-return true;
+...
 }
 ```
-The following test table was used to verify all variables: 
-Function | Description | Input | Expected Output | Actual Output | Confirmation
-addPatientToRegion | validIndex | 15,5 | True | True | Pass
-addPatientToRegion | validCharIndex | 'A', 5 | True | True | Pass
+The following test table was used to verify all variables:  
+| Function           | Description      | Input  | Expected Output | Actual Output | Confirmation |
+| -------------------|:----------------:| ------:| ---------------:| -------------:|-------------:|
+| addPatientToRegion | validIndex       | 15,5   | True            | True          | Pass         |
+| addPatientToRegion | validCharIndex   | 'A', 5 | True            | True          | Pass         |
+| addPatientToRegion | invalidCharIndex | 'Z', 5 | False           | False         | Pass         |
+| addPatientToRegion | invalidVIndex    | 20, 1  | False           | False         | Pass         |
+| addPatientToRegion | invalidHIndex    | 1, 10  | False           | False         | Pass         |  
+
+
+The delete patient function implements the same index checking logic as the add patient function, with 0 min and maximum bound values.  As explained above, the VIndex must be converted from an ascii value coming from PostalCode.java  
+```javascript
+public boolean deleteAPatientFromRegion(int VIndex,int HIndex)
+{
+...
+}
+```  
+The difference with the decrement function is that the count of patients cannot go below zero.  Unless there are patients to be decremented, trying to decrement 0 will return false.  
+
+The following test table was used to verify all variables:  
+| Function                 | Description      | Input  | Expected Output | Actual Output | Confirmation |
+| -------------------------|:----------------:| ------:| ---------------:| -------------:|-------------:|
+| deleteAPatientFromRegion | validDecrement   | 15,5   | True            | True          | Pass         |
+| deleteAPatientFromRegion | invalidDecrement | 15,5   | False           | False         | Pass         |
+| deleteAPatientFromRegion | invalidCharIndex | 'Z', 5 | False           | False         | Pass         |
+| deleteAPatientFromRegion | invalidVIndex    | 20, 1  | False           | False         | Pass         |
+| deleteAPatientFromRegion | invalidHIndex    | 1, 10  | False           | False         | Pass         |  
