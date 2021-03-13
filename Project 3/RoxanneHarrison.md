@@ -25,12 +25,12 @@ public PatientHistogram()
 this.patientCount = new int[MAX_VINDEX][MAX_HINDEX];
 }
 ```
-Because there are no input to this function it was not tested in the PatientHistogramTest.java class.  
+Because there are no input to this function it was not tested in the `PatientHistogramTest.java` class.  
 
-Next the add patient function was implemented with Vertical and Horizontal char input considerations.  
+Next the `addAPatientToRegion` function was implemented with Vertical and Horizontal char input considerations.  
 The patient count for risk factor can go to infinity so there is no maximum count to consider.
 Both VIndex and HIndex cannot be less than 0, therefore a patient is not added to that region.  
-Note that since the PostalCode.java VIndex function returns integer values of chars, they must be converted here by subtracting 65. 
+Note that since the `PostalCode.java` VIndex function returns integer values of chars, they must be converted here by subtracting 65. 
 ```javascript
 public boolean addAPatientToRegion(int VIndex,int HIndex)
 {
@@ -69,7 +69,7 @@ The following test table was used to verify all variables:
 | addPatientToRegion | invalidVIndex    | 20, 1  | False           | False         | Pass         |
 | addPatientToRegion | invalidHIndex    | 1, 10  | False           | False         | Pass         |  
 
-The delete patient function implements the same index checking logic as the add patient function, with 0 min and maximum bound values.  As explained above, the VIndex must be converted from an ascii value coming from PostalCode.java  
+The `deleteAPatientFromRegion` function implements the same index checking logic as the add patient function, with 0 min and maximum bound values.  As explained above, the VIndex must be converted from an ascii value coming from `PostalCode.java`  
 
 ```javascript
 public boolean deleteAPatientFromRegion(int VIndex,int HIndex)
@@ -100,7 +100,7 @@ public boolean deleteAPatientFromRegion(int VIndex,int HIndex)
 }
 ```
 </details>
-The difference with the decrement function is that the count of patients cannot go below zero.  Unless there are patients to be decremented, trying to decrement 0 will return false.  
+The difference with this function is with the decrement. The count of patients cannot go below zero.  Unless there are patients to be decremented, trying to decrement 0 will return false.  
 
 The following test table was used to verify all variables:  
 | Function                 | Description      | Input  | Expected Output | Actual Output | Confirmation |
@@ -112,3 +112,37 @@ The following test table was used to verify all variables:
 | deleteAPatientFromRegion | invalidHIndex    | 1, 10  | False           | False         | Pass         |  
 
 
+The `getPatientsCountInRegion` function differs from the previous ones because it is able to throw an `IndexOutOfBoundsException`. The bounds checking contains the same logic as the previous functions only instead of returning false upon error, it will throw an exception. 
+
+```javascript
+public int getPatientsCountInRegion(int VIndex,int HIndex) throws IndexOutOfBoundsException
+{
+...
+}
+```
+<details>
+<summary>Click to see the entire function</summary>
+
+```javascript
+public int getPatientsCountInRegion(int VIndex,int HIndex) throws IndexOutOfBoundsException
+{
+    // CHECK BOUNDS ON INDEX
+    if(HIndex <0 || HIndex>= MAX_HINDEX) throw new IndexOutOfBoundsException();
+    if(VIndex <0)throw new IndexOutOfBoundsException();
+    if(VIndex >= MAX_VINDEX && VIndex < 65)throw new IndexOutOfBoundsException();
+    if(VIndex > 84)throw new IndexOutOfBoundsException();
+    // CHANGE ASCII CHAR VALUES FROM POSTAL CODE
+    if(VIndex >= 65 && VIndex <= 84) VIndex = VIndex - 65;
+    int count = patientCount[VIndex][HIndex];
+    return count;
+}
+```
+</details>
+
+The following test table was used to verify all variables:  
+| Function                 | Description      | Input  | Expected Output           | Actual Output             | Confirmation |
+| -------------------------|------------------|--------| --------------------------| --------------------------|--------------|
+| getPatientsCountInRegion | validCount       | 15,5   | 1                         | 1                         | Pass         |
+| getPatientsCountInRegion | invalidCharIndex | 'Z', 5 | IndexOutOfBoundsException | IndexOutOfBoundsException | Pass         |
+| getPatientsCountInRegion | invalidVIndex    | 20, 1  | IndexOutOfBoundsException | IndexOutOfBoundsException | Pass         |
+| getPatientsCountInRegion | invalidHIndex    | 1, 10  | IndexOutOfBoundsException | IndexOutOfBoundsException | Pass         | 

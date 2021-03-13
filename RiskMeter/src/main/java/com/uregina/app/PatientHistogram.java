@@ -62,11 +62,13 @@ public class PatientHistogram
 	
     	public int getPatientsCountInRegion(int VIndex,int HIndex) throws IndexOutOfBoundsException
     	{
-			// CHECK BOUNDS ON INDEX
-			if(VIndex <0) throw new IndexOutOfBoundsException();
-			if(HIndex <0 || HIndex>= MAX_HINDEX) throw new IndexOutOfBoundsException();
-			// CHANGE ASCII CHAR VALUES FROM POSTAL CODE
-			if(VIndex >= 65 && VIndex <= 84) VIndex = VIndex - 65;
+	 	// CHECK BOUNDS ON INDEX
+		 if(HIndex <0 || HIndex>= MAX_HINDEX) throw new IndexOutOfBoundsException();
+	 	if(VIndex <0)throw new IndexOutOfBoundsException();
+	 	if(VIndex >= MAX_VINDEX && VIndex < 65)throw new IndexOutOfBoundsException();
+	 	if(VIndex > 84)throw new IndexOutOfBoundsException();
+	 	// CHANGE ASCII CHAR VALUES FROM POSTAL CODE
+	 	if(VIndex >= 65 && VIndex <= 84) VIndex = VIndex - 65;
 			int count = patientCount[VIndex][HIndex];
     		return count;
     	}

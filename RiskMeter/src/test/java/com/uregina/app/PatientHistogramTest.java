@@ -64,6 +64,13 @@ public class PatientHistogramTest
         assertFalse(patientHistogram.deleteAPatientFromRegion(1,10));
     }
     @Test
+    public void getPatientsCountInRegion_invalidCharIndex_throwsIndexOutOfBoundsException(){
+        PatientHistogram patientHistogram = new PatientHistogram();
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            patientHistogram.getPatientsCountInRegion('Z',5);
+        });
+    }
+    @Test
     public void getPatientsCountInRegion_invalidVIndex_throwsIndexOutOfBoundsException(){
         PatientHistogram patientHistogram = new PatientHistogram();
         assertThrows(IndexOutOfBoundsException.class, () -> {
