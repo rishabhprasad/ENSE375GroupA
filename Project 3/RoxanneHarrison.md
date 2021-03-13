@@ -37,23 +37,6 @@ public boolean addAPatientToRegion(int VIndex,int HIndex)
 ...
 }
 ```
-The following test table was used to verify all variables:  
-| Function           | Description      | Input  | Expected Output | Actual Output | Confirmation |
-| -------------------|------------------|--------| ----------------| --------------|--------------|
-| addPatientToRegion | validIndex       | 15,5   | True            | True          | Pass         |
-| addPatientToRegion | validCharIndex   | 'A', 5 | True            | True          | Pass         |
-| addPatientToRegion | invalidCharIndex | 'Z', 5 | False           | False         | Pass         |
-| addPatientToRegion | invalidVIndex    | 20, 1  | False           | False         | Pass         |
-| addPatientToRegion | invalidHIndex    | 1, 10  | False           | False         | Pass         |  
-
-
-The delete patient function implements the same index checking logic as the add patient function, with 0 min and maximum bound values.  As explained above, the VIndex must be converted from an ascii value coming from PostalCode.java  
-```javascript
-public boolean addAPatientToRegion(int VIndex,int HIndex)
-{
-...
-}
-```
 <details>
 <summary>Click to see the entire function</summary>
 
@@ -76,7 +59,47 @@ public boolean addAPatientToRegion(int VIndex,int HIndex)
 }
 ```
 </details>
+The following test table was used to verify all variables:  
+| Function           | Description      | Input  | Expected Output | Actual Output | Confirmation |
+| -------------------|------------------|--------| ----------------| --------------|--------------|
+| addPatientToRegion | validIndex       | 15,5   | True            | True          | Pass         |
+| addPatientToRegion | validCharIndex   | 'A', 5 | True            | True          | Pass         |
+| addPatientToRegion | invalidCharIndex | 'Z', 5 | False           | False         | Pass         |
+| addPatientToRegion | invalidVIndex    | 20, 1  | False           | False         | Pass         |
+| addPatientToRegion | invalidHIndex    | 1, 10  | False           | False         | Pass         |  
 
+
+The delete patient function implements the same index checking logic as the add patient function, with 0 min and maximum bound values.  As explained above, the VIndex must be converted from an ascii value coming from PostalCode.java  
+
+```javascript
+public boolean deleteAPatientFromRegion(int VIndex,int HIndex)
+{
+...
+}
+```
+<details>
+<summary>Click to see the entire function</summary>
+
+```javascript
+public boolean deleteAPatientFromRegion(int VIndex,int HIndex)
+{
+	// CHECK BOUNDS ON INDEX
+	if(HIndex <0 || HIndex>= MAX_HINDEX)return false;
+	if(VIndex <0)return false;
+	if(VIndex >= MAX_VINDEX && VIndex < 65)return false;
+	if(VIndex > 84)return false;
+	// CHANGE ASCII CHAR VALUES FROM POSTAL CODE
+	if(VIndex >= 65 && VIndex <= 84) VIndex = VIndex - 65;
+	// CHECK MINIMUM VALUE BEFORE DECREMENTING
+	int count = patientCount[VIndex][HIndex];
+	if(count == 0) return false;
+    // DECREMENT THE COUNT IN THAT REGION
+	count--;
+	patientCount[VIndex][HIndex] = count;
+    return true; 
+}
+```
+</details>
 The difference with the decrement function is that the count of patients cannot go below zero.  Unless there are patients to be decremented, trying to decrement 0 will return false.  
 
 The following test table was used to verify all variables:  
