@@ -21,3 +21,8 @@ My class file for this project was RiskCodeMap
 Some assumptions made:
 - The map is 20 tall and 10 wide (instead of 10 tall and 20 wide)
 - The map should be intialized to N for not-set instead of G for no risk
+
+Review of Histogram Test Class
+----
+The Histogram class tests look very good, the many tests cover a great amount of cases. The tests are simple and easily understood.
+I could not think of any other tests to add to cover more cases.
