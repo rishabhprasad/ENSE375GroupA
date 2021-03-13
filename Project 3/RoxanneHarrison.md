@@ -50,7 +50,8 @@ The following test table was used to verify all variables:
 The delete patient function implements the same index checking logic as the add patient function, with 0 min and maximum bound values.  As explained above, the VIndex must be converted from an ascii value coming from PostalCode.java  
 
 <details>
-<summary>Click to see: \`deleteAPatientFromRegion\`</summary>
+<summary>Click to see: `deleteAPatientFromRegion`</summary>
+
 ```javascript
 public boolean deleteAPatientFromRegion(int VIndex,int HIndex)
 {
@@ -70,6 +71,7 @@ patientCount[VIndex][HIndex] = count;
 return true;
 }
 ```
+
 </details>
 
 The difference with the decrement function is that the count of patients cannot go below zero.  Unless there are patients to be decremented, trying to decrement 0 will return false.  
@@ -82,3 +84,5 @@ The following test table was used to verify all variables:
 | deleteAPatientFromRegion | invalidCharIndex | 'Z', 5 | False           | False         | Pass         |
 | deleteAPatientFromRegion | invalidVIndex    | 20, 1  | False           | False         | Pass         |
 | deleteAPatientFromRegion | invalidHIndex    | 1, 10  | False           | False         | Pass         |  
+
+
