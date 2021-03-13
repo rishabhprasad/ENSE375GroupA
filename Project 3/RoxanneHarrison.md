@@ -50,26 +50,25 @@ The following test table was used to verify all variables:
 The delete patient function implements the same index checking logic as the add patient function, with 0 min and maximum bound values.  As explained above, the VIndex must be converted from an ascii value coming from PostalCode.java  
 
 <details>
-<summary>
+<summary>Click to see: __deleteAPatientFromRegion__</summary>
 ```javascript
 public boolean deleteAPatientFromRegion(int VIndex,int HIndex)
-</summary>
-    	{
-			// CHECK BOUNDS ON INDEX
-			if(HIndex <0 || HIndex>= MAX_HINDEX)return false;
-			if(VIndex <0)return false;
-			if(VIndex >= MAX_VINDEX && VIndex < 65)return false;
-			if(VIndex > 84)return false;
-			// CHANGE ASCII CHAR VALUES FROM POSTAL CODE
-			if(VIndex >= 65 && VIndex <= 84) VIndex = VIndex - 65;
-			// CHECK MINIMUM VALUE BEFORE DECREMENTING
-			int count = patientCount[VIndex][HIndex];
-			if(count == 0) return false;
-    		// DECREMENT THE COUNT IN THAT REGION
-			count--;
-			patientCount[VIndex][HIndex] = count;
-    		return true;
-    	}
+{
+// CHECK BOUNDS ON INDEX
+if(HIndex <0 || HIndex>= MAX_HINDEX)return false;
+if(VIndex <0)return false;
+if(VIndex >= MAX_VINDEX && VIndex < 65)return false;
+if(VIndex > 84)return false;
+// CHANGE ASCII CHAR VALUES FROM POSTAL CODE
+if(VIndex >= 65 && VIndex <= 84) VIndex = VIndex - 65;
+// CHECK MINIMUM VALUE BEFORE DECREMENTING
+int count = patientCount[VIndex][HIndex];
+if(count == 0) return false;
+// DECREMENT THE COUNT IN THAT REGION
+count--;
+patientCount[VIndex][HIndex] = count;
+return true;
+}
 ```
 </details>
 
