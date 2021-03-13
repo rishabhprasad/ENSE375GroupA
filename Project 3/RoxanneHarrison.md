@@ -27,7 +27,7 @@ this.patientCount = new int[MAX_VINDEX][MAX_HINDEX];
 ```
 Because there are no input to this function it was not tested in the PatientHistogramTest.java class.  
 
-Next the addPatient function was implemented with Vertical and Horizontal char input considerations.  
+Next the add patient function was implemented with Vertical and Horizontal char input considerations.  
 The patient count for risk factor can go to infinity so there is no maximum count to consider.
 Both VIndex and HIndex cannot be less than 0, therefore a patient is not added to that region.  
 Note that since the PostalCode.java VIndex function returns integer values of chars, they must be converted here by subtracting 65. 
