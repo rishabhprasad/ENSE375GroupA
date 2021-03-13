@@ -50,7 +50,7 @@ The following test table was used to verify all variables:
 The delete patient function implements the same index checking logic as the add patient function, with 0 min and maximum bound values.  As explained above, the VIndex must be converted from an ascii value coming from PostalCode.java  
 
 <details>
-<summary>Click to see: __deleteAPatientFromRegion__</summary>
+<summary>Click to see: \`deleteAPatientFromRegion\`</summary>
 ```javascript
 public boolean deleteAPatientFromRegion(int VIndex,int HIndex)
 {
