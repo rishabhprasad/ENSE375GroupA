@@ -34,14 +34,20 @@ Note that since the PostalCode.java VIndex function returns integer values of ch
 ```javascript
 public boolean addAPatientToRegion(int VIndex,int HIndex)
 {
-if(VIndex <0)return false;
 if(HIndex <0 || HIndex>= MAX_HINDEX)return false;
-// CHAR CONSIDERATION
+if(VIndex <0)return false;
+if(VIndex >= MAX_VINDEX && VIndex < 65)return false;
+if(VIndex > 84)return false;
+// CHANGE ASCII CHAR VALUES FROM POSTAL CODE
 if(VIndex >= 65 && VIndex <= 84) VIndex = VIndex - 65;
-// INCREMENT PATIENT COUNT
+// INCREMENT THE COUNT IN THAT REGION
 int count = patientCount[VIndex][HIndex];
 count++;
 patientCount[VIndex][HIndex] = count;
 return true;
 }
 ```
+The following test table was used to verify all variables: 
+Function | Description | Input | Expected Output | Actual Output | Confirmation
+addPatientToRegion | validIndex | 15,5 | True | True | Pass
+addPatientToRegion | validCharIndex | 'A', 5 | True | True | Pass

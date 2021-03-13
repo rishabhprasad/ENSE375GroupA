@@ -28,6 +28,7 @@ public class PatientHistogram
 			if(HIndex <0 || HIndex>= MAX_HINDEX)return false;
 			if(VIndex <0)return false;
 			if(VIndex >= MAX_VINDEX && VIndex < 65)return false;
+			if(VIndex > 84)return false;
 			// CHANGE ASCII CHAR VALUES FROM POSTAL CODE
 			if(VIndex >= 65 && VIndex <= 84) VIndex = VIndex - 65;
 			// INCREMENT THE COUNT IN THAT REGION

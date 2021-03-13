@@ -20,15 +20,13 @@ public class PatientHistogramTest
     @Test
     public void addPatientToRegion_validCharIndex_true(){
         PatientHistogram patientHistogram = new PatientHistogram();
-        assertTrue(patientHistogram.addAPatientToRegion(65,5));
+        assertTrue(patientHistogram.addAPatientToRegion('A',5));
     }
-    // @Test
-    // public void addPatientToRegion_invalidVIndex_throwsIndexOutOfBoundsException(){
-    //     PatientHistogram patientHistogram = new PatientHistogram();
-    //     assertThrows(IndexOutOfBoundsException.class, () -> {
-    //         patientHistogram.addAPatientToRegion(20,1);
-    //     });
-    // }
+    @Test
+    public void addPatientToRegion_invalidCharIndex_false(){
+        PatientHistogram patientHistogram = new PatientHistogram();
+        assertFalse(patientHistogram.addAPatientToRegion('Z',5));
+    }
     @Test
     public void addPatientToRegion_invalidVIndex_false(){
         PatientHistogram patientHistogram = new PatientHistogram();
