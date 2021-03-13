@@ -6,6 +6,42 @@
 **Installation**  
 I began working on this project by installing Jenkins on my local machine.  After several hours of tutorials and over 50 test builds I was able to get a working pipeline connected to our Github using ssh keys and java commands.  This would be the initial script the team used to build upon for creating the final Maven based Jenkinsfile seen in our current repository.  
 
+<details>
+<summary>Click to see my branch pipeline script</summary>
+
+```javascript
+pipeline {
+
+    agent any
+    stages {
+
+        stage('Checkout Codebase'){
+            steps{
+                cleanWs()
+                checkout scm: [$class: 'GitSCM', branches: [[name: '*/roxanne']],userRemoteConfigs:
+                [[credentialsId: 'github-ssh-key', url: 'git@github.com:rishabhprasad/ENSE375GroupA.git']]]
+            }
+        }
+
+        stage('Build'){
+            steps{
+                sh 'mvn compile -f RiskMeter/pom.xml'
+            } 
+        }
+
+        stage('Test'){
+            steps{
+                sh 'mvn test -f RiskMeter/pom.xml'
+                
+               
+        }
+       }
+    }
+
+}
+```
+</details>
+
 **Implementation**    
 The class I chose to implement was:  
 ```javascript
@@ -13,7 +49,7 @@ PatientHistogram
 ```
 After reviewing the app code and requirements I determined the following considerations for implementation: 
 1. The region is a rectangle with bounds [20][10]  
-2. The Vertical and Horizontal indices should consider character integer input due to the PostalCode.java class  
+2. The Vertical and Horizontal indices should consider character integer input due to the `PostalCode.java` class  
 
 The constructor creates a simple 2D array with the required boundaries: 
 
@@ -146,3 +182,31 @@ The following test table was used to verify all variables:
 | getPatientsCountInRegion | invalidCharIndex | 'Z', 5 | IndexOutOfBoundsException | IndexOutOfBoundsException | Pass         |
 | getPatientsCountInRegion | invalidVIndex    | 20, 1  | IndexOutOfBoundsException | IndexOutOfBoundsException | Pass         |
 | getPatientsCountInRegion | invalidHIndex    | 1, 10  | IndexOutOfBoundsException | IndexOutOfBoundsException | Pass         | 
+
+All 14 tests pass when running the Jenkinsfile. 
+
+**Review**    
+The class I chose to review was:  
+```javascript
+Patient
+```
+We did some pair programming on the test file for `Patient.java` so I didn't feel the need to create an additional test file since I was part of the intitial testing process here.  
+This class is a little more complicated because in order to create a patient, you first need to create a postal code which requires a try/catch block. Some of the duplicated code for creating a postal code object could be moved to a @BeforeAll class as a potential improvement.  
+Test names may be improved by more strictly following the **MethodName_StateUnderTest_ExpectedBehavior** convention.  For instance: 
+
+```javascript
+    @Test
+    public void patient_ID_Valid()
+    {
+        try
+        {
+        PostalCode postalCode = new PostalCode("K1A-0B9");
+        Patient patient = new Patient("Kaden","123456789",12,postalCode);
+        assertTrue(true);
+        }
+        catch (InvalidPostalCodeException | InvalidNameException | InvalidAgeException | InvalidIDException e)
+        {}
+    }
+```
+Could be improved by changing the name to PatientConstructor_validInput_True.  
+There are a variety of test cases for the constructor that individually test first the name, then id, then age, and finally postal code in seperate classes.  This makes the tests easy to read and understand and ensures that each input variable is checked for validity. There are no test cases for setAge and setPostalCode so this is another potential improvement. 
