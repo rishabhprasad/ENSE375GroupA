@@ -18,19 +18,6 @@ public class PostalCodeTest
      */
 
     @Test
-    public void postalCode_validFormat_True(){
-        PostalCode postalCode = null;
-        try{
-        postalCode = new PostalCode("K1A-0B9");
-        }
-    	catch(InvalidPostalCodeException e){
-    		System.out.println( "\tInvalid PostalCode" );
-    	}
-        int vertical = postalCode.getRegionVerticalIndex();
-        boolean isValid = vertical == 'A';
-        assertTrue(isValid);
-    }
-    @Test
     public void postalCode_invalidFormat_throwsInvalidPostalCodeException() {
         assertThrows(InvalidPostalCodeException.class, () -> {
             PostalCode postalCode = new PostalCode("K0B9");
@@ -72,4 +59,68 @@ public class PostalCodeTest
             PostalCode postalCode = new PostalCode("K1T-3YX");
         });
     }
+    @Test
+    public void postalCode_getValidVerticalIndex_True(){
+        PostalCode postalCode = null;
+        try{
+        postalCode = new PostalCode("K1A-0B9");
+        }
+    	catch(InvalidPostalCodeException e){
+    		System.out.println( "\tInvalid PostalCode" );
+    	}
+        int vertical = postalCode.getRegionVerticalIndex();
+        boolean isValid = vertical == 'A';
+        assertTrue(isValid);
+    }
+    @Test
+    public void postalCode_getValidVerticalIndex_False(){
+        PostalCode postalCode = null;
+        try{
+        postalCode = new PostalCode("K1A-0B9");
+        }
+    	catch(InvalidPostalCodeException e){
+    		System.out.println( "\tInvalid PostalCode" );
+    	}
+        int vertical = postalCode.getRegionVerticalIndex();
+        boolean isValid = vertical == 'B';
+        assertFalse(isValid);
+    }
+    @Test
+    public void postalCode_getValidHorizontalIndex_True() {
+        PostalCode postalCode = null;
+        try{
+        postalCode = new PostalCode("K1A-0B9");
+        }
+    	catch(InvalidPostalCodeException e){
+    		System.out.println( "\tInvalid PostalCode" );
+    	}
+        int horizontal = postalCode.getRegionHorizontalIndex();
+        boolean isValid = horizontal == 0;
+        assertTrue(isValid);
+    }
+    @Test
+    public void postalCode_getValidHorizontalIndex_False() {
+        PostalCode postalCode = null;
+        try{
+        postalCode = new PostalCode("K1A-0B9");
+        }
+    	catch(InvalidPostalCodeException e){
+    		System.out.println( "\tInvalid PostalCode" );
+    	}
+        int horizontal = postalCode.getRegionHorizontalIndex();
+        boolean isValid = horizontal == 1;
+        assertFalse(isValid);
+    }
+    @Test
+    public void postalCode_getPostalCode_True() {
+        PostalCode postalCode = null;
+        try{
+        postalCode = new PostalCode("K1A-0B9");
+        }
+    	catch(InvalidPostalCodeException e){
+    		System.out.println( "\tInvalid PostalCode" );
+    	}
+        assertEquals(postalCode.getPostalCode(), "K1A-0B9");
+    }
+    
 }
