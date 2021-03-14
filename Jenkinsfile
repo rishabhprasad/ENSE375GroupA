@@ -24,11 +24,6 @@ pipeline {
 
         }
        }
-        // stage('Deploy'){
-        //     steps{
-        //         sh 'cd src/ ; java Calculator' 
-        //     }
-        // }
     }
 
 }
