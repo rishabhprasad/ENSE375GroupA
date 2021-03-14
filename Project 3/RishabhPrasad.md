@@ -33,4 +33,25 @@ Each layer of tests checks to see if the following conditions are valid for the 
 
 If the following cases have not been met, the method throws an InvalidPostalCodeException error.
 
-Using logic, tests were implemented first then the methods were slowly given further functionality.
+Using logic, tests were implemented first then the the getter methods were also slowly given further functionality.
+
+
+## Reviewing PatientList Tests
+
+The tests for the `PatientList` class were created by Kaden Goski.
+
+The tests properly validate each aspect of all methods associated with the PatientList class. Although the tests provide adequate coverage, the general structure of these tests could be improved to make the code more readable.
+
+For example, the addPatient method is tested first, then the deletePatient method is tested, then following this other criteria of the addPatient method is tested.
+
+This could be improved by first implementing tests that cover all aspects and criteria of a single method and implementing functionality for that specific method first. Then you can move to additional methods.
+
+Another area of improvement are the names of the individual test methods.
+
+For example: `getNumOfPatients_Size2()` could be improved to be `PatientList_getNumOfPatients_ofSize2_Valid()`.
+This is long, however, if the test fails, the tester is easily able to identify the following:
+
++ which class had failing tests
++ which method failed
++ what was it testing
++ what the expected result was
