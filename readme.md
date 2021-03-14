@@ -47,5 +47,6 @@ We started off the project with getting Jenkins installed on our local machines.
 
 There was research and discussion over port forwarding or running a single instance of Jenkins for our team to log in to but in the end due to firewall restrictions we decided to individually run our pipeline locally.  This worked fine for the purposes of this activity.  Our groups final pipeline can be seen in:  
 [Jenkinsfile](Jenkinsfile)  
+
 **Implementation**  
 Each group member implemented their respective classes, created appropriate test cases and ran their pipeline.  During group meetings we would discuss different implementation and test ideas and did a bit of pair programming when necessary.  After over 400 cumulative Jenkins pipeline builds, our groups files were successfully integrated into the __master__ branch of our repository.  
