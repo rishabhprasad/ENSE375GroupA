@@ -34,4 +34,4 @@ Once most of my tests were passing, I realized that I could clean them up by cre
 ## **Review of PostalCode Test Class**
 This test class was created by Risabh Prasad. Looking at it, I can understand what each test case does and why it passes/fails. I like how he used assertThrows to take advantage of the original implementation that had the constructor throwing exceptions and implemented these throws with formatting logic.
 
-His tests overall are very good. I couldn't find a big gap in them or anything that would cause the class to fail. However, he could add a test that has an input that is too long for a postal code. (This error is already handled in the code.)
+His tests overall are very good. I couldn't find a big gap in them or anything that would cause the class to fail. However, he could add a test that has an input that is too long for a postal code. (This error looks to be already handled in the code.)
