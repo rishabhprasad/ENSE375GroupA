@@ -1,7 +1,7 @@
 **ENSE 375 - Project Step 3- Continuous Integration**
 Kaden Goski - 200392031 - March 15, 2021
 
-By far the most stressful and difficult part of this project step was getting Jenkins setup with a Maven Pipeline. **We had major issues with the pipeline script syntax and code. This will be covered in our team summary.**
+By far the most stressful and difficult part of this project step was getting Jenkins setup with a Maven Pipeline. **We ran into major syntax issues with the pipeline script syntax and code. It turns out that this was rather simple to solve and it was all down to our lack of experience. Once we understood how to write the scripts it was smooth sailing.**
  
 Implementation and Test Cases
 --------------------------------------------------------
