@@ -14,8 +14,7 @@ catch(NullPointerException e){
 
 
 To RiskCodeMAp.java
-Changed the functionaly of updateRiskInARegion to return true in all cases expect invalid inputs. 
-(used to return false if the risk code map was not updated in a call)
+Changed the functionaly of updateRiskInARegion from returning false if a change was not made and if an invalid input was given to only returning false on invalid inputs
 
 To PostalCode.java
 `if (postalCode == null) throw new InvalidPostalCodeException();`
