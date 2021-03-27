@@ -258,7 +258,7 @@ public class App
 			neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex,HIndex+i));
 		
 		}
-		System.out.println( "RIsk code map, V: " + VIndex + ", H: " + HIndex + ", caseCount: " + caseCount);
+		
     	if(!riskCodeMap.updateRiskInARegion(VIndex,HIndex,caseCount,neighboursCaseCount))
     	{
     		System.out.println( "\tFailed to update the risk code map" );
