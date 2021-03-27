@@ -7,11 +7,6 @@ import static org.junit.Assert.assertThrows;
 import org.junit.Test;
 import java.util.ArrayList;
 
-// import org.junit.jupiter.api.Test;
-// import static org.junit.jupiter.api.Assertions.assertTrue;
-// import static org.junit.jupiter.api.Assertions.assertFalse;
-// import static org.junit.jupiter.api.Assertions.assertThrows;
-
 /**
  * Unit test for RiskCodeMap.
  */
@@ -54,7 +49,7 @@ public class RiskCodeMapTest
         assertTrue(update);
     }
     @Test
-    public void updateRiskInARegion_2_0_false()
+    public void updateRiskInARegion_2_0_true_twice()
     {
         RiskCodeMap riskCodeMap = new RiskCodeMap();
         ArrayList<Integer> neighboursCaseCount = new ArrayList<Integer>();
@@ -64,7 +59,7 @@ public class RiskCodeMapTest
         neighboursCaseCount.add(0);
         riskCodeMap.updateRiskInARegion(5, 4, 2, neighboursCaseCount);
         boolean update = riskCodeMap.updateRiskInARegion(5, 4, 2, neighboursCaseCount);
-        assertFalse(update);
+        assertTrue(update);
     }
     @Test
     public void getRiskInARegion_G_true()
