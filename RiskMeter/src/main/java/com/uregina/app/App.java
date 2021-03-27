@@ -149,6 +149,7 @@ public class App
     	if(patient==null)
     	{
     		System.out.println( "\tPatient Not Found" );
+			return false;
     	}
     	int HIndex=patient.getPostalCode().getRegionHorizontalIndex();
     	int VIndex=patient.getPostalCode().getRegionVerticalIndex();
