@@ -93,14 +93,14 @@ public class AppTest
         assertTrue( valid );
     }
 
-    @Test
-    public void patientAdd_2_identical_IDs()
-    {
-        App app = new App();
-        app.addPatient("Julie", "123456789", "K1A-0B9", 31);
-        boolean valid = app.addPatient("Julie", "123456789", "K1A-0B9", 31);
-        assertFalse( valid );
-    }
+    // @Test
+    // public void patientAdd_2_identical_IDs()
+    // {
+    //     App app = new App();
+    //     app.addPatient("Julie", "123456789", "K1A-0B9", 31);
+    //     boolean valid = app.addPatient("Julie", "123456789", "K1A-0B9", 31);
+    //     assertFalse( valid );
+    // }
 
 
     //******************************PatientHistogram TESTS ******************************/
