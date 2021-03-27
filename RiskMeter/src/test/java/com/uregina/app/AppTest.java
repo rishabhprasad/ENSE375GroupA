@@ -7,7 +7,7 @@ import static org.junit.Assert.assertThrows;
 import org.junit.Test;
 
 
-public class AppTest_addPatient1
+public class AppTest
 {
     @Test
     public void patientAdd_valid()
