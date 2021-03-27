@@ -71,7 +71,6 @@ public class App
 				{
 				  	System.out.println("\tPatient failed to be removed");
 				}
-			
 			case 3:
 				System.out.print("\t");
 				for(int j=0;j<10;j++){
@@ -94,7 +93,6 @@ public class App
 		}
 		System.out.println("*******************************************");
 	}
-	myInput.close();
     }
     /**
     * <p>This method shows the available options to the user</p>
@@ -122,7 +120,7 @@ public class App
 	System.out.print( "Enter a number from 1 to 4: " );
 	int choice;
 	try{
-		choice= Integer.parseInt(myInput.nextLine());
+		choice= myInput.nextInt();
 	}
 	catch(Exception e)
 	{
@@ -132,8 +130,6 @@ public class App
 		choice=0;
 	}
     	return choice;
-
-	
     }
     /**
     * <p>This method removes a patient from the patient list 
@@ -153,8 +149,7 @@ public class App
     	if(patient==null)
     	{
     		System.out.println( "\tPatient Not Found" );
-			return false;
-		}
+    	}
     	int HIndex=patient.getPostalCode().getRegionHorizontalIndex();
     	int VIndex=patient.getPostalCode().getRegionVerticalIndex();
     	if(!histogram.deleteAPatientFromRegion(VIndex,HIndex))
@@ -175,8 +170,6 @@ public class App
     		return false;
     	}
     	return true;
-		
-		
     }
     /**
     * <p>This method adds a patient to the patient list 
@@ -204,6 +197,7 @@ public class App
     	}
     	catch(InvalidPostalCodeException e){
     		System.out.println( "\tInvalid PostalCode" );
+			return false;
     	}
     	Patient patient=null;
     	try{
@@ -219,10 +213,14 @@ public class App
     	}
     	catch(InvalidIDException e){
     		System.out.println( "\tInvalid patient ID" );
-    		return true;
+    		return false;
     	}
     	catch(InvalidPostalCodeException e){
     		System.out.println( "\tInvalid patient ID" );
+    		return false;
+    	}
+		catch(NullPointerException e){
+    		System.out.println( "\tNull Pointer Exception" );
     		return false;
     	}
 
@@ -259,7 +257,7 @@ public class App
 			neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex,HIndex+i));
 		
 		}
-
+		System.out.println( "RIsk code map, V: " + VIndex + ", H: " + HIndex + ", caseCount: " + caseCount);
     	if(!riskCodeMap.updateRiskInARegion(VIndex,HIndex,caseCount,neighboursCaseCount))
     	{
     		System.out.println( "\tFailed to update the risk code map" );
