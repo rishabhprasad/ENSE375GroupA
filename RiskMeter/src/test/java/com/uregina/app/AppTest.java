@@ -9,6 +9,23 @@ import org.junit.Test;
 
 public class AppTest
 {
+
+    @Test
+    public void patientAdd_valid_spaces_in_name()
+    {
+        App app = new App();
+        boolean valid = app.addPatient("Julie Doe", "123456789", "K1A-0B9", 31);
+        assertTrue( valid );
+    }
+
+    @Test
+    public void patientAdd_valid_dot_in_name()
+    {
+        App app = new App();
+        boolean valid = app.addPatient("Julie.Doe", "123456789", "K1A-0B9", 31);
+        assertTrue( valid );
+    }
+    
     @Test
     public void patientAdd_valid()
     {
@@ -73,7 +90,16 @@ public class AppTest
         App app = new App();
         boolean valid = app.addPatient("Julie@", "123456789", "K1A-0B9", 31);
         assertFalse( valid );
+    } 
+
+    @Test
+    public void patientAdd_Invalid_Name_With_Spaces()
+    {
+        App app = new App();
+        boolean valid = app.addPatient("Julie    @", "123456789", "K1A-0B9", 31);
+        assertFalse( valid );
     }
+
 
     @Test
     public void patientAdd_Invalid_Name_null()
@@ -133,14 +159,14 @@ public class AppTest
         assertTrue( valid );
     }
 
-    // @Test
-    // public void patientAdd_2_identical_IDs()
-    // {
-    //     App app = new App();
-    //     app.addPatient("Julie", "123456789", "K1A-0B9", 31);
-    //     boolean valid = app.addPatient("Julie", "123456789", "K1A-0B9", 31);
-    //     assertFalse( valid );
-    // }
+     @Test
+     public void patientAdd_2_identical_IDs()
+    {
+     App app = new App();
+        app.addPatient("Julie", "123456789", "K1A-0B9", 31);
+         boolean valid = app.addPatient("Julie", "123456789", "K1A-0B9", 31);
+        assertFalse( valid );
+    }
 
 
     //******************************PatientHistogram TESTS ******************************/

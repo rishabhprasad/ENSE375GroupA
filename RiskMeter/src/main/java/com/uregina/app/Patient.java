@@ -18,7 +18,7 @@ public class Patient
 		
 		//Patient name can only contain alphabetic letters as well as spaces and dots. 
 		 //Check if name is correct in format
-		 String nameCheck = "^([a-zA-Z_.])+$";
+		 String nameCheck = "^([a-zA-Z_ .])+$";
 
 		 if (name == null) throw new NullPointerException();		 
 		 boolean isCorrectName = Pattern.matches(nameCheck, name);

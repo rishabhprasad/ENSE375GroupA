@@ -48,10 +48,15 @@ public class App
 		switch(choice)
 		{
 			case 1:
+				System.out.println("Enter patient name:");
 				patientName=myInput.nextLine();
+				System.out.println("Enter patient ID (9 digits, non zero):");
 				patientID=myInput.nextLine();
+				System.out.println("Enter patient postal code - format: 'K1a-bxy' a=A-T, b=0-9, x=uppercase y=digit:");
 				patientpostalCode=myInput.nextLine();
-				patientAge=myInput.nextInt();
+				//Fix annoying error with pressing enter causing a exit due to nextInt running.
+				System.out.println("Enter patient age:");
+				patientAge = Integer.parseInt(myInput.nextLine());
 				if(app.addPatient(patientName,patientID,patientpostalCode,patientAge))
 				{
 	 			   	System.out.println("\tPatient has been added successfully");				
@@ -71,6 +76,7 @@ public class App
 				{
 				  	System.out.println("\tPatient failed to be removed");
 				}
+			
 			case 3:
 				System.out.print("\t");
 				for(int j=0;j<10;j++){
@@ -93,6 +99,7 @@ public class App
 		}
 		System.out.println("*******************************************");
 	}
+	myInput.close();
     }
     /**
     * <p>This method shows the available options to the user</p>
@@ -120,7 +127,7 @@ public class App
 	System.out.print( "Enter a number from 1 to 4: " );
 	int choice;
 	try{
-		choice= myInput.nextInt();
+		choice= Integer.parseInt(myInput.nextLine());
 	}
 	catch(Exception e)
 	{
@@ -130,6 +137,8 @@ public class App
 		choice=0;
 	}
     	return choice;
+
+	
     }
     /**
     * <p>This method removes a patient from the patient list 
@@ -150,7 +159,7 @@ public class App
     	{
     		System.out.println( "\tPatient Not Found" );
 			return false;
-    	}
+		}
     	int HIndex=patient.getPostalCode().getRegionHorizontalIndex();
     	int VIndex=patient.getPostalCode().getRegionVerticalIndex();
     	if(!histogram.deleteAPatientFromRegion(VIndex,HIndex))
@@ -171,6 +180,8 @@ public class App
     		return false;
     	}
     	return true;
+		
+		
     }
     /**
     * <p>This method adds a patient to the patient list 
@@ -190,7 +201,7 @@ public class App
     * @param patientAge 	an integer contains the age of the patient that should be added
     * @return boolean which is false if it failed
     */
-    public boolean addPatient(String patientName,String patientID,String patientpostalCode, int patientAge)
+	public boolean addPatient(String patientName,String patientID,String patientpostalCode, int patientAge)
     {
     	PostalCode postalCode=null;
     	try{
@@ -241,7 +252,7 @@ public class App
     	ArrayList<Integer> neighboursCaseCount= new ArrayList<Integer> ();
 		
     	for (int i=-1;i<=1;i+=2){
-
+			//Edge case if First vertical then neighbour is the end square. have to reroute it.
 			if (VIndex == 65 && i== -1)
 			{
 			neighboursCaseCount.add(histogram.getPatientsCountInRegion(84,HIndex));
@@ -250,6 +261,7 @@ public class App
     		neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex+i,HIndex));
     	}
     	for (int i=-1;i<=1;i+=2){
+			//Edge case if First horizontal then neighbour is the end square. have to reroute it.
 			if (HIndex == 0 && i == -1)
 			{
     		neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex,9));
