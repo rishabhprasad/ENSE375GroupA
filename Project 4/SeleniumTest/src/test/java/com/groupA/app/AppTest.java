@@ -2,6 +2,7 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.By;
 import org.junit.jupiter.api.AfterAll;
@@ -21,7 +22,13 @@ public class AppTest {
     @BeforeAll
     public static  void setup(){ 
         // CREATE A NEW WEBDRIVER AND OPEN TO SAMPLE PAGE
-        driver = new ChromeDriver();
+
+        ChromeOptions chromeOptions = new ChromeOptions();
+        driver = new ChromeDriver(chromeOptions);
+        chromeOptions.addArguments("--no-sandbox") ;
+        chromeOptions.addArguments("--disable-setuid-sandbox") ;
+        chromeOptions.addArguments("--remote-debugging-port=9515");
+
         driver.get("https://blazedemo.com/index.php");
     }
 
