@@ -48,10 +48,15 @@ public class App
 		switch(choice)
 		{
 			case 1:
+				System.out.println("Enter patient name:");
 				patientName=myInput.nextLine();
+				System.out.println("Enter patient ID (9 digits, non zero):");
 				patientID=myInput.nextLine();
+				System.out.println("Enter patient postal code - format: 'K1a-bxy' a=A-T, b=0-9, x=uppercase y=digit:");
 				patientpostalCode=myInput.nextLine();
-				patientAge=myInput.nextInt();
+				//Fix annoying error with pressing enter causing a exit due to nextInt running.
+				System.out.println("Enter patient age:");
+				patientAge = Integer.parseInt(myInput.nextLine());
 				if(app.addPatient(patientName,patientID,patientpostalCode,patientAge))
 				{
 	 			   	System.out.println("\tPatient has been added successfully");				
@@ -243,22 +248,26 @@ public class App
 		
     	for (int i=-1;i<=1;i+=2){
 
+			//Update Vertical index.
+			//Edge Case - When it is at the first square, to go the neighbour go to the end square.
 			if (VIndex == 65 && i== -1)
 			{
 			neighboursCaseCount.add(histogram.getPatientsCountInRegion(84,HIndex));
 			}
 			else
     		neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex+i,HIndex));
-    	}
-    	for (int i=-1;i<=1;i+=2){
+		}
+		for (int i=-1;i<=1;i+=2){
+			//Update Horizontal index.
+			//Edge Case - When it is at the first square, to go the neighbour go to the end square.
 			if (HIndex == 0 && i == -1)
 			{
-    		neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex,9));
+			neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex,9));
 			}
 			else
 			neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex,HIndex+i));
-		
-		}
+    	}
+	
 
     	if(!riskCodeMap.updateRiskInARegion(VIndex,HIndex,caseCount,neighboursCaseCount))
     	{
