@@ -1,5 +1,5 @@
 package com.uregina.app;
-//import com.uregina.exception.*;
+import com.uregina.exception.*;
 import java.util.ArrayList;
 
 public class RiskCodeMap 
@@ -21,17 +21,23 @@ public class RiskCodeMap
 	*/
 	public boolean updateRiskInARegion(int VIndex,int HIndex,int caseCount,ArrayList<Integer> neighboursCaseCount)
 	{
-		boolean updateRisk= false;
-		
 		// CHECK BOUNDS ON INDEX
 		if(VIndex <0)return false;
 		if(HIndex <0 || HIndex>= 10)return false;
 		// CHANGE ASCII CHAR VALUES FROM POSTAL CODE
 		if(VIndex >= 65 && VIndex <= 84) VIndex = VIndex - 65;
 		// CHECK MINIMUM VALUE BEFORE DECREMENTING
+
+		if (caseCount<0){
+			return false;
+		}
+		for (int i=0;i<neighboursCaseCount.size();i++){
+			if (neighboursCaseCount.get(i)<0){
+				return false;
+			}
+		}
 		
-		
-		char currentRisk = this.riskCode[VIndex][HIndex];
+		//char currentRisk = this.riskCode[VIndex][HIndex];
 		int avgNeighbourCount;
 		int totalNeighboursCaseCount = 0;
 		int greatestCount;
@@ -45,58 +51,24 @@ public class RiskCodeMap
 		else {
 			greatestCount = caseCount;
 		}
-
-		switch (currentRisk){
-			case 'N':
-				updateRisk = true;
-			break;
-			case 'G':
-				if (greatestCount > 0){
-					updateRisk = true;
-				}
-			break;
-			case 'B':
-				if ((greatestCount < 1) || (greatestCount > 3)){
-					updateRisk = true;
-				}
-			break;
-			case 'Y':
-				if ((greatestCount < 4) || (greatestCount > 7)){
-					updateRisk = true;
-				}
-			break;
-			case 'O':
-				if ((greatestCount < 8) || (greatestCount > 10)){
-					updateRisk = true;
-				}
-			break;
-			case 'R':
-			if (greatestCount < 10){
-				updateRisk = true;
-			}
-			break;
-			default:
-				//Shouldnt ever go here
-			break;
+		
+		if (greatestCount == 0){
+			this.riskCode[VIndex][HIndex] = 'G';
 		}
-		if(updateRisk){
-			if (greatestCount == 0){
-				this.riskCode[VIndex][HIndex] = 'G';
-			}
-			if ((greatestCount > 0) && (greatestCount < 4)){
-				this.riskCode[VIndex][HIndex] = 'B';
-			}
-			if ((greatestCount > 3) && (greatestCount < 8)){
-				this.riskCode[VIndex][HIndex] = 'Y';
-			}
-			if ((greatestCount > 7) && (greatestCount < 11)){
-				this.riskCode[VIndex][HIndex] = 'O';
-			}
-			if (greatestCount > 10){
-				this.riskCode[VIndex][HIndex] = 'R';
-			}
+		if ((greatestCount > 0) && (greatestCount < 4)){
+			this.riskCode[VIndex][HIndex] = 'B';
 		}
-		return updateRisk;
+		if ((greatestCount > 3) && (greatestCount < 8)){
+			this.riskCode[VIndex][HIndex] = 'Y';
+		}
+		if ((greatestCount > 7) && (greatestCount < 11)){
+			this.riskCode[VIndex][HIndex] = 'O';
+		}
+		if (greatestCount > 10){
+			this.riskCode[VIndex][HIndex] = 'R';
+		}
+		
+		return true;
 	}
 
 	public char getRiskInARegion(int VIndex,int HIndex) throws IndexOutOfBoundsException
