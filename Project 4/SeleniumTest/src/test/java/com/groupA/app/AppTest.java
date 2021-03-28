@@ -24,11 +24,15 @@ public class AppTest {
         // CREATE A NEW WEBDRIVER AND OPEN TO SAMPLE PAGE
 
         ChromeOptions chromeOptions = new ChromeOptions();
-        driver = new ChromeDriver(chromeOptions);
         chromeOptions.addArguments("--no-sandbox") ;
         chromeOptions.addArguments("--disable-setuid-sandbox") ;
         chromeOptions.addArguments("--remote-debugging-port=9515");
-
+        chromeOptions.addArguments("--disable-dev-shm-using"); 
+        chromeOptions.addArguments("--disable-extensions");
+        chromeOptions.addArguments("--disable-gpu");
+        chromeOptions.addArguments("start-maximized"); 
+        chromeOptions.addArguments("disable-infobars");
+        driver = new ChromeDriver(chromeOptions);
         driver.get("https://blazedemo.com/index.php");
     }
 
