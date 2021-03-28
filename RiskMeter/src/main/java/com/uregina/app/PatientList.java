@@ -23,7 +23,7 @@ public class PatientList
      */
     public boolean addPatient(Patient patient) {
         //added get patient call to stop duplicate ID's
-        if (patient.getID() == null || patient.getName() == null || patient.getPostalCode() == null || getPatient(patient.getID()) == null)
+        if (patient.getID() == null || patient.getName() == null || patient.getPostalCode() == null || getPatient(patient.getID()) != null)
         {
             return false;
         }
