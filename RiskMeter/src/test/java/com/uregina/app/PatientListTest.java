@@ -23,7 +23,7 @@ public class PatientListTest
   private static  PostalCode postal;
   private static PostalCode postal2;
   private static  Patient patient;
- private static Patient patient2;
+  private static Patient patient2;
 
    @BeforeClass
    public static  void setup() throws Exception 

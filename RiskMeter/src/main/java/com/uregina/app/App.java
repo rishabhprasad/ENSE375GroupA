@@ -48,10 +48,15 @@ public class App
 		switch(choice)
 		{
 			case 1:
+				System.out.println("Enter patient name:");
 				patientName=myInput.nextLine();
+				System.out.println("Enter patient ID (9 digits, non zero):");
 				patientID=myInput.nextLine();
+				System.out.println("Enter patient postal code - format: 'K1a-bxy' a=A-T, b=0-9, x=uppercase y=digit:");
 				patientpostalCode=myInput.nextLine();
-				patientAge=myInput.nextInt();
+				//Fix annoying error with pressing enter causing a exit due to nextInt running.
+				System.out.println("Enter patient age:");
+				patientAge = Integer.parseInt(myInput.nextLine());
 				if(app.addPatient(patientName,patientID,patientpostalCode,patientAge))
 				{
 	 			   	System.out.println("\tPatient has been added successfully");				
@@ -196,7 +201,7 @@ public class App
     * @param patientAge 	an integer contains the age of the patient that should be added
     * @return boolean which is false if it failed
     */
-    public boolean addPatient(String patientName,String patientID,String patientpostalCode, int patientAge)
+	public boolean addPatient(String patientName,String patientID,String patientpostalCode, int patientAge)
     {
     	PostalCode postalCode=null;
     	try{
@@ -204,6 +209,7 @@ public class App
     	}
     	catch(InvalidPostalCodeException e){
     		System.out.println( "\tInvalid PostalCode" );
+			return false;
     	}
     	Patient patient=null;
     	try{
@@ -219,10 +225,14 @@ public class App
     	}
     	catch(InvalidIDException e){
     		System.out.println( "\tInvalid patient ID" );
-    		return true;
+    		return false;
     	}
     	catch(InvalidPostalCodeException e){
     		System.out.println( "\tInvalid patient ID" );
+    		return false;
+    	}
+		catch(NullPointerException e){
+    		System.out.println( "\tNull Pointer Exception" );
     		return false;
     	}
 
@@ -242,7 +252,7 @@ public class App
     	ArrayList<Integer> neighboursCaseCount= new ArrayList<Integer> ();
 		
     	for (int i=-1;i<=1;i+=2){
-
+			//Edge case if First vertical then neighbour is the end square. have to reroute it.
 			if (VIndex == 65 && i== -1)
 			{
 			neighboursCaseCount.add(histogram.getPatientsCountInRegion(84,HIndex));
@@ -251,6 +261,7 @@ public class App
     		neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex+i,HIndex));
     	}
     	for (int i=-1;i<=1;i+=2){
+			//Edge case if First horizontal then neighbour is the end square. have to reroute it.
 			if (HIndex == 0 && i == -1)
 			{
     		neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex,9));
@@ -259,7 +270,7 @@ public class App
 			neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex,HIndex+i));
 		
 		}
-
+		
     	if(!riskCodeMap.updateRiskInARegion(VIndex,HIndex,caseCount,neighboursCaseCount))
     	{
     		System.out.println( "\tFailed to update the risk code map" );
