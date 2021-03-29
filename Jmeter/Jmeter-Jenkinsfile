@@ -6,7 +6,7 @@ pipeline {
         stage('Checkout Codebase'){
             steps{
                 cleanWs()
-                checkout scm: [$class: 'GitSCM', branches: [[name: '*/master']],userRemoteConfigs:
+                checkout scm: [$class: 'GitSCM', branches: [[name: '*/rishabh']],userRemoteConfigs:
                 [[credentialsId: 'github-ssh-key', url: 'git@github.com:rishabhprasad/ENSE375GroupA.git']]]
             }
         }
@@ -14,7 +14,7 @@ pipeline {
         stage('Jmeter'){
             steps{
                 sh 'whoami'
-                sh '/var/lib/jmeter/apache-jmeter-5.4.1/bin/jmeter.sh -n -t /var/lib/jenkins/workspace/Jmeter-Test/Jmeter/BlazeDemoTest.jmx'
+                sh '/var/lib/jmeter/apache-jmeter-5.4.1/bin/jmeter.sh -n -t /var/lib/jenkins/workspace/Jmeter-Test/Jmeter/ENSE375BLAZEDEMO.jmx'
                 //sh '''
                 //    sudo su -
                 //    cd /var/lib/jmeter/apache-jmeter-5.4.1/bin
