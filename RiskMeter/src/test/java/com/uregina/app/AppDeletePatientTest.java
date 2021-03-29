@@ -1,21 +1,12 @@
-  
 package com.uregina.app;
+
 import org.junit.Test;
-
 import static org.junit.Assert.*;
-
-import org.junit.*;
-import java.io.*;
-
-
 import java.util.Arrays;
 import java.util.Collection;
-import org.junit.*;
 import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
 import org.junit.runner.RunWith;
 import static org.junit.Assert.assertEquals;
-import org.junit.Test; 
 import org.junit.Before;
 
 
