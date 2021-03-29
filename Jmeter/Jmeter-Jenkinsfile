@@ -14,7 +14,7 @@ pipeline {
         stage('Jmeter'){
             steps{
                 sh 'whoami'
-                sh '/var/lib/jmeter/apache-jmeter-5.4.1/bin/jmeter.sh -n -t /var/lib/jenkins/workspace/Jmeter/Jmeter/BlazeDemoTest.jmx'
+                sh '/var/lib/jmeter/apache-jmeter-5.4.1/bin/jmeter.sh -n -t /var/lib/jenkins/workspace/Jmeter-Test/Jmeter/BlazeDemoTest.jmx'
                 //sh '''
                 //    sudo su -
                 //    cd /var/lib/jmeter/apache-jmeter-5.4.1/bin
