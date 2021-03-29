@@ -42,7 +42,7 @@ public class AppDeletePatientTest {
     }
 
     @Test
-    public void checker() {
+    public void appDeletePatientTest_Boundary() {
     assertEquals(expected_output, app.deletePatient(patientID));
     }
 }

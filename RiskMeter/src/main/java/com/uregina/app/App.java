@@ -174,17 +174,17 @@ public class App
     	ArrayList<Integer> neighboursCaseCount= new ArrayList<Integer> ();
     	for (int i=-1;i<=1;i+=2){
 			if(VIndex+i<65)
-			neighboursCaseCount.add(histogram.getPatientsCountInRegion(65,HIndex));
-			else if(VIndex+i>84)
 			neighboursCaseCount.add(histogram.getPatientsCountInRegion(84,HIndex));
+			else if(VIndex+i>84)
+			neighboursCaseCount.add(histogram.getPatientsCountInRegion(65,HIndex));
 			else
     		neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex+i,HIndex));
     	}
     	for (int i=-1;i<=1;i+=2){
 			if(HIndex+i<0)
-			neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex,0));
-			else if(HIndex+i>9)
 			neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex,9));
+			else if(HIndex+i>9)
+			neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex,0));
 			else
     		neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex,HIndex+i));
     	}
