@@ -170,14 +170,32 @@ public class AppTest
 
 
     //******************************PatientHistogram TESTS ******************************/
+    
+    //T in postal code
+    @Test
+    public void patient_Upper_EdgeCase_Vertical()
+    {
+        App app = new App();
+        boolean valid = app.addPatient("George", "987654321", "K1T-0B9", 44);
+        assertTrue( valid );
+    }
+  //A in postal code
+  @Test
+  public void patient_Lower_EdgeCase_Vertical()
+  {
+      App app = new App();
+      boolean valid = app.addPatient("George", "987654321", "K1A-0B9", 44);
+      assertTrue( valid );
+  }
+
 
     //******************************RiskCode map TESTS ******************************/
     @Test
     public void patientAdd_2_patients_same_region()
     {
         App app = new App();
-        app.addPatient("Julie", "123456789", "K1A-0B9", 31);
-        boolean valid = app.addPatient("George", "987654321", "K1A-0B9", 44);
+        app.addPatient("Julie", "123456789", "K1T-0B9", 31);
+        boolean valid = app.addPatient("George", "987654321", "K1T-0B9", 44);
         assertTrue( valid );
     }
 }
