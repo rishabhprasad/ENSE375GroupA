@@ -1,5 +1,8 @@
 package com.uregina.app;
 import java.util.Scanner;
+
+import javax.lang.model.util.ElementScanner6;
+
 import java.util.ArrayList;
 import com.uregina.exception.*;
 /**
@@ -268,14 +271,26 @@ public class App
 			{
 			neighboursCaseCount.add(histogram.getPatientsCountInRegion(84,HIndex));
 			}
-			else
-    		neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex+i,HIndex));
-    	}
+			//Edge Case end, return back to A.
+			else if(VIndex == 84 && i == 1)
+			{
+	
+    		neighboursCaseCount.add(histogram.getPatientsCountInRegion(65,HIndex));
+			}
+			else{
+				neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex+i,HIndex));
+			}
+		}
     	for (int i=-1;i<=1;i+=2){
 			//Edge case if First horizontal then neighbour is the end square. have to reroute it.
 			if (HIndex == 0 && i == -1)
 			{
     		neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex,9));
+			}
+			//Edge Case end, return back to A/0.
+			else if(HIndex == 9 && i == 1)
+			{
+				neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex,0));
 			}
 			else
 			neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex,HIndex+i));
