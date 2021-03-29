@@ -16,6 +16,7 @@ pipeline {
                 sh 'whoami'
                 //sh 'cd /; ls'
                 sh '''
+                    sudo su -
                     cd /var/lib/jmeter/apache-jmeter-5.4.1/bin
                     ./jmeter.sh -n -t '/var/lib/jenkins/workspace/Jmeter-Test/Project 4/Jmeter/ENSE375BLAZEDEMO.jmx'
                 '''
