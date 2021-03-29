@@ -18,7 +18,7 @@ pipeline {
                 sh '''
                     sudo su -
                     cd /var/lib/jmeter/apache-jmeter-5.4.1/bin
-                    ./jmeter.sh -n -t '/var/lib/jenkins/workspace/Jmeter-Test/Jmeter/BlazeDemoTest.jmx'
+                    ./jmeter.sh -n -t '/var/lib/jenkins/workspace/Jmeter-Test/Jmeter/ENSE375BLAZEDEMO.jmx'
                 '''
                 //sh '/var/lib/jenkins/workspace/Jmeter-Test/ENSE375BLAZEDEMO.jmx'
             } 
