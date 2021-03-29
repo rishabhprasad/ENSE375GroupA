@@ -13,7 +13,9 @@ pipeline {
 
         stage('Jmeter'){
             steps{
-                sh 'pwd'
+                sh 'sudo su -'
+                sh 'whoami'
+                //sh '/var/lib/jenkins/workspace/Jmeter-Test/ENSE375BLAZEDEMO.jmx'
             } 
         }
     }
