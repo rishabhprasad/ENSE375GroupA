@@ -18,8 +18,7 @@ pipeline {
 
         stage('Build'){
             steps{
-                snykSecurity snykInstallation: 'Snyk', snykTokenId: 'ense375-snyk-api-token', targetFile: 'RiskMeter/pom.xml'
-                sh 'mvn dependency:tree -DoutputType=dot'
+                snykSecurity snykInstallation: 'Snyk', snykTokenId: 'ense375-snyk-api-token', targetFile: 'RiskMeter/RiskMeter/pom.xml'         
                 sh 'mvn compile -f RiskMeter/pom.xml'
             } 
         }
