@@ -1,5 +1,8 @@
 package com.uregina.app;
 import java.util.Scanner;
+
+import javax.lang.model.util.ElementScanner6;
+
 import java.util.ArrayList;
 import com.uregina.exception.*;
 /**
@@ -165,13 +168,24 @@ public class App
     	if(!histogram.deleteAPatientFromRegion(VIndex,HIndex))
     	{
 	    	System.out.println( "\tFailed to update the patient Count" );
+			return false;
     	}
     	int caseCount=histogram.getPatientsCountInRegion(VIndex,HIndex);
     	ArrayList<Integer> neighboursCaseCount= new ArrayList<Integer> ();
     	for (int i=-1;i<=1;i+=2){
+			if(VIndex+i<65)
+			neighboursCaseCount.add(histogram.getPatientsCountInRegion(84,HIndex));
+			else if(VIndex+i>84)
+			neighboursCaseCount.add(histogram.getPatientsCountInRegion(65,HIndex));
+			else
     		neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex+i,HIndex));
     	}
     	for (int i=-1;i<=1;i+=2){
+			if(HIndex+i<0)
+			neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex,9));
+			else if(HIndex+i>9)
+			neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex,0));
+			else
     		neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex,HIndex+i));
     	}
     	if(!riskCodeMap.updateRiskInARegion(VIndex,HIndex,caseCount,neighboursCaseCount))
@@ -257,14 +271,26 @@ public class App
 			{
 			neighboursCaseCount.add(histogram.getPatientsCountInRegion(84,HIndex));
 			}
-			else
-    		neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex+i,HIndex));
-    	}
+			//Edge Case end, return back to A.
+			else if(VIndex == 84 && i == 1)
+			{
+	
+    		neighboursCaseCount.add(histogram.getPatientsCountInRegion(65,HIndex));
+			}
+			else{
+				neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex+i,HIndex));
+			}
+		}
     	for (int i=-1;i<=1;i+=2){
 			//Edge case if First horizontal then neighbour is the end square. have to reroute it.
 			if (HIndex == 0 && i == -1)
 			{
     		neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex,9));
+			}
+			//Edge Case end, return back to A/0.
+			else if(HIndex == 9 && i == 1)
+			{
+				neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex,0));
 			}
 			else
 			neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex,HIndex+i));
