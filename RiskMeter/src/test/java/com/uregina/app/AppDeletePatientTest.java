@@ -23,8 +23,8 @@ public class AppDeletePatientTest {
         app.addPatient("Julie Do", "123498765", "K1A-0B2", 31);
         app.addPatient("Juliec", "987654321", "K1A-0B9", 31);
         app.addPatient("Juliea", "123453769", "K1T-1B7", 33);
-        app.addPatient("Julieb", "123452769", "K1T-0B2", 33);
-        app.addPatient("Julied", "123451769", "K1T-0B9", 33);
+        app.addPatient("Julieb", "123452763", "K1T-0B2", 33);
+        app.addPatient("Julied", "123451762", "K1T-0B9", 33);
     }
 
     public AppDeletePatientTest(String patientID, boolean output)
@@ -36,8 +36,8 @@ public class AppDeletePatientTest {
     @Parameterized.Parameters(name="{index}: DeletePatient({0})={1}")
     public static Collection<Object[]> data() {
        return Arrays.asList(new Object[][] {
-          {"123456789",true},{"123498765",true},{"987654321",true},{"123453769",true},{"123452769",true}
-          ,{"123451769",true},{"88888888",false},{"",false}
+          {"123456789",true},{"123498765",true},{"987654321",true},{"123453769",true},{"123452763",true}
+          ,{"123451762",true},{"88888888",false},{"",false}
        });
     }
 
