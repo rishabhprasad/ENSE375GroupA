@@ -18,14 +18,14 @@ pipeline {
         }
 
         stage('Build'){
-            steps{
-                snykSecurity snykInstallation: 'Snyk', snykTokenId: 'ense375-snyk-api-token'   
-                sh 'mvn compile -f RiskMeter/pom.xml'
+            steps{            
+                sh 'mvn compile -f RiskMeter/pom.xml'               
             } 
         }
 
         stage('Test'){
             steps{
+                snykSecurity snykInstallation: 'Snyk', snykTokenId: 'ense375-snyk-api-token' 
                 sh 'mvn test -f RiskMeter/pom.xml'
             }
         }
