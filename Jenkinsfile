@@ -13,6 +13,7 @@ pipeline {
 
         stage('Build'){
             steps{
+                snykSecurity(tokenCredentialId: 'ense375-snyk-api-token', failOnBuild: true, monitor: true) 
                 sh 'mvn compile -f RiskMeter/pom.xml'
             } 
         }
