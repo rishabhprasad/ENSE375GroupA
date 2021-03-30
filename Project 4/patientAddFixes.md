@@ -21,7 +21,7 @@ To PostalCode.java
 
 Made changes so two patients with same ID cannot be added.
 
-Added Horizontal and Vertical index (histogram) edge cases in addPatient.
+Added Horizontal and Vertical index (histogram) edge cases in addPatient. Due to grid nature the numbers/indexes have to be rolled back or to the end depending on the case.
 ```java
 	int caseCount=histogram.getPatientsCountInRegion(VIndex,HIndex);
     	ArrayList<Integer> neighboursCaseCount= new ArrayList<Integer> ();
