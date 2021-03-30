@@ -18,7 +18,6 @@ pipeline {
 
         stage('Build'){
             steps{
-                snykSecurity snykInstallation: 'Snyk', snykTokenId: 'ense375-snyk-api-token'
                 sh 'mvn compile -f RiskMeter/pom.xml'
             } 
         }
@@ -26,10 +25,16 @@ pipeline {
         stage('Test'){
             steps{
                 sh 'mvn test -f RiskMeter/pom.xml'
-
-
+            }
         }
-       }
+        
+        stage('Building image') {
+            steps{
+                script {
+                docker.build registry + ":$BUILD_NUMBER"
+                }
+            }
+        }
     }
 
 }
