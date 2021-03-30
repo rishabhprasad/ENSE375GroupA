@@ -25,7 +25,7 @@ pipeline {
 
         stage('Test'){
             steps{
-                sh 'snykSecurity snykInstallation: "Snyk", snykTokenId: "ense375-snyk-api-token"' 
+                snykSecurity snykInstallation: 'Snyk', snykTokenId: 'ense375-snyk-api-token', targetFile:"https://github.com/rishabhprasad/ENSE375GroupA/"
                 sh 'mvn test -f RiskMeter/pom.xml'
             }
         }
