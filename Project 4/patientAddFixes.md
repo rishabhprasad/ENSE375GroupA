@@ -19,5 +19,43 @@ Changed the functionaly of updateRiskInARegion from returning false if a change 
 To PostalCode.java
 `if (postalCode == null) throw new InvalidPostalCodeException();`
 
-TODO:
-should adding two patients with the same ID be illegal?
+Made changes so two patients with same ID cannot be added.
+
+Added Horizontal and Vertical index (histogram) edge cases in addPatient. Due to grid nature the numbers/indexes have to be rolled back or to the end depending on the case.
+```java
+	int caseCount=histogram.getPatientsCountInRegion(VIndex,HIndex);
+    	ArrayList<Integer> neighboursCaseCount= new ArrayList<Integer> ();
+		
+    	for (int i=-1;i<=1;i+=2){
+			//Edge case if First vertical then neighbour is the end square. have to reroute it.
+			if (VIndex == 65 && i== -1)
+			{
+			neighboursCaseCount.add(histogram.getPatientsCountInRegion(84,HIndex));
+			}
+			//Edge Case end, return back to A (65).
+			else if(VIndex == 84 && i == 1)
+			{
+	
+    		neighboursCaseCount.add(histogram.getPatientsCountInRegion(65,HIndex));
+			}
+			else{
+				neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex+i,HIndex));
+			}
+		}
+    	for (int i=-1;i<=1;i+=2){
+			//Edge case if First horizontal then neighbour is the end square. have to reroute it.
+			if (HIndex == 0 && i == -1)
+			{
+    		neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex,9));
+			}
+			//Edge Case end, return back to A (0).
+			else if(HIndex == 9 && i == 1)
+			{
+				neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex,0));
+			}
+			else
+			neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex,HIndex+i));
+		
+		}
+
+```

@@ -1,5 +1,11 @@
 pipeline {
 
+    environment {
+        registry = "rishabhprasad03/ense375group-a"
+        registryCredential = 'dockerhub'
+        dockerImage = '';
+    }
+
     agent any
     stages {
 
@@ -12,18 +18,34 @@ pipeline {
         }
 
         stage('Build'){
-            steps{
-                sh 'mvn compile -f RiskMeter/pom.xml'
+            steps{            
+                sh 'mvn compile -f RiskMeter/pom.xml'               
             } 
         }
 
         stage('Test'){
-            steps{
-                sh 'mvn test -f RiskMeter/pom.xml'
-
-
+            steps{            
+                sh 'mvn test -f RiskMeter/pom.xml'              
+            }
         }
-       }
+        
+        stage('Building image') {
+            steps{
+                script {
+                    dockerImage = docker.build registry
+                }
+            }
+        }
+
+        stage('Deploy image') {
+            steps{
+                script {
+                    docker.withRegistry( '', registryCredential) {
+                        dockerImage.push()
+                    }
+                }
+            }
+        }
     }
 
 }

@@ -155,7 +155,7 @@ public class AppTest
     {
         App app = new App();
         app.addPatient("Julie", "123456789", "K1A-0B9", 31);
-        boolean valid = app.addPatient("George", "987654321", "K1A-1B9", 44);
+        boolean valid = app.addPatient("George", "987654321", "K1A-4B9", 44);
         assertTrue( valid );
     }
 
@@ -164,7 +164,7 @@ public class AppTest
     {
      App app = new App();
         app.addPatient("Julie", "123456789", "K1A-0B9", 31);
-         boolean valid = app.addPatient("Julie", "123456789", "K1A-0B9", 31);
+         boolean valid = app.addPatient("Julie", "123456789", "K1A-3B9", 31);
         assertFalse( valid );
     }
 
@@ -187,7 +187,22 @@ public class AppTest
       boolean valid = app.addPatient("George", "987654321", "K1A-0B9", 44);
       assertTrue( valid );
   }
-
+ //9 in postal code, horizontal index position
+ @Test
+ public void patient_Upper_EdgeCase_Horizontal()
+ {
+     App app = new App();
+     boolean valid = app.addPatient("George", "987654321", "K1T-0B9", 44);
+     assertTrue( valid );
+ }
+//0 in postal code, vertical index position
+@Test
+public void patient_Lower_EdgeCase_Horizontal()
+{
+   App app = new App();
+   boolean valid = app.addPatient("George", "987654321", "K1A-9B9", 44);
+   assertTrue( valid );
+}
 
     //******************************RiskCode map TESTS ******************************/
     @Test
