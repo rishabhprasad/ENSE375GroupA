@@ -129,8 +129,10 @@ public class App
 	Scanner myInput = new Scanner( System.in );
 	System.out.print( "Enter a number from 1 to 4: " );
 	int choice;
+	String input;
 	try{
-		choice= Integer.parseInt(myInput.nextLine());
+		input = myInput.nextLine();
+		choice = Integer.parseInt(input);
 	}
 	catch(Exception e)
 	{
