@@ -129,21 +129,18 @@ public class App
 	Scanner myInput = new Scanner( System.in );
 	System.out.print( "Enter a number from 1 to 4: " );
 	int choice;
-	String input;
 	try{
-		input = myInput.nextLine();
-		choice = Integer.parseInt(input);
+		choice= Integer.parseInt(myInput.nextLine());
 	}
 	catch(Exception e)
 	{
 		choice=0;
 	}
-	
 	if(choice<0|choice>4){
 		choice=0;
 	}
-	   
     	return choice;
+
 	
     }
     /**
