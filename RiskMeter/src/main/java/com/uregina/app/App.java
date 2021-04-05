@@ -101,7 +101,6 @@ public class App
 		}
 		System.out.println("*******************************************");
 	}
-	myInput.close();
     }
     /**
     * <p>This method shows the available options to the user</p>
@@ -125,12 +124,12 @@ public class App
     */
     public static int getAChoice()
     {
-	Scanner myInput = new Scanner( System.in );
+	Scanner myInput2 = new Scanner( System.in );
 	System.out.print( "Enter a number from 1 to 4: " );
 	int choice;
 	String input;
 	try{
-		input = myInput.nextLine();
+		input = myInput2.nextLine();
 		choice = Integer.parseInt(input);
 	}
 	catch(Exception e)
