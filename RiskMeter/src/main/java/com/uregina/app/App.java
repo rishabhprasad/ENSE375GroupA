@@ -157,6 +157,7 @@ public class App
     */
     public boolean deletePatient(String patientID)
     {
+		System.out.println( "\tEnter Patient ID to be removed.");
     	Patient patient=patientList.getPatient(patientID);
     	if(patient==null)
     	{
