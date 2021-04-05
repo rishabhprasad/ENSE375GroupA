@@ -79,8 +79,7 @@ public class AppTest
     public void patientAdd_postalCode_null()
     {
         App app = new App();
-        boolean valid = app.addPatient("Julie", "123456789", null, 31);
-        assertFalse( valid );
+        assertThrows(NullPointerException.class, () -> { app.addPatient("Julie", "123456789", null, 31); });
     }
 
     //******************************PATIENT TESTS ******************************/

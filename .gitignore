@@ -1,1 +1,12 @@
 /RiskMeter/target
+Project 4/SeleniumTest/.project
+Project 4/SeleniumTest/.classpath
+*.prefs
+Project 4/SeleniumTest/target/classes/com/groupA/.DS_Store
+Project 4/SeleniumTest/target/classes/com/.DS_Store
+Project 4/SeleniumTest/target/classes/.DS_Store
+Project 4/SeleniumTest/target/test-classes/.DS_Store
+*.class
+Project 4/SeleniumTest/target/test-classes/com/.DS_Store
+Project 4/SeleniumTest/target/test-classes/com/groupA/app/.DS_Store
+Project 4/SeleniumTest/target/test-classes/com/groupA/.DS_Store
