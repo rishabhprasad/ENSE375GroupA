@@ -65,7 +65,12 @@ public class PatientListTest
     public void patientList_Succesful_Add() 
     {          
         PatientList patientList = new PatientList();
+       try {
         assertTrue(patientList.addPatient(patient));
+       }
+       catch(DuplicateIDException e){
+        System.out.println( "\tDuplicate Patient ID. Patient ID already exists on list" );
+    }
     
     }
     
@@ -73,7 +78,13 @@ public class PatientListTest
     public void deletePatient_ValidIndex()
     {
         PatientList patientList = new PatientList();
+        try {
         patientList.addPatient(patient);
+         }
+        catch(DuplicateIDException e){
+         System.out.println( "\tDuplicate Patient ID. Patient ID already exists on list" );
+        }
+
         assertTrue(patientList.deletePatient(0));
     }
 
@@ -82,8 +93,12 @@ public class PatientListTest
     public void deletePatient_InvalidIndex()
     {                   
         PatientList patientList = new PatientList();
-
-        patientList.addPatient(patient);
+        try {
+            patientList.addPatient(patient);
+             }
+            catch(DuplicateIDException e){
+             System.out.println( "\tDuplicate Patient ID. Patient ID already exists on list" );
+            }
         assertFalse(patientList.deletePatient(2));
     }
 
@@ -93,8 +108,12 @@ public class PatientListTest
         PatientList patientList = new PatientList();
         boolean result = false;
 
-   
-        patientList.addPatient(patient);
+        try {
+            patientList.addPatient(patient);
+             }
+            catch(DuplicateIDException e){
+             System.out.println( "\tDuplicate Patient ID. Patient ID already exists on list" );
+            }
 
         if (patientList.getPatient("000000000") == null)
         {
@@ -111,8 +130,12 @@ public class PatientListTest
     {  
     boolean result = false;
     PatientList patientList = new PatientList();      
-    patientList.addPatient(patient);
-
+    try {
+        patientList.addPatient(patient);
+         }
+        catch(DuplicateIDException e){
+         System.out.println( "\tDuplicate Patient ID. Patient ID already exists on list" );
+        }
 
     if (patientList.getPatient("000000022") == null)
     {
@@ -130,7 +153,12 @@ public class PatientListTest
     {      
     PatientList patientList = new PatientList();
     boolean result = true;
-    patientList.addPatient(patient);
+    try {
+        patientList.addPatient(patient);
+         }
+        catch(DuplicateIDException e){
+         System.out.println( "\tDuplicate Patient ID. Patient ID already exists on list" );
+        }
     
     Patient patientX = patientList.getPatient("123456789");
     if (patientX.getID() == null)
@@ -151,8 +179,14 @@ public class PatientListTest
         PatientList patientList = new PatientList();
         
 
-        patientList.addPatient(patient);
-        patientList.addPatient(patient2);
+        try {
+            patientList.addPatient(patient);
+            patientList.addPatient(patient2);
+             }
+            catch(DuplicateIDException e){
+             System.out.println( "\tDuplicate Patient ID. Patient ID already exists on list" );
+            }
+        
 
 
         int number = patientList.getNumberofPatients();

@@ -80,8 +80,7 @@ public class App
 				  	System.out.println("\tPatient failed to be removed");
 				}
 			
-			case 3:
-				System.out.print("\t");
+			case 3:				
 				for(int j=0;j<10;j++){
 					System.out.print("  "+j);
 				}
@@ -252,11 +251,16 @@ public class App
     		return false;
     	}
 
-    	if(!patientList.addPatient(patient))
+    	try
+		{
+			patientList.addPatient(patient);	
+		}
+		catch(DuplicateIDException e)
     	{
-    		System.out.println( "\tFailed to add a patient to a patientList" );
+    		System.out.println( "\t Duplicate ID, already exists on Patient List. Failed to add a patient to a patientList." );
     		return false;
     	}
+
     	int HIndex=postalCode.getRegionHorizontalIndex();
     	int VIndex=postalCode.getRegionVerticalIndex();
     	if(!histogram.addAPatientToRegion(VIndex,HIndex))

@@ -21,8 +21,12 @@ public class PatientList
      *
      * @return boolean: true if the patient can be added to the list
      */
-    public boolean addPatient(Patient patient) {
+    public boolean addPatient(Patient patient) throws DuplicateIDException{
         //added get patient call to stop duplicate ID's
+        if(getPatient(patient.getID()) != null)
+        {
+            throw new DuplicateIDException(patient.getID());
+        }
         if (patient.getID() == null || patient.getName() == null || patient.getPostalCode() == null || getPatient(patient.getID()) != null)
         {
             return false;
