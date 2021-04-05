@@ -39,12 +39,13 @@ RiskCodeMap
 PatientHistogram
 ```
 
-**Docker
+## Docker
 
-*** Docker Pull
-To pull the image run the following command:
+### Docker Pull
+
+To pull the image execute the following command:
 `docker pull rishabhprasad03/ense375group-a:latest`
 
-*** Docker Pull
-To pull the image run the following command:
+### Docker Run
+To run the image execute the following command:
 `docker run -i -t rishabhprasad03/ense375group-a:latest`
