@@ -70,6 +70,7 @@ public class App
 				}
 				break;
 			case 2:
+				System.out.println( "\tEnter Patient ID to be removed.");
 				patientID=myInput.nextLine();
 				if(app.deletePatient(patientID))
 				{
@@ -157,7 +158,6 @@ public class App
     */
     public boolean deletePatient(String patientID)
     {
-		System.out.println( "\tEnter Patient ID to be removed.");
     	Patient patient=patientList.getPatient(patientID);
     	if(patient==null)
     	{
